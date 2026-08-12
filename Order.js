@@ -26,10 +26,10 @@ class Order {
 
     displayOrder() {
         console.log(`Order ID: ${this.orderId}`);
-        console.log(`Customer: ${this.customer.name}`);
+        console.log(`Customer: ${this.customer?.name ?? 'unknown customer'}`);
         console.log(`Status: ${this.status}`);
         this.Items.forEach(item => {
-            console.log(`${item.product.name} x ${item.quantity} = $${item.getTotal()}`);
+            console.log(`${item.product?.name ?? 'unknown product'} x ${item.quantity} = $${item.getTotal()}`);
         });
         console.log(`Total: $${this.calculateTotal()}`);
     }

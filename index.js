@@ -1,73 +1,16 @@
-/*const Product = require("./Product");
-const Customer = require("./Customer");
-const Payment = require("./Payment");
-const Checkout = require("./Checkout");
-const ECommerceSystem = require("./EcommerceSystem");
-
-const system = new ECommerceSystem();
-
-const laptop = new Product(
-    1,
-    "Laptop",
-    "Dell Core i7",
-    800,
-    10,
-    "Electronics"
-);
-
-const phone = new Product(
-    2,
-    "Smartphone",
-    "Samsung Galaxy",
-    500,
-    20,
-    "Electronics"
-);
-
-system.catalog.addProduct(laptop);
-system.catalog.addProduct(phone);
-
-const customer = new Customer(
-    101,
-    "Besong John",
-    "john@gmail.com",
-    "Buea, Cameroon"
-);
-
-system.registerCustomer(customer);
-
-customer.shoppingCart.addProduct(laptop, 1);
-customer.shoppingCart.addProduct(phone, 2);
-
-customer.shoppingCart.displayCart();
-
-const order = Checkout.checkout(customer);
-
-system.addOrder(order);
-
-order.displayOrder();
-
-const payment = new Payment(
-    1,
-    order,
-    "Mobile Money"
-);
-
-payment.processPayment();
-*/
-
 const readline = require("readline");
 const Product = require("./Product");
 const Customer = require("./Customer");
-const Checkout = require("./Checkout");
+const Admin = require("./Admin")
 const Payment = require("./Payment");
-const ECommerceSystem = require("./EcommerceSystem");
-
+const ECommerceSystem = require("./ECommerceSystem");
+// readLine Configuration
 const rl = readline.createInterface({
     input: process.stdin,
     output: process.stdout
 });
 
+//Creating and Eccommerce Sytem object
 const system = new ECommerceSystem();
 
 const products = [
@@ -95,84 +38,118 @@ const products = [
     new Product(20, "Air Fryer", "Ninja Air Fryer", 170, 15, "Home")
 ];
 
+// Adding the 20 Product to the catalog
 products.forEach(product => system.catalog.addProduct(product));
 
-const customer = new Customer(101, "Besong John", "john@gmail.com", "Buea");
+//Creating a customer
+const customer = new Customer(101, "Besong", "john@gmail.com", "Buea, Cameroon");
+
+//Register Customer in the System
+system.registerCustomer(customer);
+// Creating and Addmin
+const admin = new Admin(1, "Administrator", "admin@gmail.com")
    
     function menu() {
-    console.log("\n========== E-COMMERCE SYSTEM ==========");
-    console.log("1. View Products");
-    console.log("2. Add Product to Cart");
-    console.log("3. View Shopping Cart");
-    console.log("4. Checkout");
-    console.log("5. Exit");
-
-    rl.question("\nEnter your choice: ", handleMenu);
-}
-
-function handleMenu(choice) {
-
-    switch (choice) {
-
-        case "1":
-
-            console.log("\n========== PRODUCT CATALOG ==========");
-
-            system.catalog.products.forEach(product => {
-
-                console.log(
-                    `${product.productId}. ${product.name} | ${product.category} | $${product.price} | Stock: ${product.stock}`
-                );
-
-            });
-
-            menu();
-            break;
-
-        case "2":
-
-            addProductToCart();
-            break;
-
-        case "3":
-
-            customer.shoppingCart.displayCart();
-            menu();
-            break;
-
-        case "4":
-
-            checkout();
-            break;
-
-        case "5":
-
-            console.log("\nThank you for shopping with us.");
-            rl.close();
-            break;
-
-        default:
-
-            console.log("Invalid Choice.");
-            menu();
+    console.log("======================================================")
+    console.log("\n           Welcome to E-COMMERCE SYSTEM \n          ");
+    console.log("======================================================")
+    console.log("1. Customer");
+    console.log("2. Admin Login");
+    console.log("3. Exit");
+    rl.question("\nEnter your choice: ", choice =>
+    {
+        switch(choice){
+            case "1":
+                customer.login();
+                customerMenu();
+                break;
+            case "2":
+                adminLogin();
+                break;
+            case "3":
+                console.log("\n Thank you for using our E-commerce System.")
+                rl.close();
+                break;
+            default:
+                console.log("\n Invalid choice. Please select 1, 2, or 3.")
+                menu();
+        }
     }
+    );
+}
+//Customer Menu
 
+function customerMenu(){
+    console.log("\n")
+    console.log("======================================================")
+    console.log("                   Customer Menu                       ")
+    console.log("======================================================")
+    console.log("1.  View Products")
+    console.log("2.  Add Products to Cart")
+    console.log("3.  View Shopping Cart")
+    console.log("4.  Remove Products from Cart")
+    console.log("5.  View Order")
+    console.log("6.  Checkout")
+    console.log("7.  Logout");
+    rl.question("\n Enter your choice: ", choice =>{
+        switch(choice){
+            case "1":
+                ViewProducts();
+                customerMenu();
+                break;
+            case "2":
+                addProductToCart();
+                break;
+            case "3":
+                console.log("\n==========Shopping Cart==========");
+                if(customer.shoppingCart.items.length === 0){
+                    console.log("Your shopping cart is empty");
+                }
+                else{
+                    customer.shoppingCart.displayCart();
+                }
+                customerMenu();
+                break;
+            case "4":
+                removeProductFromCart();
+                break;
+            case "5":
+                viewOrderHistory();
+                customerMenu();
+                break;
+            case "6":
+                checkout();
+                break;
+            case "7":
+                customer.logout();
+                menu();
+                break;
+            default:
+                console.log("\n Invalid choice. Please try again.")
+                customerMenu();
+        }
+    })
+    
+}
+// View product function
+
+function ViewProducts(){
+    console.log("\n")
+    console.log("======================================================");
+    if(system.catalog.products.length === 0){
+        console.log("There are no products available.")
+        return;
+    }
+    system.catalog.products.forEach(product =>{
+        console.log(`${product.productId}.` + `${product.name} | ` + `${product.category} | ` + `$${product.price} | ` + `Stock: ${product.stock}`);
+    });
+    console.log("======================================================");
 }
 function addProductToCart() {
-
-    console.log("\n========== AVAILABLE PRODUCTS ==========");
-
-    system.catalog.products.forEach(product => {
-
-        console.log(`
-            ${product.productId}. ${product.name} - $${product.price} (Stock:${product.stock})
-        `);
-
-    });
+    ViewProducts();
 
     
-
-    rl.question("\nEnter Product ID: ", (id) => {
+    rl.question("\nEnter Product ID: ", id => {
 
         const product = system.catalog.products.find(
             p => p.productId === Number(id)
@@ -182,99 +159,399 @@ function addProductToCart() {
 
             console.log("Product not found.");
 
-            return menu();
+            return customerMenu();
 
         }
 
-        rl.question("Enter Quantity: ", (qty) => {
+        if(product.stock <=0){
+            console.log("\n Sorry, this product is out of stock");
+            return customerMenu();
+        }
+
+        rl.question("Enter Quantity: ", qty => {
 
             qty = Number(qty);
 
-            if (qty <= 0) {
+            if (! Number.isInteger(qty) || qty <= 0) {
 
                 console.log("Invalid Quantity.");
 
-                return menu();
+                return customerMenu();
 
             }
 
             if (qty > product.stock) {
 
-                console.log("Insufficient Stock.");
+                console.log(`\n Only ${product.stock} item(s) available.`);
 
-                return menu();
+                return customerMenu();
 
             }
 
             customer.shoppingCart.addProduct(product, qty);
 
-            console.log(`${qty} ${product.name}(s) added successfully.`);
+            console.log(`\n ${qty} ${product.name}(s)` + ` added successfully to your cart.`);
 
-            menu();
+            customerMenu();
 
         });
 
     });
+}
+// A function to rmove product from cart
+
+function removeProductFromCart(){
+
+    if(customer.shoppingCart.items.length === 0){
+        console.log("\n Your shopping cart is empty.")
+        return customerMenu();
+    }
+    customer.shoppingCart.displayCart();
+    rl.question("\n Enter Product Id to remove: ", id =>{
+        const productId = Number(id);
+        const exists = customer.shoppingCart.items.some(
+            item =>{
+                item.product.productId ===productId
+            }
+        )
+        if(!exists){
+            console.log("\n This product is not in your cart.");
+            return customerMenu();
+        }
+        customer.shoppingCart.removeProduct(productId);
+        console.log("\n product removed from your cart successfully ");
+        customerMenu();
+    })
 
 }
+
+// View Order History
+
+function viewOrderHistory(){
+    console.log("\n");
+    console.log("========== Order History ==========");
+    const orders = customer.viewOrders();
+    if(orders.length === 0){
+        console.log("You have not place any orders yet");
+        return;
+    }
+    orders.forEach((order, index) => {
+        console.log("\n-------------------------------------");
+        console.log(`Order Id: ${order.orderId}`);
+        console.log(`Status: ${order.status}`);
+        console.log(`Total: $${order.calculateTotal()}`);
+        console.log("\n-------------------------------------");
+
+    })
+}
+
+//Checkout Function
+
 
 function checkout() {
 
     if (customer.shoppingCart.items.length === 0) {
-
         console.log("\nYour cart is empty.");
 
-        return menu();
+        return customerMenu();
 
     }
-
-    const order = Checkout.checkout(customer);
-
-    order.displayOrder();
+    console.log("\n ==========Checkout==========")
+    customer.shoppingCart.displayCart();
 
     rl.question("\nEnter Customer Name: ", (name) => {
+        if(name.trim() ===""){
+            console.log("\n customer name cannot be empty");
+            return customerMenu();
+        }
+        const total = customer.shoppingCart.getTotal();
+        console.log(`\n Amount to pay: $${total}`);
 
         rl.question("Enter Payment Amount: $", (amount) => {
 
             amount = Number(amount);
+             if(isNaN(amount)){
+                console.log("\n Invalid payment amount");
+                return customerMenu();
+             }
 
-            if (amount === order.calculateTotal()) {
+             if(amount !== total){
+                console.log("=================================");
+                console.log("Payment Failed");
+                console.log("=================================");
+                console.log(`customer Name: ${name}`)
+                console.log(`Required: $${total}`)
+                console.log(`Amount Entered: $${amount}`);
+                console.log("Error:  Incorrect payment amount")
+                console.log("please try again.")
+                console.log("=================================");
+                return customerMenu();
+             }
+             //Create order (construct simple order object)
+             const order = {
+                 orderId: Date.now(),
+                 customer,
+                 items: [...customer.shoppingCart.items],
+                 status: "Processing",
+                 calculateTotal: () => total
+             };
+             
+             //Create Payment
 
-                const payment = new Payment(
-                    Date.now(),
-                    order,
-                    "Mobile Money"
-                );
+             const payment = new Payment(Date.now(), order, "Cash");
+             payment.processPayment();
 
-                payment.processPayment();
+             //Add Order to System
+             system.addOrder(order);
 
-                console.log("\n========== RECEIPT ==========");
+             //Display reciept
+             console.log("\n");
+             console.log("=================================");
+             console.log("Pament Reciept")
+             console.log("=================================");
+             console.log(`Customer Name: ${name}`);
+             console.log(`Order Id: ${order.orderId}`);
+             console.log(`Amount Paid: $${amount}`);
+             console.log(`Payment Method: Cash`)
+             console.log(`Payment Status: ${payment.status}`);
+             console.log(`Order Satus: ${order.status}`);
+             console.log("=================================");
+             console.log("Thank you for your ourchase!");
+             console.log("=================================");
+             customerMenu();
 
-                console.log("Customer :", name);
-
-                console.log("Order ID :", order.orderId);
-
-                console.log("Amount   : $" + amount);
-
-                console.log("Status   : SUCCESS");
-
-                console.log("=============================");
-
-            } else {
-
-                console.log("\nPayment Failed!");
-
-                console.log("Expected : $" + order.calculateTotal());
-
-                console.log("Received : $" + amount);
-
-            }
-
-            menu();
 
         });
 
     });
 
 }
-menu();
+
+// Admin Login
+function adminLogin(){
+    console.log("\n=========== Admin Login ===============")
+    rl.question("Username: ", (username) =>{
+        rl.question("Password: ", (password)=> {
+            if(username === "admin" && password =="1234"){
+                console.log("\n Admin Login Successful");
+                console.log(`Welcome ${admin.name}!`)
+                adminMenu();
+
+            }
+            else{
+                console.log("\n Invalid username or Password");
+                menu();
+            }
+        })
+    })
+}
+
+// Admin Menu
+function adminMenu(){
+    console.log("\n");
+    console.log("=================================");
+    console.log("\n=== Admin Panel ====");
+    console.log("=================================");
+    console.log("1. View Product");
+    console.log("2. Add Product");
+    console.log("3. Update Product");
+    console.log("4. Delete Product");
+    console.log("5. View All Orders");
+    console.log("6. Logout");
+    rl.question("\n Enter your choice: ", choice=>{
+        switch(choice){
+            //view products
+            case "1":
+                ViewProducts();
+                adminMenu();
+                break;
+            //Add product as and admin
+            case "2":
+                adminAddProduct();
+                break;
+             //Update product as admin
+            case "3":
+                adminUpdateProduct();
+                break;
+            case "4":
+            //All admin can delete Product from the system
+                adminDeleteProduct();
+                break;
+            //View Orders
+            case "5":
+                viewAllOrders();
+                adminMenu();
+                break;
+            //Logout as admin
+            case "6":
+                console.log("\n Admin logout successfully")
+                menu();
+                break;
+            default:
+                console.log("Invalid Choice");
+                adminMenu();
+        }
+    })
+}
+
+// Admin Add product
+
+function adminAddProduct(){
+    console.log("\n ========= Add new Product=========")
+    rl.question("Product ID: ", id=>{
+        id = Number(id);
+        //Checking of any duplicate
+        const existingProduct = system.catalog.products.find(
+            product => product.productId === id
+        );
+        if(existingProduct){
+            console.log("\nError: Product Id already exists.");
+            return adminMenu();
+        }
+        rl.question("Product Name: ", name =>{
+            if(name.trim() === ""){
+                console.log("\n Product name cannot be empty.")
+                return adminMenu();
+            }
+            rl.question("Description: ", description =>{
+                rl.question("Price: $", price =>{
+                    price = Number(price);
+                    if(isNaN(price) || price <= 0){
+                        console.log("\n Invalid price. ")
+                        return adminMenu();
+                    }
+                    rl.question("Stock: ", stock =>{
+                        stock = Number(stock);
+                        if(!Number.isInteger(stock) || stock < 0){
+                            console.log("\n Invalid stock quantity.");
+                            return adminMenu();
+                        }
+                        rl.question("Category: ", category =>{
+                            if(category.trim() ===""){
+                                console.log("\n Category cannot be empty");
+                                return adminMenu();
+                            }
+                            admin.addProduct(
+                                system.catalog.products, id, name, description, price, stock, category
+                            );
+                            console.log("\n========== New Product ==========");
+                            console.log(`Id: ${id}`);
+                            console.log(`Name: ${name}`);
+                            console.log(`Price: $${price}`);
+                            console.log(`Stock: ${stock}`);
+                            console.log(`Category: ${category}`);
+                            console.log("=================================");
+                            adminMenu();
+                        })
+                    })
+                })
+            })
+        })
+    })
+}
+
+//Admin Update Product
+
+function adminUpdateProduct(){
+    console.log("\n ========= Update Product=========")
+    ViewProducts();
+    rl.question("Enter product id to update: ", id=>{
+        id = Number(id);
+        const product = system.catalog.products.find(
+            p => p.productId === id
+        );
+        if(!product){
+            console.log("\n Product not found");
+            return adminMenu();
+        }
+        console.log(`\n Updating: ${product.name}`)
+        rl.question("New Name: ", name =>{
+            if(name.trim() ===""){
+                name = product.name
+            }
+            rl.question(`New Price ($${product.price}): `, price =>{
+                price = price.trim() ==="" ? product.price : Number(price);
+                if(isNaN(price) || price <= 0){
+                    console.log("\n Invalid Price.");
+                    return adminMenu();
+                }
+                rl.question(`New Stock (${product.stock}): `, stock =>{
+                    stock = stock.trim() === "" ? product.stock : Number(stock);
+                    if(!Number.isInteger(stock) || stock < 0){
+                        console.log(`\n Invalid Stock.`);
+                        return adminMenu();
+                    }
+                    rl.question(`New Category (${product.category}): `, category =>{
+                        if(category.trim() ===""){
+                            category = product.category;
+                        }
+                        admin.updateProduct(
+                            system.catalog.products, id, name, price, stock, category);
+                            console.log("\n Product Updated successfully")
+                            console.log(`\n product Id: ${id}`);
+                            console.log(`Name: ${name}`)
+                            console.log(`Price: $${price}`);
+                            console.log(` Category: ${category}`)
+                            adminMenu();
+                        }
+                        )
+                    })
+                })
+            })
+        })
+    }
+
+
+//Function to delete Product
+
+function adminDeleteProduct(){
+    console.log("\n=========Delete Product=======")
+    ViewProducts();
+    rl.question("Enter product id to delete product: ", id =>{
+        id = Number(id);
+        const product = system.catalog.products.find(
+            p => p.productId === id
+        );
+        if(!product){
+            console.log("\n Product not found");
+            return adminMenu();
+        }
+        rl.question(`Are you sure you want to delete ${product.name} ? (yes/no):`, answer =>{
+            if(
+                answer.toLowerCase() === "yes") {
+                    admin.deleteProduct(
+                        system.catalog.products, id
+                    );
+                }
+                else{
+                    console.log("\n Product deletion cancelled");
+                }
+                adminMenu();
+        })
+    })
+}
+// View All Orders - Admin
+function viewAllOrders(){
+    console.log("\n")
+    console.log("========== All Orders =========")
+    if(system.orders.length === 0){
+        console.log("No orders have been place yet");
+        return;
+    }
+    system.orders.forEach((order, index) =>{
+        console.log("\n----------------------------")
+        console.log(`Order Number: ${index + 1}`);
+        console.log(`Order Id: ${order.orderId}`)
+        console.log(`Customer: ${order.customer.name}`);
+        console.log(`Status: ${order.status}`);
+        console.log(`Total: $${order.calculateTotal()}`);
+        console.log("\n----------------------------")
+    })
+}
+
+console.log("\n")
+console.log("*********************************")
+console.log("*       E-commerce Platform     *")
+console.log("*       OOP Javascript System   *")
+console.log("*********************************")
+menu()
