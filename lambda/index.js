@@ -67,8 +67,7 @@ async function products(ownerName = "") {
 
 exports.getProducts = async event => {
   try {
-    const user = await getAuthenticatedUser(event);
-    const ownerName = user?.username || (event?.queryStringParameters?.ownerName || "");
+    const ownerName = event?.queryStringParameters?.ownerName || "";
     const catalog = await products(ownerName);
     return response(200, event?.queryStringParameters?.availableOnly === "true" ? catalog.filter(product => Number(product.stock) > 0) : catalog);
   }
@@ -113,7 +112,7 @@ exports.updateProduct = async event => {
   const id = event.pathParameters.id;
   const existing = await client.send(new GetCommand({ TableName: TABLE_NAME, Key: productKey(id) }));
   if (!existing.Item) return response(404, { message: "Product not found" });
-  if (existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
+  if (existing.Item.ownerName && existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
   const names = {}, values = {}, updates = [];
   for (const field of ["name", "description", "price", "stock", "category", "imageUrl"]) {
     if (input[field] !== undefined) {
@@ -137,7 +136,7 @@ exports.deleteProduct = async event => {
   try {
     const existing = await client.send(new GetCommand({ TableName: TABLE_NAME, Key: productKey(event.pathParameters.id) }));
     if (!existing.Item) return response(404, { message: "Product not found" });
-    if (existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
+    if (existing.Item.ownerName && existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
     const result = await client.send(new DeleteCommand({ TableName: TABLE_NAME, Key: productKey(event.pathParameters.id), ConditionExpression: "attribute_exists(entityType)", ReturnValues: "ALL_OLD" }));
     return response(200, { message: "Product deleted successfully", product: result.Attributes });
   } catch (error) {
