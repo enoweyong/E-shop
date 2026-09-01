@@ -1,10 +1,12 @@
 const assert = require("assert");
 const { DynamoDBDocumentClient, QueryCommand, GetCommand, PutCommand, UpdateCommand, DeleteCommand, TransactWriteCommand, ScanCommand } = require("@aws-sdk/lib-dynamodb");
 const { CognitoIdentityProvider } = require("@aws-sdk/client-cognito-identity-provider");
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 
 // Set environment variables before requiring lambda/index.js
 process.env.TABLE_NAME = "EcommerceTable";
 process.env.ADMIN_TABLE_NAME = "AdminTable";
+process.env.IMAGES_BUCKET = "product-images-bucket";
 process.env.AWS_REGION = "us-east-1";
 
 // In-memory table mock database
@@ -117,6 +119,14 @@ DynamoDBDocumentClient.prototype.send = async function(command) {
   throw new Error(`Unhandled command: ${command.constructor.name}`);
 };
 
+// Intercept S3 calls
+S3Client.prototype.send = async function(command) {
+  if (command instanceof PutObjectCommand) {
+    return { ETag: '"mock-etag"' };
+  }
+  throw new Error(`Unhandled S3 command: ${command.constructor.name}`);
+};
+
 // Intercept Cognito calls
 CognitoIdentityProvider.prototype.getUser = async function(params) {
   if (params.AccessToken === "valid-token") {
@@ -192,13 +202,16 @@ async function runLambdaTests() {
   console.log("2. Testing Catalog Router & Product Operations");
   const authHeader = { Authorization: "Bearer valid-token" };
 
-  // Create Product
+  // Create Product with Base64 image
+  const base64Img = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==";
   const createRes = await lambda.catalogRouter({
     httpMethod: "POST",
     headers: authHeader,
-    body: JSON.stringify({ productId: 1, name: "Test Laptop", price: 500, stock: 10, category: "Tech" })
+    body: JSON.stringify({ productId: 1, name: "Test Laptop", price: 500, stock: 10, category: "Tech", imageUrl: base64Img })
   });
   assert.strictEqual(createRes.statusCode, 201);
+  const createdProduct = JSON.parse(createRes.body).product;
+  assert.ok(createdProduct.imageUrl.includes("product-images-bucket.s3.us-east-1.amazonaws.com/products/1-"));
 
   // Get Product List
   const listRes = await lambda.catalogRouter({ httpMethod: "GET" });

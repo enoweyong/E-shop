@@ -50,6 +50,7 @@ Globals:
         MOMO_COLLECTION_SUBSCRIPTION_KEY: !Ref MomoSubscriptionKey
         MOMO_API_USER: !Ref MomoApiUser
         MOMO_API_KEY: !Ref MomoApiKey
+        IMAGES_BUCKET: !Ref ProductImagesBucket
 Resources:
   EcommerceTable:
     Type: AWS::DynamoDB::Table
@@ -126,6 +127,8 @@ Resources:
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref EcommerceTable
+        - S3CrudPolicy:
+            BucketName: !Ref ProductImagesBucket
         - Version: '2012-10-17'
           Statement:
             - Effect: Allow
@@ -281,6 +284,34 @@ Resources:
             Action: s3:GetObject
             Resource: !Sub '${FrontendBucket.Arn}/*'
 
+  ProductImagesBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      CorsConfiguration:
+        CorsRules:
+          - AllowedHeaders: ['*']
+            AllowedMethods: [GET, PUT, POST, HEAD]
+            AllowedOrigins: ['*']
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+
+  ProductImagesBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket: !Ref ProductImagesBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal: '*'
+            Action: s3:GetObject
+            Resource: !Sub '${ProductImagesBucket.Arn}/*'
+
 Outputs:
   ApiUrl:
     Description: API Gateway URL to place in FrontEnd/index.html
@@ -306,3 +337,6 @@ Outputs:
   CognitoUserPoolDomain:
     Description: Cognito User Pool domain
     Value: !Sub 'https://${AdminUserPool}.auth.${AWS::Region}.amazoncognito.com'
+  ProductImagesBucketName:
+    Description: S3 bucket for product images
+    Value: !Ref ProductImagesBucket
