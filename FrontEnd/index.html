@@ -1213,6 +1213,14 @@
                 </div>
 
                 <div class="form-group">
+                    <label for="addVisibility">Product Visibility</label>
+                    <select id="addVisibility">
+                        <option value="true">Public (Visible in store)</option>
+                        <option value="false">Private (Hidden from store)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
                     <label for="addImage">Product Image or Camera</label>
                     <input type="file" id="addImage" accept="image/*" capture="environment">
                     <small class="form-hint">Upload an image or take a photo with your device.</small>
@@ -1325,6 +1333,14 @@
                         required
                     >
 
+                </div>
+
+                <div class="form-group">
+                    <label for="updateVisibility">Product Visibility</label>
+                    <select id="updateVisibility">
+                        <option value="true">Public (Visible in store)</option>
+                        <option value="false">Private (Hidden from store)</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
@@ -2484,6 +2500,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
         const id = product.productId || product.id || "N/A";
         const price = product.price ?? 0;
         const stock = product.stock ?? 0;
+        const isPublic = product.isPublic !== false;
 
         if (String(selectedAdminProductId) === String(id)) {
             card.classList.add("selected");
@@ -2501,6 +2518,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
             <p>Price: ${Number(price).toLocaleString("fr-CM")} XAF</p>
             <p>Stock: ${stock}</p>
             <p>Category: ${product.category || "Uncategorized"}</p>
+            <p>Visibility: <strong>${isPublic ? "Public" : "Private"}</strong></p>
         `;
 
         card.addEventListener("click", function() {
@@ -2661,6 +2679,11 @@ productObserver.observe(document.getElementById("catalogLoader"));
                                 "addCategory"
                             ).value,
 
+                        isPublic:
+                            document.getElementById(
+                                "addVisibility"
+                            ).value === "true",
+
                         ownerName:
                             signedInAdminName,
 
@@ -2755,6 +2778,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
             document.getElementById("updatePrice").value = product.price;
             document.getElementById("updateStock").value = product.stock;
             document.getElementById("updateCategory").value = product.category;
+            document.getElementById("updateVisibility").value = product.isPublic !== false ? "true" : "false";
 
             document.getElementById(
                 "updateProductModal"
@@ -2813,6 +2837,11 @@ productObserver.observe(document.getElementById("catalogLoader"));
                             document.getElementById(
                                 "updateCategory"
                             ).value,
+
+                        isPublic:
+                            document.getElementById(
+                                "updateVisibility"
+                            ).value === "true",
 
                         ...(imageUrl ? { imageUrl: imageUrl } : {})
 

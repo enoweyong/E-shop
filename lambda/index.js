@@ -10,11 +10,14 @@ const {
 } = require("@aws-sdk/lib-dynamodb");
 const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
 const { CognitoIdentityProvider } = require("@aws-sdk/client-cognito-identity-provider");
+const { S3Client, PutObjectCommand, DeleteObjectCommand } = require("@aws-sdk/client-s3");
 const crypto = require("crypto");
 
 const client = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 const cognito = new CognitoIdentityProvider({ region: process.env.AWS_REGION || "us-east-1" });
+const s3 = new S3Client({ region: process.env.AWS_REGION || "us-east-1" });
 const TABLE_NAME = process.env.TABLE_NAME;
+const IMAGES_BUCKET = process.env.IMAGES_BUCKET;
 const ADMIN_TABLE_NAME = process.env.ADMIN_TABLE_NAME || TABLE_NAME;
 const COGNITO_USER_POOL_ID = process.env.COGNITO_USER_POOL_ID;
 const COGNITO_CLIENT_ID = process.env.COGNITO_CLIENT_ID;
@@ -40,6 +43,45 @@ const orderKey = orderId => ({ entityType: "ORDER", entityId: String(orderId) })
 const adminKey = name => ({ entityType: "ADMIN", entityId: String(name).trim().toLowerCase() });
 const passwordHash = password => crypto.createHash("sha256").update(String(password)).digest("hex");
 
+async function deleteProductImageFromS3(imageUrl) {
+  if (!imageUrl || !IMAGES_BUCKET) return;
+  try {
+    const bucketPrefix = `https://${IMAGES_BUCKET}.s3.`;
+    if (!imageUrl.startsWith(bucketPrefix)) return;
+    const urlObj = new URL(imageUrl);
+    const key = urlObj.pathname.startsWith("/") ? urlObj.pathname.slice(1) : urlObj.pathname;
+    if (key) {
+      await s3.send(new DeleteObjectCommand({ Bucket: IMAGES_BUCKET, Key: key }));
+    }
+  } catch (error) {
+    console.error("Error deleting product image from S3:", error);
+  }
+}
+
+async function saveProductImageToS3(imageUrl, productId) {
+  if (!imageUrl || !imageUrl.startsWith("data:") || !IMAGES_BUCKET) return imageUrl || "";
+  try {
+    const matches = imageUrl.match(/^data:(image\/[a-zA-Z0-9\+\-]+);base64,(.+)$/);
+    if (!matches) return imageUrl;
+    const contentType = matches[1];
+    const ext = contentType.split("/")[1] || "jpeg";
+    const buffer = Buffer.from(matches[2], "base64");
+    const key = `products/${productId}-${Date.now()}.${ext}`;
+
+    await s3.send(new PutObjectCommand({
+      Bucket: IMAGES_BUCKET,
+      Key: key,
+      Body: buffer,
+      ContentType: contentType
+    }));
+
+    return `https://${IMAGES_BUCKET}.s3.${process.env.AWS_REGION || "us-east-1"}.amazonaws.com/${key}`;
+  } catch (error) {
+    console.error("Error uploading product image to S3:", error);
+    return imageUrl;
+  }
+}
+
 const getAuthenticatedUser = async (event) => {
   const authHeader = event?.headers?.Authorization || event?.headers?.authorization || "";
   if (!authHeader.startsWith("Bearer ")) return null;
@@ -54,22 +96,26 @@ const getAuthenticatedUser = async (event) => {
   }
 };
 
-async function products(ownerName = "") {
+async function products(ownerName = "", isAuthenticatedAdmin = false) {
   const result = await client.send(new QueryCommand({
     TableName: TABLE_NAME,
     KeyConditionExpression: "entityType = :type",
     ExpressionAttributeValues: { ":type": "PRODUCT" }
   }));
-  return (result.Items || [])
-    .filter(product => !ownerName || product.ownerName === ownerName)
-    .sort((a, b) => Number(a.productId) - Number(b.productId));
+  let items = result.Items || [];
+  if (isAuthenticatedAdmin) {
+    items = items.filter(product => product.ownerName === ownerName);
+  } else {
+    items = items.filter(product => product.isPublic !== false && (!ownerName || product.ownerName === ownerName));
+  }
+  return items.sort((a, b) => Number(a.productId) - Number(b.productId));
 }
 
 exports.getProducts = async event => {
   try {
     const user = await getAuthenticatedUser(event);
     const ownerName = user?.username || (event?.queryStringParameters?.ownerName || "");
-    const catalog = await products(ownerName);
+    const catalog = await products(ownerName, !!user);
     return response(200, event?.queryStringParameters?.availableOnly === "true" ? catalog.filter(product => Number(product.stock) > 0) : catalog);
   }
   catch (error) { console.error(error); return response(500, { message: "Unable to retrieve products" }); }
@@ -89,9 +135,11 @@ exports.createProduct = async event => {
   if (!input || !input.productId || !input.name || input.price === undefined || input.stock === undefined || !input.category) {
     return response(400, { message: "All required fields must be provided" });
   }
+  const s3ImageUrl = await saveProductImageToS3(input.imageUrl, input.productId);
   const product = {
     ...productKey(input.productId), productId: Number(input.productId), name: String(input.name),
-    description: String(input.description || ""), price: Number(input.price), stock: Number(input.stock), category: String(input.category), imageUrl: String(input.imageUrl || ""), ownerName: user.username
+    description: String(input.description || ""), price: Number(input.price), stock: Number(input.stock), category: String(input.category), imageUrl: s3ImageUrl, ownerName: user.username,
+    isPublic: input.isPublic !== undefined ? Boolean(input.isPublic) : true
   };
   if (!Number.isFinite(product.price) || product.price < 0 || !Number.isInteger(product.stock) || product.stock < 0) {
     return response(400, { message: "Price and stock must be valid non-negative values" });
@@ -113,11 +161,19 @@ exports.updateProduct = async event => {
   const id = event.pathParameters.id;
   const existing = await client.send(new GetCommand({ TableName: TABLE_NAME, Key: productKey(id) }));
   if (!existing.Item) return response(404, { message: "Product not found" });
-  if (existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
+  if (existing.Item.ownerName && existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
   const names = {}, values = {}, updates = [];
-  for (const field of ["name", "description", "price", "stock", "category", "imageUrl"]) {
+  if (input.imageUrl !== undefined && input.imageUrl !== existing.Item.imageUrl) {
+    const newImageUrl = await saveProductImageToS3(input.imageUrl, id);
+    if (newImageUrl !== existing.Item.imageUrl) {
+      await deleteProductImageFromS3(existing.Item.imageUrl);
+      input.imageUrl = newImageUrl;
+    }
+  }
+  for (const field of ["name", "description", "price", "stock", "category", "imageUrl", "isPublic"]) {
     if (input[field] !== undefined) {
-      names[`#${field}`] = field; values[`:${field}`] = field === "price" ? Number(input[field]) : field === "stock" ? Number(input[field]) : String(input[field]);
+      names[`#${field}`] = field;
+      values[`:${field}`] = field === "price" ? Number(input[field]) : field === "stock" ? Number(input[field]) : field === "isPublic" ? Boolean(input[field]) : String(input[field]);
       updates.push(`#${field} = :${field}`);
     }
   }
@@ -137,8 +193,11 @@ exports.deleteProduct = async event => {
   try {
     const existing = await client.send(new GetCommand({ TableName: TABLE_NAME, Key: productKey(event.pathParameters.id) }));
     if (!existing.Item) return response(404, { message: "Product not found" });
-    if (existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
+    if (existing.Item.ownerName && existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
     const result = await client.send(new DeleteCommand({ TableName: TABLE_NAME, Key: productKey(event.pathParameters.id), ConditionExpression: "attribute_exists(entityType)", ReturnValues: "ALL_OLD" }));
+    if (existing.Item.imageUrl) {
+      await deleteProductImageFromS3(existing.Item.imageUrl);
+    }
     return response(200, { message: "Product deleted successfully", product: result.Attributes });
   } catch (error) {
     if (error.name === "ConditionalCheckFailedException") return response(404, { message: "Product not found" });
@@ -237,9 +296,10 @@ exports.getCognitoConfig = async event => {
 };
 
 exports.authRouter = async event => {
-  if (event.httpMethod === "GET" && event.path?.endsWith("/config")) return exports.getCognitoConfig(event);
-  if (event.httpMethod === "POST" && event.path?.endsWith("/register")) return exports.cognitoSignUp(event);
-  if (event.httpMethod === "POST" && event.path?.endsWith("/login")) return exports.cognitoSignIn(event);
+  if (event.httpMethod === "OPTIONS") return response(200, {});
+  if (event.httpMethod === "GET" && (event.path?.endsWith("/config") || event.resource?.endsWith("/config"))) return exports.getCognitoConfig(event);
+  if (event.httpMethod === "POST" && (event.path?.endsWith("/register") || event.resource?.endsWith("/register"))) return exports.cognitoSignUp(event);
+  if (event.httpMethod === "POST" && (event.path?.endsWith("/login") || event.resource?.endsWith("/login"))) return exports.cognitoSignIn(event);
   return response(404, { message: "Endpoint not found" });
 };
 
@@ -321,9 +381,9 @@ exports.createOrder = async event => {
     }
     if (Math.round(Number(input.paymentAmount) * 100) !== total) return response(400, { message: "Incorrect payment amount", required: total / 100 });
     const order = { ...orderKey(`${Date.now()}-${Math.random().toString(36).slice(2, 8)}`), orderId: Date.now(), customerName: String(input.customerName), items, total: total / 100, status: "Confirmed", paymentMethod: String(input.paymentMethod || "Card"), paymentAmount: Number(input.paymentAmount), date: new Date().toISOString() };
-    await client.send(new TransactWriteCommand({ TableName: TABLE_NAME, TransactItems: [
-      ...items.map(item => ({ Update: { Key: productKey(item.productId), UpdateExpression: "SET stock = stock - :quantity", ConditionExpression: "stock >= :quantity", ExpressionAttributeValues: { ":quantity": item.quantity } } })),
-      { Put: { Item: order } }
+    await client.send(new TransactWriteCommand({ TransactItems: [
+      ...items.map(item => ({ Update: { TableName: TABLE_NAME, Key: productKey(item.productId), UpdateExpression: "SET stock = stock - :quantity", ConditionExpression: "stock >= :quantity", ExpressionAttributeValues: { ":quantity": item.quantity } } })),
+      { Put: { TableName: TABLE_NAME, Item: order } }
     ] }));
     return response(201, { success: true, message: "Order placed successfully", order });
   } catch (error) {
@@ -344,6 +404,7 @@ exports.listOrders = async () => {
 };
 
 exports.catalogRouter = async event => {
+  if (event.httpMethod === "OPTIONS") return response(200, {});
   if (event.httpMethod === "GET" && event.pathParameters?.id) return exports.getProduct(event);
   if (event.httpMethod === "GET") return exports.getProducts(event);
   if (event.httpMethod === "POST") return exports.createProduct(event);
@@ -353,12 +414,14 @@ exports.catalogRouter = async event => {
 };
 
 exports.ordersRouter = async event => {
+  if (event.httpMethod === "OPTIONS") return response(200, {});
   if (event.httpMethod === "GET") return exports.listOrders(event);
   if (event.httpMethod === "POST") return exports.createOrder(event);
   return response(405, { message: "Method not allowed" });
 };
 
 exports.momoRouter = async event => {
+  if (event.httpMethod === "OPTIONS") return response(200, {});
   if (event.httpMethod === "POST") return exports.initiateMomoPayment(event);
   if (event.httpMethod === "GET") return exports.momoPaymentStatus(event);
   return response(405, { message: "Method not allowed" });
