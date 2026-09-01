@@ -94,8 +94,7 @@ async function products(ownerName = "") {
 
 exports.getProducts = async event => {
   try {
-    const user = await getAuthenticatedUser(event);
-    const ownerName = user?.username || (event?.queryStringParameters?.ownerName || "");
+    const ownerName = event?.queryStringParameters?.ownerName || "";
     const catalog = await products(ownerName);
     return response(200, event?.queryStringParameters?.availableOnly === "true" ? catalog.filter(product => Number(product.stock) > 0) : catalog);
   }
