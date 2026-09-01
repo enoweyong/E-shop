@@ -113,7 +113,7 @@ exports.updateProduct = async event => {
   const id = event.pathParameters.id;
   const existing = await client.send(new GetCommand({ TableName: TABLE_NAME, Key: productKey(id) }));
   if (!existing.Item) return response(404, { message: "Product not found" });
-  if (existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
+  if (existing.Item.ownerName && existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
   const names = {}, values = {}, updates = [];
   for (const field of ["name", "description", "price", "stock", "category", "imageUrl"]) {
     if (input[field] !== undefined) {
@@ -137,7 +137,7 @@ exports.deleteProduct = async event => {
   try {
     const existing = await client.send(new GetCommand({ TableName: TABLE_NAME, Key: productKey(event.pathParameters.id) }));
     if (!existing.Item) return response(404, { message: "Product not found" });
-    if (existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
+    if (existing.Item.ownerName && existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
     const result = await client.send(new DeleteCommand({ TableName: TABLE_NAME, Key: productKey(event.pathParameters.id), ConditionExpression: "attribute_exists(entityType)", ReturnValues: "ALL_OLD" }));
     return response(200, { message: "Product deleted successfully", product: result.Attributes });
   } catch (error) {
@@ -237,9 +237,10 @@ exports.getCognitoConfig = async event => {
 };
 
 exports.authRouter = async event => {
-  if (event.httpMethod === "GET" && event.path?.endsWith("/config")) return exports.getCognitoConfig(event);
-  if (event.httpMethod === "POST" && event.path?.endsWith("/register")) return exports.cognitoSignUp(event);
-  if (event.httpMethod === "POST" && event.path?.endsWith("/login")) return exports.cognitoSignIn(event);
+  if (event.httpMethod === "OPTIONS") return response(200, {});
+  if (event.httpMethod === "GET" && (event.path?.endsWith("/config") || event.resource?.endsWith("/config"))) return exports.getCognitoConfig(event);
+  if (event.httpMethod === "POST" && (event.path?.endsWith("/register") || event.resource?.endsWith("/register"))) return exports.cognitoSignUp(event);
+  if (event.httpMethod === "POST" && (event.path?.endsWith("/login") || event.resource?.endsWith("/login"))) return exports.cognitoSignIn(event);
   return response(404, { message: "Endpoint not found" });
 };
 
@@ -321,9 +322,9 @@ exports.createOrder = async event => {
     }
     if (Math.round(Number(input.paymentAmount) * 100) !== total) return response(400, { message: "Incorrect payment amount", required: total / 100 });
     const order = { ...orderKey(`${Date.now()}-${Math.random().toString(36).slice(2, 8)}`), orderId: Date.now(), customerName: String(input.customerName), items, total: total / 100, status: "Confirmed", paymentMethod: String(input.paymentMethod || "Card"), paymentAmount: Number(input.paymentAmount), date: new Date().toISOString() };
-    await client.send(new TransactWriteCommand({ TableName: TABLE_NAME, TransactItems: [
-      ...items.map(item => ({ Update: { Key: productKey(item.productId), UpdateExpression: "SET stock = stock - :quantity", ConditionExpression: "stock >= :quantity", ExpressionAttributeValues: { ":quantity": item.quantity } } })),
-      { Put: { Item: order } }
+    await client.send(new TransactWriteCommand({ TransactItems: [
+      ...items.map(item => ({ Update: { TableName: TABLE_NAME, Key: productKey(item.productId), UpdateExpression: "SET stock = stock - :quantity", ConditionExpression: "stock >= :quantity", ExpressionAttributeValues: { ":quantity": item.quantity } } })),
+      { Put: { TableName: TABLE_NAME, Item: order } }
     ] }));
     return response(201, { success: true, message: "Order placed successfully", order });
   } catch (error) {
@@ -344,6 +345,7 @@ exports.listOrders = async () => {
 };
 
 exports.catalogRouter = async event => {
+  if (event.httpMethod === "OPTIONS") return response(200, {});
   if (event.httpMethod === "GET" && event.pathParameters?.id) return exports.getProduct(event);
   if (event.httpMethod === "GET") return exports.getProducts(event);
   if (event.httpMethod === "POST") return exports.createProduct(event);
@@ -353,12 +355,14 @@ exports.catalogRouter = async event => {
 };
 
 exports.ordersRouter = async event => {
+  if (event.httpMethod === "OPTIONS") return response(200, {});
   if (event.httpMethod === "GET") return exports.listOrders(event);
   if (event.httpMethod === "POST") return exports.createOrder(event);
   return response(405, { message: "Method not allowed" });
 };
 
 exports.momoRouter = async event => {
+  if (event.httpMethod === "OPTIONS") return response(200, {});
   if (event.httpMethod === "POST") return exports.initiateMomoPayment(event);
   if (event.httpMethod === "GET") return exports.momoPaymentStatus(event);
   return response(405, { message: "Method not allowed" });
