@@ -252,7 +252,7 @@ Resources:
       StageName: prod
       Cors:
         AllowOrigin: !Sub "'${FrontendOrigin}'"
-        AllowHeaders: "'Content-Type'"
+        AllowHeaders: "'Content-Type,Authorization'"
         AllowMethods: "'GET,POST,PUT,DELETE,OPTIONS'"
 
   FrontendBucket:

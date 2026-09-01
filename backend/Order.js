@@ -4,16 +4,20 @@ class Order {
     constructor(orderId, customer) {
         this.orderId = orderId;
         this.customer = customer;
-        this.Items = [];
+        this.items = [];
         this.status = 'pending';
     }
 
+    get Items() {
+        return this.items;
+    }
+
     addItem(product, quantity) {
-        this.Items.push(new OrderItem(product, quantity));
+        this.items.push(new OrderItem(product, quantity));
     }
 
     calculateTotal() {
-        return this.Items.reduce((total, item) => total + item.getTotal(), 0);
+        return this.items.reduce((total, item) => total + item.getTotal(), 0);
     }
 
     completeOrder() {

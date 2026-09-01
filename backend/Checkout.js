@@ -3,7 +3,7 @@ const Order = require("./Order");
 class Checkout {
     static checkout(customer) {
 
-        const order = new Order(Date.now(), 2);
+        const order = new Order(Date.now(), customer);
 
         customer.shoppingCart.items.forEach(item => {
             order.addItem(item.product, item.quantity);

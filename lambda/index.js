@@ -9,11 +9,11 @@ const {
   TransactWriteCommand
 } = require("@aws-sdk/lib-dynamodb");
 const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
-const { CognitoIdentityServiceProvider } = require("@aws-sdk/client-cognito-identity-service-provider");
+const { CognitoIdentityProvider } = require("@aws-sdk/client-cognito-identity-provider");
 const crypto = require("crypto");
 
 const client = DynamoDBDocumentClient.from(new DynamoDBClient({}));
-const cognito = new CognitoIdentityServiceProvider({ region: process.env.AWS_REGION || "us-east-1" });
+const cognito = new CognitoIdentityProvider({ region: process.env.AWS_REGION || "us-east-1" });
 const TABLE_NAME = process.env.TABLE_NAME;
 const ADMIN_TABLE_NAME = process.env.ADMIN_TABLE_NAME || TABLE_NAME;
 const COGNITO_USER_POOL_ID = process.env.COGNITO_USER_POOL_ID;
@@ -24,7 +24,7 @@ const response = (statusCode, body) => ({
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": process.env.ALLOWED_ORIGIN || "*",
-    "Access-Control-Allow-Headers": "Content-Type",
+    "Access-Control-Allow-Headers": "Content-Type,Authorization",
     "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS"
   },
   body: JSON.stringify(body)
