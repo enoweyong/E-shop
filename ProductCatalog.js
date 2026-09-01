@@ -9,7 +9,7 @@ class ProductCatalog {
 
     removeProduct(productId) {
         this.products = this.products.filter(
-            product => product.productId !== productId
+            product => product.productId !== Number(productId)
         );
     }
 
@@ -21,7 +21,7 @@ class ProductCatalog {
 
     searchByCategory(category) {
         return this.products.filter(
-            product => product.category === category
+            product => product.category.toLowerCase() === category.toLowerCase()
         );
     }
 
