@@ -5,46 +5,54 @@ const lambda = require("aws-cdk-lib/aws-lambda");
 const apigateway = require("aws-cdk-lib/aws-apigateway");
 const s3 = require("aws-cdk-lib/aws-s3");
 const s3deploy = require("aws-cdk-lib/aws-s3-deployment");
-const iam = require("aws-cdk-lib/aws-iam");
 const dynamodb = require("aws-cdk-lib/aws-dynamodb");
+const cognito = require("aws-cdk-lib/aws-cognito");
 
 class EcommerceStack extends cdk.Stack {
   constructor(scope, id, props = {}) {
     super(scope, id, props);
 
-    const table = new dynamodb.CfnTable(this, "EcommerceTableL1", {
+    const table = new dynamodb.Table(this, "EcommerceTableL2", {
       tableName: "northstar-market-data",
-      billingMode: "PAY_PER_REQUEST",
-      attributeDefinitions: [
-        { attributeName: "entityType", attributeType: "S" },
-        { attributeName: "entityId", attributeType: "S" }
-      ],
-      keySchema: [
-        { attributeName: "entityType", keyType: "HASH" },
-        { attributeName: "entityId", keyType: "RANGE" }
-      ],
+      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
+      partitionKey: { name: "entityType", type: dynamodb.AttributeType.STRING },
+      sortKey: { name: "entityId", type: dynamodb.AttributeType.STRING },
+      removalPolicy: cdk.RemovalPolicy.RETAIN,
       pointInTimeRecoverySpecification: { pointInTimeRecoveryEnabled: false }
     });
-    table.applyRemovalPolicy(cdk.RemovalPolicy.RETAIN);
 
-    const adminTable = new dynamodb.CfnTable(this, "AdminTableL1", {
+    const adminTable = new dynamodb.Table(this, "AdminTableL2", {
       tableName: "northstar-market-admins",
-      billingMode: "PAY_PER_REQUEST",
-      attributeDefinitions: [
-        { attributeName: "entityType", attributeType: "S" },
-        { attributeName: "entityId", attributeType: "S" }
-      ],
-      keySchema: [
-        { attributeName: "entityType", keyType: "HASH" },
-        { attributeName: "entityId", keyType: "RANGE" }
-      ]
+      billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
+      partitionKey: { name: "entityType", type: dynamodb.AttributeType.STRING },
+      sortKey: { name: "entityId", type: dynamodb.AttributeType.STRING },
+      removalPolicy: cdk.RemovalPolicy.RETAIN
     });
-    adminTable.applyRemovalPolicy(cdk.RemovalPolicy.RETAIN);
+
+    const userPool = new cognito.UserPool(this, "AdminUserPool", {
+      userPoolName: "northstar-market-admins",
+      selfSignUpEnabled: true,
+      signInAliases: { username: true, email: true },
+      autoVerify: { email: true },
+      passwordPolicy: {
+        minLength: 8,
+        requireUppercase: true,
+        requireLowercase: true,
+        requireDigits: true
+      }
+    });
+    const userPoolClient = new cognito.UserPoolClient(this, "AdminUserPoolClient", {
+      userPool,
+      authFlows: { userPassword: true, userSrp: true },
+      generateSecret: false
+    });
 
     const commonEnvironment = {
-      TABLE_NAME: table.ref,
-      ADMIN_TABLE_NAME: adminTable.ref,
+      TABLE_NAME: table.tableName,
+      ADMIN_TABLE_NAME: adminTable.tableName,
       ALLOWED_ORIGIN: props.frontendOrigin || "*",
+      COGNITO_USER_POOL_ID: userPool.userPoolId,
+      COGNITO_CLIENT_ID: userPoolClient.userPoolClientId,
       ADMIN_USERNAME: props.adminUsername || "eyong",
       ADMIN_PASSWORD: new cdk.CfnParameter(this, "AdminPassword", {
         type: "String",
@@ -76,11 +84,15 @@ class EcommerceStack extends cdk.Stack {
     for (const [key, value] of Object.entries(momoEnvironment)) {
       momoFunction.addEnvironment(key, value);
     }
-    const tableArn = cdk.Stack.of(this).formatArn({ service: "dynamodb", resource: table.ref });
-    const adminTableArn = cdk.Stack.of(this).formatArn({ service: "dynamodb", resource: adminTable.ref });
-    const tablePolicy = new iam.PolicyStatement({ actions: ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:UpdateItem", "dynamodb:DeleteItem", "dynamodb:Query", "dynamodb:TransactWriteItems"], resources: [tableArn] });
-    [catalogFunction, authFunction, ordersFunction].forEach(fn => fn.addToRolePolicy(tablePolicy));
-    authFunction.addToRolePolicy(new iam.PolicyStatement({ actions: ["dynamodb:GetItem", "dynamodb:PutItem"], resources: [adminTableArn] }));
+    // Grant DynamoDB access through the built-in CDK grant methods instead of
+    // hand-written IAM statements. This puts the permissions on each Lambda
+    // execution role (the correct place) and produces no risky resource-policy diffs.
+    [catalogFunction, authFunction, ordersFunction].forEach(fn => table.grantReadWriteData(fn));
+    table.grantReadWriteData(momoFunction);
+    adminTable.grantReadWriteData(authFunction);
+    // grantReadWriteData doesn't include TransactWriteItems; grant it explicitly.
+    [catalogFunction, authFunction, ordersFunction, momoFunction].forEach(fn =>
+      table.grant(fn, "dynamodb:TransactWriteItems"));
 
     const api = new apigateway.RestApi(this, "EcommerceApiL2", {
       restApiName: "Northstar Market API",
@@ -97,6 +109,7 @@ class EcommerceStack extends cdk.Stack {
     product.addMethod("GET", catalogIntegration); product.addMethod("PUT", catalogIntegration); product.addMethod("DELETE", catalogIntegration);
     const admin = api.root.getResource("api").addResource("admin");
     const authIntegration = new apigateway.LambdaIntegration(authFunction);
+    admin.addResource("config").addMethod("GET", authIntegration);
     admin.addResource("login").addMethod("POST", authIntegration);
     admin.addResource("register").addMethod("POST", authIntegration);
     const orders = api.root.getResource("api").addResource("orders");
@@ -113,8 +126,10 @@ class EcommerceStack extends cdk.Stack {
     new cdk.CfnOutput(this, "ApiUrl", { value: `${api.url}api`, description: "API Gateway URL for FrontEnd/index.html" });
     new cdk.CfnOutput(this, "FrontendWebsiteUrl", { value: website.bucketWebsiteUrl });
     new cdk.CfnOutput(this, "FrontendBucketName", { value: website.bucketName });
-    new cdk.CfnOutput(this, "DynamoTableName", { value: table.ref });
-    new cdk.CfnOutput(this, "AdminTableName", { value: adminTable.ref });
+    new cdk.CfnOutput(this, "DynamoTableName", { value: table.tableName });
+    new cdk.CfnOutput(this, "AdminTableName", { value: adminTable.tableName });
+    new cdk.CfnOutput(this, "CognitoUserPoolId", { value: userPool.userPoolId });
+    new cdk.CfnOutput(this, "CognitoClientId", { value: userPoolClient.userPoolClientId });
   }
 }
 

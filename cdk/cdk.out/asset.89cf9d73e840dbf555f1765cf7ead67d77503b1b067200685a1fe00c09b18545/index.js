@@ -9,15 +9,12 @@ const {
   TransactWriteCommand
 } = require("@aws-sdk/lib-dynamodb");
 const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
-const { CognitoIdentityProvider } = require("@aws-sdk/client-cognito-identity-provider");
-const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
+const { CognitoIdentityServiceProvider } = require("@aws-sdk/client-cognito-identity-service-provider");
 const crypto = require("crypto");
 
 const client = DynamoDBDocumentClient.from(new DynamoDBClient({}));
-const cognito = new CognitoIdentityProvider({ region: process.env.AWS_REGION || "us-east-1" });
-const s3 = new S3Client({ region: process.env.AWS_REGION || "us-east-1" });
+const cognito = new CognitoIdentityServiceProvider({ region: process.env.AWS_REGION || "us-east-1" });
 const TABLE_NAME = process.env.TABLE_NAME;
-const IMAGES_BUCKET = process.env.IMAGES_BUCKET;
 const ADMIN_TABLE_NAME = process.env.ADMIN_TABLE_NAME || TABLE_NAME;
 const COGNITO_USER_POOL_ID = process.env.COGNITO_USER_POOL_ID;
 const COGNITO_CLIENT_ID = process.env.COGNITO_CLIENT_ID;
@@ -27,7 +24,7 @@ const response = (statusCode, body) => ({
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": process.env.ALLOWED_ORIGIN || "*",
-    "Access-Control-Allow-Headers": "Content-Type,Authorization",
+    "Access-Control-Allow-Headers": "Content-Type",
     "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS"
   },
   body: JSON.stringify(body)
@@ -62,30 +59,6 @@ const verifyPassword = (password, stored) => {
   return candidate.length === expected.length && crypto.timingSafeEqual(candidate, expected);
 };
 
-async function saveProductImageToS3(imageUrl, productId) {
-  if (!imageUrl || !imageUrl.startsWith("data:") || !IMAGES_BUCKET) return imageUrl || "";
-  try {
-    const matches = imageUrl.match(/^data:(image\/[a-zA-Z0-9\+\-]+);base64,(.+)$/);
-    if (!matches) return imageUrl;
-    const contentType = matches[1];
-    const ext = contentType.split("/")[1] || "jpeg";
-    const buffer = Buffer.from(matches[2], "base64");
-    const key = `products/${productId}-${Date.now()}.${ext}`;
-
-    await s3.send(new PutObjectCommand({
-      Bucket: IMAGES_BUCKET,
-      Key: key,
-      Body: buffer,
-      ContentType: contentType
-    }));
-
-    return `https://${IMAGES_BUCKET}.s3.${process.env.AWS_REGION || "us-east-1"}.amazonaws.com/${key}`;
-  } catch (error) {
-    console.error("Error uploading product image to S3:", error);
-    return imageUrl;
-  }
-}
-
 const getAuthenticatedUser = async (event) => {
   const authHeader = event?.headers?.Authorization || event?.headers?.authorization || "";
   if (!authHeader.startsWith("Bearer ")) return null;
@@ -113,7 +86,8 @@ async function products(ownerName = "") {
 
 exports.getProducts = async event => {
   try {
-    const ownerName = event?.queryStringParameters?.ownerName || "";
+    const user = await getAuthenticatedUser(event);
+    const ownerName = user?.username || (event?.queryStringParameters?.ownerName || "");
     const catalog = await products(ownerName);
     return response(200, event?.queryStringParameters?.availableOnly === "true" ? catalog.filter(product => Number(product.stock) > 0) : catalog);
   }
@@ -134,10 +108,9 @@ exports.createProduct = async event => {
   if (!input || !input.productId || !input.name || input.price === undefined || input.stock === undefined || !input.category) {
     return response(400, { message: "All required fields must be provided" });
   }
-  const s3ImageUrl = await saveProductImageToS3(input.imageUrl, input.productId);
   const product = {
     ...productKey(input.productId), productId: Number(input.productId), name: String(input.name),
-    description: String(input.description || ""), price: Number(input.price), stock: Number(input.stock), category: String(input.category), imageUrl: s3ImageUrl, ownerName: user.username
+    description: String(input.description || ""), price: Number(input.price), stock: Number(input.stock), category: String(input.category), imageUrl: String(input.imageUrl || ""), ownerName: user.username
   };
   if (!Number.isFinite(product.price) || product.price < 0 || !Number.isInteger(product.stock) || product.stock < 0) {
     return response(400, { message: "Price and stock must be valid non-negative values" });
@@ -159,7 +132,7 @@ exports.updateProduct = async event => {
   const id = event.pathParameters.id;
   const existing = await client.send(new GetCommand({ TableName: TABLE_NAME, Key: productKey(id) }));
   if (!existing.Item) return response(404, { message: "Product not found" });
-  if (existing.Item.ownerName && existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
+  if (existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
   if (input.price !== undefined && (!Number.isFinite(Number(input.price)) || Number(input.price) < 0)) {
     return response(400, { message: "Price must be a valid non-negative value" });
   }
@@ -167,9 +140,6 @@ exports.updateProduct = async event => {
     return response(400, { message: "Stock must be a valid non-negative integer" });
   }
   const names = {}, values = {}, updates = [];
-  if (input.imageUrl !== undefined) {
-    input.imageUrl = await saveProductImageToS3(input.imageUrl, id);
-  }
   for (const field of ["name", "description", "price", "stock", "category", "imageUrl"]) {
     if (input[field] !== undefined) {
       names[`#${field}`] = field; values[`:${field}`] = field === "price" ? Number(input[field]) : field === "stock" ? Number(input[field]) : String(input[field]);
@@ -192,7 +162,7 @@ exports.deleteProduct = async event => {
   try {
     const existing = await client.send(new GetCommand({ TableName: TABLE_NAME, Key: productKey(event.pathParameters.id) }));
     if (!existing.Item) return response(404, { message: "Product not found" });
-    if (existing.Item.ownerName && existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
+    if (existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
     const result = await client.send(new DeleteCommand({ TableName: TABLE_NAME, Key: productKey(event.pathParameters.id), ConditionExpression: "attribute_exists(entityType)", ReturnValues: "ALL_OLD" }));
     return response(200, { message: "Product deleted successfully", product: result.Attributes });
   } catch (error) {
@@ -292,10 +262,9 @@ exports.getCognitoConfig = async event => {
 };
 
 exports.authRouter = async event => {
-  if (event.httpMethod === "OPTIONS") return response(200, {});
-  if (event.httpMethod === "GET" && (event.path?.endsWith("/config") || event.resource?.endsWith("/config"))) return exports.getCognitoConfig(event);
-  if (event.httpMethod === "POST" && (event.path?.endsWith("/register") || event.resource?.endsWith("/register"))) return exports.cognitoSignUp(event);
-  if (event.httpMethod === "POST" && (event.path?.endsWith("/login") || event.resource?.endsWith("/login"))) return exports.cognitoSignIn(event);
+  if (event.httpMethod === "GET" && event.path?.endsWith("/config")) return exports.getCognitoConfig(event);
+  if (event.httpMethod === "POST" && event.path?.endsWith("/register")) return exports.cognitoSignUp(event);
+  if (event.httpMethod === "POST" && event.path?.endsWith("/login")) return exports.cognitoSignIn(event);
   return response(404, { message: "Endpoint not found" });
 };
 
@@ -401,7 +370,6 @@ exports.listOrders = async () => {
 };
 
 exports.catalogRouter = async event => {
-  if (event.httpMethod === "OPTIONS") return response(200, {});
   if (event.httpMethod === "GET" && event.pathParameters?.id) return exports.getProduct(event);
   if (event.httpMethod === "GET") return exports.getProducts(event);
   if (event.httpMethod === "POST") return exports.createProduct(event);
@@ -411,14 +379,12 @@ exports.catalogRouter = async event => {
 };
 
 exports.ordersRouter = async event => {
-  if (event.httpMethod === "OPTIONS") return response(200, {});
   if (event.httpMethod === "GET") return exports.listOrders(event);
   if (event.httpMethod === "POST") return exports.createOrder(event);
   return response(405, { message: "Method not allowed" });
 };
 
 exports.momoRouter = async event => {
-  if (event.httpMethod === "OPTIONS") return response(200, {});
   if (event.httpMethod === "POST") return exports.initiateMomoPayment(event);
   if (event.httpMethod === "GET") return exports.momoPaymentStatus(event);
   return response(405, { message: "Method not allowed" });

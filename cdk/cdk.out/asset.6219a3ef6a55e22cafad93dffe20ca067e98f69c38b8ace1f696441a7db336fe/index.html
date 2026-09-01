@@ -1,4 +1,4 @@
-﻿﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -1056,66 +1056,12 @@
                     <span id="adminSubmitText">Sign in</span>
                 </button>
 
-                <button type="button" class="form-button" style="background:#4285F4;"
-                    onclick="signInWithGoogle()">
-                    Continue with Google
-                </button>
-
-                <a href="#" id="forgotLink"
-                    style="display:block;text-align:center;margin-top:10px;color:#66717c;"
-                    onclick="showForgotPassword(event)">Forgot password?</a>
-
             </form>
 
         </div>
 
     </section>
 
-
-    <!-- ================= FORGOT PASSWORD MODAL ================= -->
-
-    <div id="forgotPasswordModal" class="modal">
-      <div class="modal-content">
-        <span class="close" onclick="closeModal('forgotPasswordModal')">
-          &times;
-        </span>
-
-        <h2>Reset Password</h2>
-        <br />
-        <div id="forgotStep1">
-          <form id="forgotForm">
-            <div class="form-group">
-              <label>Admin Name</label>
-              <input type="text" id="forgotName" required />
-            </div>
-            <div class="form-group">
-              <label>Email</label>
-              <input type="email" id="forgotEmail" required />
-            </div>
-            <button type="submit" class="form-button">Send confirmation code</button>
-            <small class="form-hint">
-              A code will be emailed to you. It is valid for 2 hours.
-              If it expires, submit again to receive a new one.
-            </small>
-          </form>
-        </div>
-        <div id="forgotStep2" class="hidden">
-          <form id="resetForm">
-            <div class="form-group">
-              <label>Confirmation code (from your email)</label>
-              <input type="text" id="resetCode" required />
-            </div>
-            <div class="form-group">
-              <label>New password</label>
-              <input type="password" id="resetPassword" required />
-            </div>
-            <button type="submit" class="form-button">Reset password</button>
-            <button type="button" class="form-button" style="background:#66717c;"
-              onclick="resendForgotCode()">Resend code</button>
-          </form>
-        </div>
-      </div>
-    </div>
 
     <!-- ================= ADMIN PANEL ================= -->
 
@@ -1746,7 +1692,7 @@ function displayProducts(products, reset = false) {
     nextProducts.forEach(product => {
         const card = document.createElement("div");
         card.className = "product-card";
-        const id = product.productId || product.id || "";
+        const id = product.id || product.productId || "";
         const stock = product.stock ?? 0;
 
         card.innerHTML = `
@@ -1815,7 +1761,8 @@ productObserver.observe(document.getElementById("catalogLoader"));
             const product =
                 products.find(
                     p =>
-                        String(p.productId || p.id) === String(productId)
+                        Number(p.productId) ===
+                        Number(productId)
                 );
 
             if (!product) {
@@ -1832,7 +1779,8 @@ productObserver.observe(document.getElementById("catalogLoader"));
             const existing =
                 cart.find(
                     item =>
-                        String(item.productId) === String(productId)
+                        Number(item.productId) ===
+                        Number(productId)
                 );
 
 
@@ -1858,7 +1806,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
                 cart.push({
 
                     productId:
-                        product.productId || product.id,
+                        product.productId,
 
                     name:
                         product.name,
@@ -1991,7 +1939,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
 
                     <button
                         class="remove-btn"
-                        onclick="removeFromCart('${item.productId}')"
+                        onclick="removeFromCart(${item.productId})"
                     >
                         Remove
                     </button>
@@ -2021,7 +1969,8 @@ productObserver.observe(document.getElementById("catalogLoader"));
             cart =
                 cart.filter(
                     item =>
-                        String(item.productId) !== String(productId)
+                        Number(item.productId) !==
+                        Number(productId)
                 );
 
             updateCartCount();
@@ -2534,12 +2483,12 @@ productObserver.observe(document.getElementById("catalogLoader"));
         const card = document.createElement("div");
         card.className = "product-card admin-product-card";
 
-        // Supports both 'productId' or 'id' from DynamoDB
-        const id = product.productId || product.id || "N/A";
+        // Supports both 'id' or 'productId' from DynamoDB
+        const id = product.id || product.productId || "N/A";
         const price = product.price ?? 0;
         const stock = product.stock ?? 0;
 
-        if (String(selectedAdminProductId) === String(id)) {
+        if (Number(selectedAdminProductId) === Number(id)) {
             card.classList.add("selected");
         }
 
@@ -2608,7 +2557,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
 
                 orders.forEach(order => {
                     (order.items || []).forEach(item => {
-                        const id = String(item.productId);
+                        const id = Number(item.productId);
                         soldByProduct[id] = (soldByProduct[id] || 0) + Number(item.quantity || 0);
                         buyersByProduct[id] = buyersByProduct[id] || [];
                         if (order.customerName && !buyersByProduct[id].includes(order.customerName)) {
@@ -2627,16 +2576,13 @@ productObserver.observe(document.getElementById("catalogLoader"));
                 document.getElementById("salesTracking").innerHTML = `
                     <table class="sales-table">
                         <thead><tr><th>Product</th><th>Sold</th><th>Remaining</th><th>Buyers</th></tr></thead>
-                        <tbody>${products.map(product => {
-                            const pid = String(product.productId || product.id);
-                            return `
+                        <tbody>${products.map(product => `
                             <tr>
                                 <td>${product.name}</td>
-                                <td>${soldByProduct[pid] || 0}</td>
+                                <td>${soldByProduct[product.productId] || 0}</td>
                                 <td>${product.stock || 0}</td>
-                                <td>${(buyersByProduct[pid] || []).join(", ") || "No sales yet"}</td>
-                            </tr>`;
-                        }).join("")}</tbody>
+                                <td>${(buyersByProduct[product.productId] || []).join(", ") || "No sales yet"}</td>
+                            </tr>`).join("")}</tbody>
                     </table>`;
             } catch (error) {
                 document.getElementById("salesTracking").innerHTML = '<p class="empty">Sales history is unavailable.</p>';
@@ -2732,7 +2678,8 @@ productObserver.observe(document.getElementById("catalogLoader"));
 
                                     method: "POST",
 
-                                    headers: getAuthHeaders(),
+                                    headers:
+                                        getAuthHeaders(),
 
                                     body:
                                         JSON.stringify(product)
@@ -2793,7 +2740,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
         function showUpdateProduct() {
 
             const product = products.find(item =>
-                String(item.productId || item.id) === String(selectedAdminProductId)
+                Number(item.productId) === Number(selectedAdminProductId)
             );
 
             if (!product) {
@@ -3065,118 +3012,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
             ).style.display = "none";
 
         }
-        /* FORGOT PASSWORD FLOW */
-      let forgotEmailSaved = "";
-      let forgotNameSaved = "";
-
-      function showForgotPassword(event) {
-        if (event) event.preventDefault();
-        document.getElementById("forgotStep1").classList.remove("hidden");
-        document.getElementById("forgotStep2").classList.add("hidden");
-        document.getElementById("forgotPasswordModal").style.display = "flex";
-      }
-
-      async function requestForgotCode(name, email) {
-        const response = await fetch(`${API_URL}/admin/forgot-password`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ name, email }),
-        });
-        const data = await response.json().catch(() => ({}));
-        if (!response.ok) throw new Error(data.message || "Unable to send code.");
-        return data;
-      }
-
-      document
-        .getElementById("forgotForm")
-        .addEventListener("submit", async function (event) {
-          event.preventDefault();
-          const name = document.getElementById("forgotName").value.trim();
-          const email = document.getElementById("forgotEmail").value.trim();
-          try {
-            await requestForgotCode(name, email);
-            forgotEmailSaved = email;
-            forgotNameSaved = name;
-            document.getElementById("forgotStep1").classList.add("hidden");
-            document.getElementById("forgotStep2").classList.remove("hidden");
-            showMessage("Confirmation code sent. Check your email (valid 2 hours).");
-          } catch (error) {
-            showMessage(error.message, false);
-          }
-        });
-
-      async function resendForgotCode() {
-        try {
-          await requestForgotCode(forgotNameSaved, forgotEmailSaved);
-          showMessage("A new confirmation code has been sent to your email.");
-        } catch (error) {
-          showMessage(error.message, false);
-        }
-      }
-
-      document
-        .getElementById("resetForm")
-        .addEventListener("submit", async function (event) {
-          event.preventDefault();
-          const code = document.getElementById("resetCode").value.trim();
-          const password = document.getElementById("resetPassword").value;
-          try {
-            const response = await fetch(`${API_URL}/admin/reset-password`, {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ email: forgotEmailSaved, code, password }),
-            });
-            const data = await response.json().catch(() => ({}));
-            if (data.expired) {
-              showMessage("Code expired - a new code has been sent.", false);
-              await resendForgotCode();
-              return;
-            }
-            if (!response.ok) throw new Error(data.message || "Reset failed.");
-            closeModal("forgotPasswordModal");
-            document.getElementById("resetForm").reset();
-            document.getElementById("forgotForm").reset();
-            showMessage("Password reset successful. You can now sign in.");
-          } catch (error) {
-            showMessage(error.message, false);
-          }
-        });
-
-      /* GOOGLE SIGN-IN via the Cognito Hosted UI */
-      function signInWithGoogle() {
-        if (!cognitoConfig || !cognitoConfig.cognitoDomain) {
-          showMessage("Google sign-in is not configured yet.", false);
-          return;
-        }
-        const redirectUri = window.location.origin + window.location.pathname;
-        const url =
-          cognitoConfig.cognitoDomain +
-          "/oauth2/authorize?identity_provider=Google&redirect_uri=" +
-          encodeURIComponent(redirectUri) +
-          "&response_type=token&client_id=" +
-          encodeURIComponent(cognitoConfig.clientId) +
-          "&scope=email+openid+profile";
-        window.location.href = url;
-      }
-
-      /* Handle tokens returned by the Hosted UI redirect. */
-      (function handleGoogleRedirect() {
-        const hash = window.location.hash.substring(1);
-        if (!hash) return;
-        const params = new URLSearchParams(hash);
-        const accessToken = params.get("access_token");
-        if (!accessToken) return;
-        const idToken = params.get("id_token");
-        cognitoTokens = { accessToken, idToken };
-        adminLoggedIn = true;
-        signedInAdminName = "google-user";
-        localStorage.setItem("cognitoTokens", JSON.stringify(cognitoTokens));
-        localStorage.setItem("adminUsername", signedInAdminName);
-        window.location.hash = "";
-        showAdminPanel();
-      })();
-
-      /*
+        /*
         ====================================================
         START APPLICATION
         ====================================================

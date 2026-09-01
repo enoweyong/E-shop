@@ -21,7 +21,9 @@ class ProductCatalog {
 
     searchByCategory(category) {
         return this.products.filter(
-            product => product.category.toLowerCase() === category.toLowerCase()
+            product =>
+                product.category &&
+                product.category.toLowerCase() === category.toLowerCase()
         );
     }
 

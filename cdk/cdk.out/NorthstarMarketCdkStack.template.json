@@ -1,6 +1,6 @@
 {
  "Resources": {
-  "EcommerceTableL1": {
+  "EcommerceTableL2A5EA5F41": {
    "Type": "AWS::DynamoDB::Table",
    "Properties": {
     "AttributeDefinitions": [
@@ -32,10 +32,10 @@
    "UpdateReplacePolicy": "Retain",
    "DeletionPolicy": "Retain",
    "Metadata": {
-    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceTableL1"
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceTableL2/Resource"
    }
   },
-  "AdminTableL1": {
+  "AdminTableL2A29E5531": {
    "Type": "AWS::DynamoDB::Table",
    "Properties": {
     "AttributeDefinitions": [
@@ -64,7 +64,91 @@
    "UpdateReplacePolicy": "Retain",
    "DeletionPolicy": "Retain",
    "Metadata": {
-    "aws:cdk:path": "NorthstarMarketCdkStack/AdminTableL1"
+    "aws:cdk:path": "NorthstarMarketCdkStack/AdminTableL2/Resource"
+   }
+  },
+  "AdminUserPoolD0AF18CF": {
+   "Type": "AWS::Cognito::UserPool",
+   "Properties": {
+    "AccountRecoverySetting": {
+     "RecoveryMechanisms": [
+      {
+       "Name": "verified_phone_number",
+       "Priority": 1
+      },
+      {
+       "Name": "verified_email",
+       "Priority": 2
+      }
+     ]
+    },
+    "AdminCreateUserConfig": {
+     "AllowAdminCreateUserOnly": false
+    },
+    "AliasAttributes": [
+     "email"
+    ],
+    "AutoVerifiedAttributes": [
+     "email"
+    ],
+    "EmailVerificationMessage": "The verification code to your new account is {####}",
+    "EmailVerificationSubject": "Verify your new account",
+    "Policies": {
+     "PasswordPolicy": {
+      "MinimumLength": 8,
+      "RequireLowercase": true,
+      "RequireNumbers": true,
+      "RequireUppercase": true
+     }
+    },
+    "SmsVerificationMessage": "The verification code to your new account is {####}",
+    "UserPoolName": "northstar-market-admins",
+    "VerificationMessageTemplate": {
+     "DefaultEmailOption": "CONFIRM_WITH_CODE",
+     "EmailMessage": "The verification code to your new account is {####}",
+     "EmailSubject": "Verify your new account",
+     "SmsMessage": "The verification code to your new account is {####}"
+    }
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/AdminUserPool/Resource"
+   }
+  },
+  "AdminUserPoolClient51424DAB": {
+   "Type": "AWS::Cognito::UserPoolClient",
+   "Properties": {
+    "AllowedOAuthFlows": [
+     "implicit",
+     "code"
+    ],
+    "AllowedOAuthFlowsUserPoolClient": true,
+    "AllowedOAuthScopes": [
+     "profile",
+     "phone",
+     "email",
+     "openid",
+     "aws.cognito.signin.user.admin"
+    ],
+    "CallbackURLs": [
+     "https://example.com"
+    ],
+    "ExplicitAuthFlows": [
+     "ALLOW_USER_PASSWORD_AUTH",
+     "ALLOW_USER_SRP_AUTH",
+     "ALLOW_REFRESH_TOKEN_AUTH"
+    ],
+    "GenerateSecret": false,
+    "SupportedIdentityProviders": [
+     "COGNITO"
+    ],
+    "UserPoolId": {
+     "Ref": "AdminUserPoolD0AF18CF"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/AdminUserPoolClient/Resource"
    }
   },
   "CatalogFunctionL2ServiceRole7D4D4495": {
@@ -108,29 +192,53 @@
      "Statement": [
       {
        "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:Query",
         "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
         "dynamodb:PutItem",
         "dynamodb:UpdateItem",
         "dynamodb:DeleteItem",
-        "dynamodb:Query",
-        "dynamodb:TransactWriteItems"
+        "dynamodb:DescribeTable"
        ],
        "Effect": "Allow",
-       "Resource": {
-        "Fn::Join": [
-         "",
-         [
-          "arn:",
-          {
-           "Ref": "AWS::Partition"
-          },
-          ":dynamodb:us-east-1:793593623274:",
-          {
-           "Ref": "EcommerceTableL1"
-          }
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "EcommerceTableL2A5EA5F41",
+          "Arn"
          ]
-        ]
-       }
+        }
+       ]
+      },
+      {
+       "Action": [
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "EcommerceTableL2A5EA5F41",
+          "Arn"
+         ]
+        }
+       ]
+      },
+      {
+       "Action": "dynamodb:TransactWriteItems",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "EcommerceTableL2A5EA5F41",
+          "Arn"
+         ]
+        }
+       ]
       }
      ],
      "Version": "2012-10-17"
@@ -151,17 +259,23 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-793593623274-us-east-1",
-     "S3Key": "ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902.zip"
+     "S3Key": "89cf9d73e840dbf555f1765cf7ead67d77503b1b067200685a1fe00c09b18545.zip"
     },
     "Environment": {
      "Variables": {
       "TABLE_NAME": {
-       "Ref": "EcommerceTableL1"
+       "Ref": "EcommerceTableL2A5EA5F41"
       },
       "ADMIN_TABLE_NAME": {
-       "Ref": "AdminTableL1"
+       "Ref": "AdminTableL2A29E5531"
       },
       "ALLOWED_ORIGIN": "*",
+      "COGNITO_USER_POOL_ID": {
+       "Ref": "AdminUserPoolD0AF18CF"
+      },
+      "COGNITO_CLIENT_ID": {
+       "Ref": "AdminUserPoolClient51424DAB"
+      },
       "ADMIN_USERNAME": "eyong",
       "ADMIN_PASSWORD": {
        "Ref": "AdminPassword"
@@ -186,7 +300,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "NorthstarMarketCdkStack/CatalogFunctionL2/Resource",
-    "aws:asset:path": "asset.ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902",
+    "aws:asset:path": "asset.89cf9d73e840dbf555f1765cf7ead67d77503b1b067200685a1fe00c09b18545",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -232,51 +346,91 @@
      "Statement": [
       {
        "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:Query",
         "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
         "dynamodb:PutItem",
         "dynamodb:UpdateItem",
         "dynamodb:DeleteItem",
-        "dynamodb:Query",
-        "dynamodb:TransactWriteItems"
+        "dynamodb:DescribeTable"
        ],
        "Effect": "Allow",
-       "Resource": {
-        "Fn::Join": [
-         "",
-         [
-          "arn:",
-          {
-           "Ref": "AWS::Partition"
-          },
-          ":dynamodb:us-east-1:793593623274:",
-          {
-           "Ref": "EcommerceTableL1"
-          }
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "EcommerceTableL2A5EA5F41",
+          "Arn"
          ]
-        ]
-       }
+        }
+       ]
       },
       {
        "Action": [
-        "dynamodb:GetItem",
-        "dynamodb:PutItem"
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator"
        ],
        "Effect": "Allow",
-       "Resource": {
-        "Fn::Join": [
-         "",
-         [
-          "arn:",
-          {
-           "Ref": "AWS::Partition"
-          },
-          ":dynamodb:us-east-1:793593623274:",
-          {
-           "Ref": "AdminTableL1"
-          }
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "EcommerceTableL2A5EA5F41",
+          "Arn"
          ]
-        ]
-       }
+        }
+       ]
+      },
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "AdminTableL2A29E5531",
+          "Arn"
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "AdminTableL2A29E5531",
+          "Arn"
+         ]
+        }
+       ]
+      },
+      {
+       "Action": "dynamodb:TransactWriteItems",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "EcommerceTableL2A5EA5F41",
+          "Arn"
+         ]
+        }
+       ]
       }
      ],
      "Version": "2012-10-17"
@@ -297,17 +451,23 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-793593623274-us-east-1",
-     "S3Key": "ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902.zip"
+     "S3Key": "89cf9d73e840dbf555f1765cf7ead67d77503b1b067200685a1fe00c09b18545.zip"
     },
     "Environment": {
      "Variables": {
       "TABLE_NAME": {
-       "Ref": "EcommerceTableL1"
+       "Ref": "EcommerceTableL2A5EA5F41"
       },
       "ADMIN_TABLE_NAME": {
-       "Ref": "AdminTableL1"
+       "Ref": "AdminTableL2A29E5531"
       },
       "ALLOWED_ORIGIN": "*",
+      "COGNITO_USER_POOL_ID": {
+       "Ref": "AdminUserPoolD0AF18CF"
+      },
+      "COGNITO_CLIENT_ID": {
+       "Ref": "AdminUserPoolClient51424DAB"
+      },
       "ADMIN_USERNAME": "eyong",
       "ADMIN_PASSWORD": {
        "Ref": "AdminPassword"
@@ -332,7 +492,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "NorthstarMarketCdkStack/AuthFunctionL2/Resource",
-    "aws:asset:path": "asset.ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902",
+    "aws:asset:path": "asset.89cf9d73e840dbf555f1765cf7ead67d77503b1b067200685a1fe00c09b18545",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -378,29 +538,53 @@
      "Statement": [
       {
        "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:Query",
         "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
         "dynamodb:PutItem",
         "dynamodb:UpdateItem",
         "dynamodb:DeleteItem",
-        "dynamodb:Query",
-        "dynamodb:TransactWriteItems"
+        "dynamodb:DescribeTable"
        ],
        "Effect": "Allow",
-       "Resource": {
-        "Fn::Join": [
-         "",
-         [
-          "arn:",
-          {
-           "Ref": "AWS::Partition"
-          },
-          ":dynamodb:us-east-1:793593623274:",
-          {
-           "Ref": "EcommerceTableL1"
-          }
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "EcommerceTableL2A5EA5F41",
+          "Arn"
          ]
-        ]
-       }
+        }
+       ]
+      },
+      {
+       "Action": [
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "EcommerceTableL2A5EA5F41",
+          "Arn"
+         ]
+        }
+       ]
+      },
+      {
+       "Action": "dynamodb:TransactWriteItems",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "EcommerceTableL2A5EA5F41",
+          "Arn"
+         ]
+        }
+       ]
       }
      ],
      "Version": "2012-10-17"
@@ -421,17 +605,23 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-793593623274-us-east-1",
-     "S3Key": "ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902.zip"
+     "S3Key": "89cf9d73e840dbf555f1765cf7ead67d77503b1b067200685a1fe00c09b18545.zip"
     },
     "Environment": {
      "Variables": {
       "TABLE_NAME": {
-       "Ref": "EcommerceTableL1"
+       "Ref": "EcommerceTableL2A5EA5F41"
       },
       "ADMIN_TABLE_NAME": {
-       "Ref": "AdminTableL1"
+       "Ref": "AdminTableL2A29E5531"
       },
       "ALLOWED_ORIGIN": "*",
+      "COGNITO_USER_POOL_ID": {
+       "Ref": "AdminUserPoolD0AF18CF"
+      },
+      "COGNITO_CLIENT_ID": {
+       "Ref": "AdminUserPoolClient51424DAB"
+      },
       "ADMIN_USERNAME": "eyong",
       "ADMIN_PASSWORD": {
        "Ref": "AdminPassword"
@@ -456,7 +646,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "NorthstarMarketCdkStack/OrdersFunctionL2/Resource",
-    "aws:asset:path": "asset.ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902",
+    "aws:asset:path": "asset.89cf9d73e840dbf555f1765cf7ead67d77503b1b067200685a1fe00c09b18545",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -495,22 +685,97 @@
     "aws:cdk:path": "NorthstarMarketCdkStack/MomoFunctionL2/ServiceRole/Resource"
    }
   },
+  "MomoFunctionL2ServiceRoleDefaultPolicyE502722F": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:BatchGetItem",
+        "dynamodb:Query",
+        "dynamodb:GetItem",
+        "dynamodb:Scan",
+        "dynamodb:ConditionCheckItem",
+        "dynamodb:BatchWriteItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:DescribeTable"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "EcommerceTableL2A5EA5F41",
+          "Arn"
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "dynamodb:GetRecords",
+        "dynamodb:GetShardIterator"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "EcommerceTableL2A5EA5F41",
+          "Arn"
+         ]
+        }
+       ]
+      },
+      {
+       "Action": "dynamodb:TransactWriteItems",
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "EcommerceTableL2A5EA5F41",
+          "Arn"
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "MomoFunctionL2ServiceRoleDefaultPolicyE502722F",
+    "Roles": [
+     {
+      "Ref": "MomoFunctionL2ServiceRole2B5CC7D1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/MomoFunctionL2/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
   "MomoFunctionL265DC54AD": {
    "Type": "AWS::Lambda::Function",
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-793593623274-us-east-1",
-     "S3Key": "ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902.zip"
+     "S3Key": "89cf9d73e840dbf555f1765cf7ead67d77503b1b067200685a1fe00c09b18545.zip"
     },
     "Environment": {
      "Variables": {
       "TABLE_NAME": {
-       "Ref": "EcommerceTableL1"
+       "Ref": "EcommerceTableL2A5EA5F41"
       },
       "ADMIN_TABLE_NAME": {
-       "Ref": "AdminTableL1"
+       "Ref": "AdminTableL2A29E5531"
       },
       "ALLOWED_ORIGIN": "*",
+      "COGNITO_USER_POOL_ID": {
+       "Ref": "AdminUserPoolD0AF18CF"
+      },
+      "COGNITO_CLIENT_ID": {
+       "Ref": "AdminUserPoolClient51424DAB"
+      },
       "ADMIN_USERNAME": "eyong",
       "ADMIN_PASSWORD": {
        "Ref": "AdminPassword"
@@ -540,11 +805,12 @@
     "Timeout": 15
    },
    "DependsOn": [
+    "MomoFunctionL2ServiceRoleDefaultPolicyE502722F",
     "MomoFunctionL2ServiceRole2B5CC7D1"
    ],
    "Metadata": {
     "aws:cdk:path": "NorthstarMarketCdkStack/MomoFunctionL2/Resource",
-    "aws:asset:path": "asset.ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902",
+    "aws:asset:path": "asset.89cf9d73e840dbf555f1765cf7ead67d77503b1b067200685a1fe00c09b18545",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -613,7 +879,7 @@
     "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Account"
    }
   },
-  "EcommerceApiL2Deployment7B4DF47E22ebe0b0158cb9078491d7f77008f9f1": {
+  "EcommerceApiL2Deployment7B4DF47Ee3a5354eeb0fed6784984d53b5f3d75b": {
    "Type": "AWS::ApiGateway::Deployment",
    "Properties": {
     "Description": "Automatically created by the RestApi construct",
@@ -622,6 +888,9 @@
     }
    },
    "DependsOn": [
+    "EcommerceApiL2apiadminconfigGETE52E00C9",
+    "EcommerceApiL2apiadminconfigOPTIONSF0808B05",
+    "EcommerceApiL2apiadminconfig9D29317B",
     "EcommerceApiL2apiadminloginOPTIONSAC0AFB50",
     "EcommerceApiL2apiadminloginPOSTF38DC37F",
     "EcommerceApiL2apiadminloginCB69DD59",
@@ -664,7 +933,7 @@
    "Type": "AWS::ApiGateway::Stage",
    "Properties": {
     "DeploymentId": {
-     "Ref": "EcommerceApiL2Deployment7B4DF47E22ebe0b0158cb9078491d7f77008f9f1"
+     "Ref": "EcommerceApiL2Deployment7B4DF47Ee3a5354eeb0fed6784984d53b5f3d75b"
     },
     "RestApiId": {
      "Ref": "EcommerceApiL225C34F81"
@@ -1492,6 +1761,171 @@
    },
    "Metadata": {
     "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/OPTIONS/Resource"
+   }
+  },
+  "EcommerceApiL2apiadminconfig9D29317B": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "EcommerceApiL2apiadminE15C1968"
+    },
+    "PathPart": "config",
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/config/Resource"
+   }
+  },
+  "EcommerceApiL2apiadminconfigOPTIONSF0808B05": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'GET,POST,PUT,DELETE,OPTIONS'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiadminconfig9D29317B"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/config/OPTIONS/Resource"
+   }
+  },
+  "EcommerceApiL2apiadminconfigGETApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiadminconfig0D6D2B66": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "AuthFunctionL239420C88",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/",
+       {
+        "Ref": "EcommerceApiL2DeploymentStageprod3F9E500F"
+       },
+       "/GET/api/admin/config"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/config/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.admin.config"
+   }
+  },
+  "EcommerceApiL2apiadminconfigGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiadminconfigA75105EB": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "AuthFunctionL239420C88",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/test-invoke-stage/GET/api/admin/config"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/config/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.admin.config"
+   }
+  },
+  "EcommerceApiL2apiadminconfigGETE52E00C9": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "AuthFunctionL239420C88",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiadminconfig9D29317B"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/config/GET/Resource"
    }
   },
   "EcommerceApiL2apiadminloginCB69DD59": {
@@ -2574,7 +3008,7 @@
      "cdk-hnb659fds-assets-793593623274-us-east-1"
     ],
     "SourceObjectKeys": [
-     "f6337638716a783719b1a3f00d90345831595ba97a320dbca98376f78181c0ab.zip"
+     "6219a3ef6a55e22cafad93dffe20ca067e98f69c38b8ace1f696441a7db336fe.zip"
     ],
     "DestinationBucketName": {
      "Ref": "FrontendBucketL29CFDAF11"
@@ -2754,7 +3188,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/22RTU/DMAyGfwv3LIyBJnHsijiBmDrEtXJTr2TLR1U7VFXV/46Slm0HTn5e2/JrJxu52W7l+g56Wqn6vDK6kuOBQZ0F9FSO9eDA+rqS+dF9QmVQGLBVDXJ8DU6x9k7kR3fLe+ysJlrUGwzYfWGX9EG7xiD7S/8kNFg5Ft5gbE5x741WQ5qUaBL0WI5AhEwyi0HU2Bo/WHQsd0GdkV8uidgtxzm7A0IxYxy30ByuLrd6EtDqBhh7GORYIHHW6rTZFTOlfHAsrp4xe6MODE06Z4YCyYdOYdrmHfnb17G40F91MUk8Tel66MAiYyfS0XGYdk2sfARuAy8fUZr4wiX0pIyWWU+50enRRR6Ivf3XQDhfozzR/c/mST48y/XdibRedcGxtiiLOf4CozCVoBwCAAA="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/22RTU/DMAyGfwv3LIyBJnHshjiBqDrgWrmpKdnSpKpdqirqf0dJu61InPz4fS1/JBu52W7l+gZ6WqnytDK6kP7AoE4Cesp9OVioXVlI/w6FQbH/shFGoVxlNTvpPwjb1DkTvAufYW80Wl5akzIKA3VRgvTPnVWsnQ01S06xrTXRnL3AgO0ntjE/aFsZZHepH4WGWvrMTRvGmDqj1RA7RRoF3eceiJBJJiGIEhvjhhoty12nTshPFyFUSz+pOyAUE4Z2M03hOmWZjwIaXQFjD4P0GRInjY6bXTFRynWWxXVmUBfZgaGK50yQIbmuVRi3eUX+dmUwZzq785DI4/hHTqGFGhlbEa8PXbWtgvPWcdPx/CO5CU+dQ0/KaJn0tDc6vr7Yd8Su/neSsK5EeaTbn82DvHuU65sjab1qO8u6RplN8Rcd3vR5bQIAAA=="
    },
    "Metadata": {
     "aws:cdk:path": "NorthstarMarketCdkStack/CDKMetadata/Default"
@@ -2846,12 +3280,22 @@
   },
   "DynamoTableName": {
    "Value": {
-    "Ref": "EcommerceTableL1"
+    "Ref": "EcommerceTableL2A5EA5F41"
    }
   },
   "AdminTableName": {
    "Value": {
-    "Ref": "AdminTableL1"
+    "Ref": "AdminTableL2A29E5531"
+   }
+  },
+  "CognitoUserPoolId": {
+   "Value": {
+    "Ref": "AdminUserPoolD0AF18CF"
+   }
+  },
+  "CognitoClientId": {
+   "Value": {
+    "Ref": "AdminUserPoolClient51424DAB"
    }
   }
  },

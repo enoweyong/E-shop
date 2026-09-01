@@ -7,11 +7,8 @@ class Category{
     addProduct(product){
         this.products.push(product);
     }
-    ListProducts(){
-        this.products.forEach(product => product.displayProduct())
-    }
     listProducts(){
-        this.ListProducts();
+        this.products.forEach(product => product.displayProduct())
     }
 }
 module.exports = Category;
