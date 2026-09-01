@@ -1,17 +1,17 @@
 const assert = require("assert");
-const Product = require("./Product");
-const Customer = require("./Customer");
-const Admin = require("./Admin");
-const Payment = require("./Payment");
-const ECommerceSystem = require("./EcommerceSystem");
-const Checkout = require("./Checkout");
-const Category = require("./Category");
-const ProductCatalog = require("./ProductCatalog");
-const ShoppingCart = require("./ShoppingCart");
-const CartItem = require("./CartItem");
-const Order = require("./Order");
-const OrderItem = require("./OrderItem");
-const User = require("./User");
+const Product = require("./backend/Product");
+const Customer = require("./backend/Customer");
+const Admin = require("./backend/Admin");
+const Payment = require("./backend/Payment");
+const ECommerceSystem = require("./backend/EcommerceSystem");
+const Checkout = require("./backend/Checkout");
+const Category = require("./backend/Category");
+const ProductCatalog = require("./backend/ProductCatalog");
+const ShoppingCart = require("./backend/ShoppingCart");
+const CartItem = require("./backend/CartItem");
+const Order = require("./backend/Order");
+const OrderItem = require("./backend/OrderItem");
+const User = require("./backend/User");
 
 console.log("Running unit and integration tests...");
 

@@ -10,5 +10,8 @@ class Category{
     ListProducts(){
         this.products.forEach(product => product.displayProduct())
     }
+    listProducts(){
+        this.ListProducts();
+    }
 }
 module.exports = Category;

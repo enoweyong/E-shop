@@ -1692,7 +1692,7 @@ function displayProducts(products, reset = false) {
     nextProducts.forEach(product => {
         const card = document.createElement("div");
         card.className = "product-card";
-        const id = product.id || product.productId || "";
+        const id = product.productId || product.id || "";
         const stock = product.stock ?? 0;
 
         card.innerHTML = `
@@ -1761,8 +1761,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
             const product =
                 products.find(
                     p =>
-                        Number(p.productId) ===
-                        Number(productId)
+                        String(p.productId || p.id) === String(productId)
                 );
 
             if (!product) {
@@ -1779,8 +1778,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
             const existing =
                 cart.find(
                     item =>
-                        Number(item.productId) ===
-                        Number(productId)
+                        String(item.productId) === String(productId)
                 );
 
 
@@ -1806,7 +1804,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
                 cart.push({
 
                     productId:
-                        product.productId,
+                        product.productId || product.id,
 
                     name:
                         product.name,
@@ -1939,7 +1937,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
 
                     <button
                         class="remove-btn"
-                        onclick="removeFromCart(${item.productId})"
+                        onclick="removeFromCart('${item.productId}')"
                     >
                         Remove
                     </button>
@@ -1969,8 +1967,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
             cart =
                 cart.filter(
                     item =>
-                        Number(item.productId) !==
-                        Number(productId)
+                        String(item.productId) !== String(productId)
                 );
 
             updateCartCount();
@@ -2325,7 +2322,6 @@ productObserver.observe(document.getElementById("catalogLoader"));
             }
             return headers;
         }
-        }
 
 
         /*
@@ -2484,12 +2480,12 @@ productObserver.observe(document.getElementById("catalogLoader"));
         const card = document.createElement("div");
         card.className = "product-card admin-product-card";
 
-        // Supports both 'id' or 'productId' from DynamoDB
-        const id = product.id || product.productId || "N/A";
+        // Supports both 'productId' or 'id' from DynamoDB
+        const id = product.productId || product.id || "N/A";
         const price = product.price ?? 0;
         const stock = product.stock ?? 0;
 
-        if (Number(selectedAdminProductId) === Number(id)) {
+        if (String(selectedAdminProductId) === String(id)) {
             card.classList.add("selected");
         }
 
@@ -2558,7 +2554,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
 
                 orders.forEach(order => {
                     (order.items || []).forEach(item => {
-                        const id = Number(item.productId);
+                        const id = String(item.productId);
                         soldByProduct[id] = (soldByProduct[id] || 0) + Number(item.quantity || 0);
                         buyersByProduct[id] = buyersByProduct[id] || [];
                         if (order.customerName && !buyersByProduct[id].includes(order.customerName)) {
@@ -2577,13 +2573,16 @@ productObserver.observe(document.getElementById("catalogLoader"));
                 document.getElementById("salesTracking").innerHTML = `
                     <table class="sales-table">
                         <thead><tr><th>Product</th><th>Sold</th><th>Remaining</th><th>Buyers</th></tr></thead>
-                        <tbody>${products.map(product => `
+                        <tbody>${products.map(product => {
+                            const pid = String(product.productId || product.id);
+                            return `
                             <tr>
                                 <td>${product.name}</td>
-                                <td>${soldByProduct[product.productId] || 0}</td>
+                                <td>${soldByProduct[pid] || 0}</td>
                                 <td>${product.stock || 0}</td>
-                                <td>${(buyersByProduct[product.productId] || []).join(", ") || "No sales yet"}</td>
-                            </tr>`).join("")}</tbody>
+                                <td>${(buyersByProduct[pid] || []).join(", ") || "No sales yet"}</td>
+                            </tr>`;
+                        }).join("")}</tbody>
                     </table>`;
             } catch (error) {
                 document.getElementById("salesTracking").innerHTML = '<p class="empty">Sales history is unavailable.</p>';
@@ -2679,10 +2678,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
 
                                     method: "POST",
 
-                                    headers: {
-                                        "Content-Type":
-                                            "application/json"
-                                    },
+                                    headers: getAuthHeaders(),
 
                                     body:
                                         JSON.stringify(product)
@@ -2746,7 +2742,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
         function showUpdateProduct() {
 
             const product = products.find(item =>
-                Number(item.productId) === Number(selectedAdminProductId)
+                String(item.productId || item.id) === String(selectedAdminProductId)
             );
 
             if (!product) {
@@ -3018,47 +3014,6 @@ productObserver.observe(document.getElementById("catalogLoader"));
             ).style.display = "none";
 
         }
-// Add near the bottom of your script file or inside DOMContentLoaded
-document.addEventListener("DOMContentLoaded", () => {
-    
-    // --- YOUR ADD PRODUCT FORM LISTENER ---
-    const addProductForm = document.getElementById("add-product-form");
-    if (addProductForm) {
-        addProductForm.addEventListener("submit", async (e) => {
-            e.preventDefault(); // Prevents page reload
-
-            const productId = document.getElementById("productId")?.value || Date.now().toString();
-            const name = document.getElementById("productName").value;
-            const price = document.getElementById("productPrice").value;
-            const category = document.getElementById("productCategory").value;
-            const stock = document.getElementById("productStock").value;
-            const description = document.getElementById("productDescription")?.value || "";
-
-            try {
-                const response = await fetch(`${API_URL}/products`, {
-                    method: "POST",
-                    headers: getAuthHeaders(),
-                    body: JSON.stringify({ productId, name, price, category, stock, description })
-                });
-
-                const result = await response.json();
-
-                if (response.ok) {
-                    alert("Product added successfully!");
-                    addProductForm.reset();
-                    if (typeof loadProducts === "function") loadProducts(); // Refresh product list
-                } else {
-                    alert(`Error: ${result.message || "Could not add product"}`);
-                }
-            } catch (error) {
-                console.error("Failed to post product:", error);
-                alert("Network error: Could not connect to API.");
-            }
-        });
-    }
-
-});
-
         /*
         ====================================================
         START APPLICATION
