@@ -1,0 +1,274 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Northstar Market serverless ecommerce platform
+Parameters:
+  AdminUsername:
+    Type: String
+    Default: eyong
+  AdminPassword:
+    Type: String
+    NoEcho: true
+  AdminEmail:
+    Type: String
+    Default: admin@example.com
+  FrontendOrigin:
+    Type: String
+    Default: '*'
+  MomoSubscriptionKey:
+    Type: String
+    Default: ''
+    NoEcho: true
+  MomoApiUser:
+    Type: String
+    Default: ''
+    NoEcho: true
+  MomoApiKey:
+    Type: String
+    Default: ''
+    NoEcho: true
+  MomoBaseUrl:
+    Type: String
+    Default: https://sandbox.momodeveloper.mtn.com
+Globals:
+  Function:
+    Runtime: nodejs24.x
+    Timeout: 15
+    MemorySize: 256
+    Environment:
+      Variables:
+        TABLE_NAME:
+          Ref: EcommerceTable
+        ADMIN_TABLE_NAME:
+          Ref: AdminTable
+        ALLOWED_ORIGIN:
+          Ref: FrontendOrigin
+        ADMIN_USERNAME:
+          Ref: AdminUsername
+        ADMIN_PASSWORD:
+          Ref: AdminPassword
+        ADMIN_EMAIL:
+          Ref: AdminEmail
+        MOMO_BASE_URL:
+          Ref: MomoBaseUrl
+        MOMO_COLLECTION_SUBSCRIPTION_KEY:
+          Ref: MomoSubscriptionKey
+        MOMO_API_USER:
+          Ref: MomoApiUser
+        MOMO_API_KEY:
+          Ref: MomoApiKey
+Resources:
+  EcommerceTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+      - AttributeName: entityType
+        AttributeType: S
+      - AttributeName: entityId
+        AttributeType: S
+      KeySchema:
+      - AttributeName: entityType
+        KeyType: HASH
+      - AttributeName: entityId
+        KeyType: RANGE
+  AdminTable:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+      - AttributeName: entityType
+        AttributeType: S
+      - AttributeName: entityId
+        AttributeType: S
+      KeySchema:
+      - AttributeName: entityType
+        KeyType: HASH
+      - AttributeName: entityId
+        KeyType: RANGE
+  CatalogFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: 
+        s3://cdk-hnb659fds-assets-793593623274-us-east-1/597e06ceb787c741199b141e5c1297f5
+      Handler: index.catalogRouter
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: EcommerceTable
+      Events:
+        ListProducts:
+          Type: Api
+          Properties:
+            Path: /api/products
+            Method: get
+            RestApiId:
+              Ref: EcommerceApi
+        GetProduct:
+          Type: Api
+          Properties:
+            Path: /api/products/{id}
+            Method: get
+            RestApiId:
+              Ref: EcommerceApi
+        CreateProduct:
+          Type: Api
+          Properties:
+            Path: /api/products
+            Method: post
+            RestApiId:
+              Ref: EcommerceApi
+        UpdateProduct:
+          Type: Api
+          Properties:
+            Path: /api/products/{id}
+            Method: put
+            RestApiId:
+              Ref: EcommerceApi
+        DeleteProduct:
+          Type: Api
+          Properties:
+            Path: /api/products/{id}
+            Method: delete
+            RestApiId:
+              Ref: EcommerceApi
+  AuthFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: 
+        s3://cdk-hnb659fds-assets-793593623274-us-east-1/597e06ceb787c741199b141e5c1297f5
+      Handler: index.authRouter
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: EcommerceTable
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: AdminTable
+      Events:
+        Login:
+          Type: Api
+          Properties:
+            Path: /api/admin/login
+            Method: post
+            RestApiId:
+              Ref: EcommerceApi
+        Register:
+          Type: Api
+          Properties:
+            Path: /api/admin/register
+            Method: post
+            RestApiId:
+              Ref: EcommerceApi
+  OrdersFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: 
+        s3://cdk-hnb659fds-assets-793593623274-us-east-1/597e06ceb787c741199b141e5c1297f5
+      Handler: index.ordersRouter
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: EcommerceTable
+      Events:
+        CreateOrder:
+          Type: Api
+          Properties:
+            Path: /api/orders
+            Method: post
+            RestApiId:
+              Ref: EcommerceApi
+        ListOrders:
+          Type: Api
+          Properties:
+            Path: /api/orders
+            Method: get
+            RestApiId:
+              Ref: EcommerceApi
+  MomoFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: 
+        s3://cdk-hnb659fds-assets-793593623274-us-east-1/597e06ceb787c741199b141e5c1297f5
+      Handler: index.momoRouter
+      Policies:
+      - DynamoDBCrudPolicy:
+          TableName:
+            Ref: EcommerceTable
+      Events:
+        InitiateMomo:
+          Type: Api
+          Properties:
+            Path: /api/payments/momo
+            Method: post
+            RestApiId:
+              Ref: EcommerceApi
+        MomoStatus:
+          Type: Api
+          Properties:
+            Path: /api/payments/momo/{reference}
+            Method: get
+            RestApiId:
+              Ref: EcommerceApi
+  EcommerceApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: prod
+      Cors:
+        AllowOrigin:
+          Fn::Sub: "'${FrontendOrigin}'"
+        AllowHeaders: "'Content-Type'"
+        AllowMethods: "'GET,POST,PUT,DELETE,OPTIONS'"
+  FrontendBucket:
+    Type: AWS::S3::Bucket
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      WebsiteConfiguration:
+        IndexDocument: index.html
+        ErrorDocument: index.html
+      PublicAccessBlockConfiguration:
+        BlockPublicAcls: false
+        BlockPublicPolicy: false
+        IgnorePublicAcls: false
+        RestrictPublicBuckets: false
+  FrontendBucketPolicy:
+    Type: AWS::S3::BucketPolicy
+    Properties:
+      Bucket:
+        Ref: FrontendBucket
+      PolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+        - Effect: Allow
+          Principal: '*'
+          Action: s3:GetObject
+          Resource:
+            Fn::Sub: ${FrontendBucket.Arn}/*
+Outputs:
+  ApiUrl:
+    Description: API Gateway URL to place in FrontEnd/index.html
+    Value:
+      Fn::Sub: 
+        https://${EcommerceApi}.execute-api.${AWS::Region}.amazonaws.com/prod/api
+  FrontendBucketName:
+    Description: S3 bucket for the static frontend
+    Value:
+      Ref: FrontendBucket
+  FrontendWebsiteUrl:
+    Description: S3 static website URL
+    Value:
+      Fn::GetAtt:
+      - FrontendBucket
+      - WebsiteURL
+  DynamoTableName:
+    Description: DynamoDB table storing products and orders
+    Value:
+      Ref: EcommerceTable
+  AdminTableName:
+    Description: Dedicated DynamoDB table storing admin accounts
+    Value:
+      Ref: AdminTable

@@ -1,0 +1,2885 @@
+{
+ "Resources": {
+  "EcommerceTableL1": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "entityType",
+      "AttributeType": "S"
+     },
+     {
+      "AttributeName": "entityId",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "KeySchema": [
+     {
+      "AttributeName": "entityType",
+      "KeyType": "HASH"
+     },
+     {
+      "AttributeName": "entityId",
+      "KeyType": "RANGE"
+     }
+    ],
+    "PointInTimeRecoverySpecification": {
+     "PointInTimeRecoveryEnabled": false
+    },
+    "TableName": "northstar-market-data"
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceTableL1"
+   }
+  },
+  "AdminTableL1": {
+   "Type": "AWS::DynamoDB::Table",
+   "Properties": {
+    "AttributeDefinitions": [
+     {
+      "AttributeName": "entityType",
+      "AttributeType": "S"
+     },
+     {
+      "AttributeName": "entityId",
+      "AttributeType": "S"
+     }
+    ],
+    "BillingMode": "PAY_PER_REQUEST",
+    "KeySchema": [
+     {
+      "AttributeName": "entityType",
+      "KeyType": "HASH"
+     },
+     {
+      "AttributeName": "entityId",
+      "KeyType": "RANGE"
+     }
+    ],
+    "TableName": "northstar-market-admins"
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/AdminTableL1"
+   }
+  },
+  "CatalogFunctionL2ServiceRole7D4D4495": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/CatalogFunctionL2/ServiceRole/Resource"
+   }
+  },
+  "CatalogFunctionL2ServiceRoleDefaultPolicy8BA9FBFF": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:GetItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:Query",
+        "dynamodb:TransactWriteItems"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:",
+          {
+           "Ref": "AWS::Partition"
+          },
+          ":dynamodb:us-east-1:793593623274:",
+          {
+           "Ref": "EcommerceTableL1"
+          }
+         ]
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "CatalogFunctionL2ServiceRoleDefaultPolicy8BA9FBFF",
+    "Roles": [
+     {
+      "Ref": "CatalogFunctionL2ServiceRole7D4D4495"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/CatalogFunctionL2/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "CatalogFunctionL2E79F397D": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-793593623274-us-east-1",
+     "S3Key": "ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "EcommerceTableL1"
+      },
+      "ADMIN_TABLE_NAME": {
+       "Ref": "AdminTableL1"
+      },
+      "ALLOWED_ORIGIN": "*",
+      "ADMIN_USERNAME": "eyong",
+      "ADMIN_PASSWORD": {
+       "Ref": "AdminPassword"
+      },
+      "ADMIN_EMAIL": "admin@example.com"
+     }
+    },
+    "Handler": "index.catalogRouter",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "CatalogFunctionL2ServiceRole7D4D4495",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs24.x",
+    "Timeout": 15
+   },
+   "DependsOn": [
+    "CatalogFunctionL2ServiceRoleDefaultPolicy8BA9FBFF",
+    "CatalogFunctionL2ServiceRole7D4D4495"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/CatalogFunctionL2/Resource",
+    "aws:asset:path": "asset.ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "AuthFunctionL2ServiceRole1237B05A": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/AuthFunctionL2/ServiceRole/Resource"
+   }
+  },
+  "AuthFunctionL2ServiceRoleDefaultPolicyC14EE58B": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:GetItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:Query",
+        "dynamodb:TransactWriteItems"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:",
+          {
+           "Ref": "AWS::Partition"
+          },
+          ":dynamodb:us-east-1:793593623274:",
+          {
+           "Ref": "EcommerceTableL1"
+          }
+         ]
+        ]
+       }
+      },
+      {
+       "Action": [
+        "dynamodb:GetItem",
+        "dynamodb:PutItem"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:",
+          {
+           "Ref": "AWS::Partition"
+          },
+          ":dynamodb:us-east-1:793593623274:",
+          {
+           "Ref": "AdminTableL1"
+          }
+         ]
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "AuthFunctionL2ServiceRoleDefaultPolicyC14EE58B",
+    "Roles": [
+     {
+      "Ref": "AuthFunctionL2ServiceRole1237B05A"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/AuthFunctionL2/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "AuthFunctionL239420C88": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-793593623274-us-east-1",
+     "S3Key": "ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "EcommerceTableL1"
+      },
+      "ADMIN_TABLE_NAME": {
+       "Ref": "AdminTableL1"
+      },
+      "ALLOWED_ORIGIN": "*",
+      "ADMIN_USERNAME": "eyong",
+      "ADMIN_PASSWORD": {
+       "Ref": "AdminPassword"
+      },
+      "ADMIN_EMAIL": "admin@example.com"
+     }
+    },
+    "Handler": "index.authRouter",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "AuthFunctionL2ServiceRole1237B05A",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs24.x",
+    "Timeout": 15
+   },
+   "DependsOn": [
+    "AuthFunctionL2ServiceRoleDefaultPolicyC14EE58B",
+    "AuthFunctionL2ServiceRole1237B05A"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/AuthFunctionL2/Resource",
+    "aws:asset:path": "asset.ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "OrdersFunctionL2ServiceRole145E8BB9": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/OrdersFunctionL2/ServiceRole/Resource"
+   }
+  },
+  "OrdersFunctionL2ServiceRoleDefaultPolicy0EDF2F53": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "dynamodb:GetItem",
+        "dynamodb:PutItem",
+        "dynamodb:UpdateItem",
+        "dynamodb:DeleteItem",
+        "dynamodb:Query",
+        "dynamodb:TransactWriteItems"
+       ],
+       "Effect": "Allow",
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          "arn:",
+          {
+           "Ref": "AWS::Partition"
+          },
+          ":dynamodb:us-east-1:793593623274:",
+          {
+           "Ref": "EcommerceTableL1"
+          }
+         ]
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "OrdersFunctionL2ServiceRoleDefaultPolicy0EDF2F53",
+    "Roles": [
+     {
+      "Ref": "OrdersFunctionL2ServiceRole145E8BB9"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/OrdersFunctionL2/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "OrdersFunctionL210F4E487": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-793593623274-us-east-1",
+     "S3Key": "ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "EcommerceTableL1"
+      },
+      "ADMIN_TABLE_NAME": {
+       "Ref": "AdminTableL1"
+      },
+      "ALLOWED_ORIGIN": "*",
+      "ADMIN_USERNAME": "eyong",
+      "ADMIN_PASSWORD": {
+       "Ref": "AdminPassword"
+      },
+      "ADMIN_EMAIL": "admin@example.com"
+     }
+    },
+    "Handler": "index.ordersRouter",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "OrdersFunctionL2ServiceRole145E8BB9",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs24.x",
+    "Timeout": 15
+   },
+   "DependsOn": [
+    "OrdersFunctionL2ServiceRoleDefaultPolicy0EDF2F53",
+    "OrdersFunctionL2ServiceRole145E8BB9"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/OrdersFunctionL2/Resource",
+    "aws:asset:path": "asset.ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "MomoFunctionL2ServiceRole2B5CC7D1": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/MomoFunctionL2/ServiceRole/Resource"
+   }
+  },
+  "MomoFunctionL265DC54AD": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-793593623274-us-east-1",
+     "S3Key": "ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "TABLE_NAME": {
+       "Ref": "EcommerceTableL1"
+      },
+      "ADMIN_TABLE_NAME": {
+       "Ref": "AdminTableL1"
+      },
+      "ALLOWED_ORIGIN": "*",
+      "ADMIN_USERNAME": "eyong",
+      "ADMIN_PASSWORD": {
+       "Ref": "AdminPassword"
+      },
+      "ADMIN_EMAIL": "admin@example.com",
+      "MOMO_BASE_URL": "https://sandbox.momodeveloper.mtn.com",
+      "MOMO_COLLECTION_SUBSCRIPTION_KEY": {
+       "Ref": "MomoSubscriptionKey"
+      },
+      "MOMO_API_USER": {
+       "Ref": "MomoApiUser"
+      },
+      "MOMO_API_KEY": {
+       "Ref": "MomoApiKey"
+      }
+     }
+    },
+    "Handler": "index.momoRouter",
+    "MemorySize": 256,
+    "Role": {
+     "Fn::GetAtt": [
+      "MomoFunctionL2ServiceRole2B5CC7D1",
+      "Arn"
+     ]
+    },
+    "Runtime": "nodejs24.x",
+    "Timeout": 15
+   },
+   "DependsOn": [
+    "MomoFunctionL2ServiceRole2B5CC7D1"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/MomoFunctionL2/Resource",
+    "aws:asset:path": "asset.ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "EcommerceApiL225C34F81": {
+   "Type": "AWS::ApiGateway::RestApi",
+   "Properties": {
+    "Name": "Northstar Market API"
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Resource"
+   }
+  },
+  "EcommerceApiL2CloudWatchRoleC6C9162F": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "apigateway.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AmazonAPIGatewayPushToCloudWatchLogs"
+       ]
+      ]
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/CloudWatchRole/Resource"
+   }
+  },
+  "EcommerceApiL2AccountC5425AAC": {
+   "Type": "AWS::ApiGateway::Account",
+   "Properties": {
+    "CloudWatchRoleArn": {
+     "Fn::GetAtt": [
+      "EcommerceApiL2CloudWatchRoleC6C9162F",
+      "Arn"
+     ]
+    }
+   },
+   "DependsOn": [
+    "EcommerceApiL225C34F81"
+   ],
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Account"
+   }
+  },
+  "EcommerceApiL2Deployment7B4DF47E22ebe0b0158cb9078491d7f77008f9f1": {
+   "Type": "AWS::ApiGateway::Deployment",
+   "Properties": {
+    "Description": "Automatically created by the RestApi construct",
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "DependsOn": [
+    "EcommerceApiL2apiadminloginOPTIONSAC0AFB50",
+    "EcommerceApiL2apiadminloginPOSTF38DC37F",
+    "EcommerceApiL2apiadminloginCB69DD59",
+    "EcommerceApiL2apiadminOPTIONS52BADE62",
+    "EcommerceApiL2apiadminregisterOPTIONS36D002AD",
+    "EcommerceApiL2apiadminregisterPOST8C8A50C0",
+    "EcommerceApiL2apiadminregisterE0C19520",
+    "EcommerceApiL2apiadminE15C1968",
+    "EcommerceApiL2apiOPTIONSD8CF7108",
+    "EcommerceApiL2apiordersGET08A15331",
+    "EcommerceApiL2apiordersOPTIONSBFE4F520",
+    "EcommerceApiL2apiordersPOST698DCB64",
+    "EcommerceApiL2apiorders5D8E2DA5",
+    "EcommerceApiL2apipaymentsmomoreferenceGET8170132F",
+    "EcommerceApiL2apipaymentsmomoreferenceOPTIONS5AD6681F",
+    "EcommerceApiL2apipaymentsmomoreference98E1CED4",
+    "EcommerceApiL2apipaymentsmomoOPTIONSEDA7BD03",
+    "EcommerceApiL2apipaymentsmomoPOST0DC7F68D",
+    "EcommerceApiL2apipaymentsmomo4B00CD0A",
+    "EcommerceApiL2apipaymentsOPTIONS2B01564E",
+    "EcommerceApiL2apipayments94B449CE",
+    "EcommerceApiL2apiproductsidDELETEAAB312B8",
+    "EcommerceApiL2apiproductsidGET0AD1562A",
+    "EcommerceApiL2apiproductsidOPTIONSE539817E",
+    "EcommerceApiL2apiproductsidPUTDE7AF84B",
+    "EcommerceApiL2apiproductsidB1912DB8",
+    "EcommerceApiL2apiproductsGETE4884027",
+    "EcommerceApiL2apiproductsOPTIONSFC050928",
+    "EcommerceApiL2apiproductsPOST936E6248",
+    "EcommerceApiL2apiproducts74C2F11C",
+    "EcommerceApiL2apiEB04FFB3",
+    "EcommerceApiL2OPTIONS03DA6AD4"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Deployment/Resource",
+    "aws:cdk:do-not-refactor": true
+   }
+  },
+  "EcommerceApiL2DeploymentStageprod3F9E500F": {
+   "Type": "AWS::ApiGateway::Stage",
+   "Properties": {
+    "DeploymentId": {
+     "Ref": "EcommerceApiL2Deployment7B4DF47E22ebe0b0158cb9078491d7f77008f9f1"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    },
+    "StageName": "prod"
+   },
+   "DependsOn": [
+    "EcommerceApiL2AccountC5425AAC"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/DeploymentStage.prod/Resource"
+   }
+  },
+  "EcommerceApiL2OPTIONS03DA6AD4": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'GET,POST,PUT,DELETE,OPTIONS'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Fn::GetAtt": [
+      "EcommerceApiL225C34F81",
+      "RootResourceId"
+     ]
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/OPTIONS/Resource"
+   }
+  },
+  "EcommerceApiL2apiEB04FFB3": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Fn::GetAtt": [
+      "EcommerceApiL225C34F81",
+      "RootResourceId"
+     ]
+    },
+    "PathPart": "api",
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/Resource"
+   }
+  },
+  "EcommerceApiL2apiOPTIONSD8CF7108": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'GET,POST,PUT,DELETE,OPTIONS'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiEB04FFB3"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/OPTIONS/Resource"
+   }
+  },
+  "EcommerceApiL2apiproducts74C2F11C": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "EcommerceApiL2apiEB04FFB3"
+    },
+    "PathPart": "products",
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/Resource"
+   }
+  },
+  "EcommerceApiL2apiproductsOPTIONSFC050928": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'GET,POST,PUT,DELETE,OPTIONS'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiproducts74C2F11C"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/OPTIONS/Resource"
+   }
+  },
+  "EcommerceApiL2apiproductsidB1912DB8": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "EcommerceApiL2apiproducts74C2F11C"
+    },
+    "PathPart": "{id}",
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/Resource"
+   }
+  },
+  "EcommerceApiL2apiproductsidOPTIONSE539817E": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'GET,POST,PUT,DELETE,OPTIONS'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiproductsidB1912DB8"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/OPTIONS/Resource"
+   }
+  },
+  "EcommerceApiL2apiproductsidGETApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiproductsidFA8F8C6E": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "CatalogFunctionL2E79F397D",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/",
+       {
+        "Ref": "EcommerceApiL2DeploymentStageprod3F9E500F"
+       },
+       "/GET/api/products/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.products.{id}"
+   }
+  },
+  "EcommerceApiL2apiproductsidGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiproductsid35023EC2": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "CatalogFunctionL2E79F397D",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/test-invoke-stage/GET/api/products/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.products.{id}"
+   }
+  },
+  "EcommerceApiL2apiproductsidGET0AD1562A": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "CatalogFunctionL2E79F397D",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiproductsidB1912DB8"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/GET/Resource"
+   }
+  },
+  "EcommerceApiL2apiproductsidPUTApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FPUTapiproductsidCE9B97A8": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "CatalogFunctionL2E79F397D",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/",
+       {
+        "Ref": "EcommerceApiL2DeploymentStageprod3F9E500F"
+       },
+       "/PUT/api/products/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/PUT/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.PUT..api.products.{id}"
+   }
+  },
+  "EcommerceApiL2apiproductsidPUTApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FPUTapiproductsid8E99E5C1": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "CatalogFunctionL2E79F397D",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/test-invoke-stage/PUT/api/products/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/PUT/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.PUT..api.products.{id}"
+   }
+  },
+  "EcommerceApiL2apiproductsidPUTDE7AF84B": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "PUT",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "CatalogFunctionL2E79F397D",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiproductsidB1912DB8"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/PUT/Resource"
+   }
+  },
+  "EcommerceApiL2apiproductsidDELETEApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FDELETEapiproductsidCE51B136": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "CatalogFunctionL2E79F397D",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/",
+       {
+        "Ref": "EcommerceApiL2DeploymentStageprod3F9E500F"
+       },
+       "/DELETE/api/products/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/DELETE/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.DELETE..api.products.{id}"
+   }
+  },
+  "EcommerceApiL2apiproductsidDELETEApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FDELETEapiproductsidDA3819C9": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "CatalogFunctionL2E79F397D",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/test-invoke-stage/DELETE/api/products/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/DELETE/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.DELETE..api.products.{id}"
+   }
+  },
+  "EcommerceApiL2apiproductsidDELETEAAB312B8": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "DELETE",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "CatalogFunctionL2E79F397D",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiproductsidB1912DB8"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/DELETE/Resource"
+   }
+  },
+  "EcommerceApiL2apiproductsGETApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiproductsC46C08AA": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "CatalogFunctionL2E79F397D",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/",
+       {
+        "Ref": "EcommerceApiL2DeploymentStageprod3F9E500F"
+       },
+       "/GET/api/products"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.products"
+   }
+  },
+  "EcommerceApiL2apiproductsGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiproducts21525BFD": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "CatalogFunctionL2E79F397D",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/test-invoke-stage/GET/api/products"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.products"
+   }
+  },
+  "EcommerceApiL2apiproductsGETE4884027": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "CatalogFunctionL2E79F397D",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiproducts74C2F11C"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/GET/Resource"
+   }
+  },
+  "EcommerceApiL2apiproductsPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiproducts2150D48A": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "CatalogFunctionL2E79F397D",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/",
+       {
+        "Ref": "EcommerceApiL2DeploymentStageprod3F9E500F"
+       },
+       "/POST/api/products"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.products"
+   }
+  },
+  "EcommerceApiL2apiproductsPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiproducts5BCF8E23": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "CatalogFunctionL2E79F397D",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/test-invoke-stage/POST/api/products"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.products"
+   }
+  },
+  "EcommerceApiL2apiproductsPOST936E6248": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "CatalogFunctionL2E79F397D",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiproducts74C2F11C"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/POST/Resource"
+   }
+  },
+  "EcommerceApiL2apiadminE15C1968": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "EcommerceApiL2apiEB04FFB3"
+    },
+    "PathPart": "admin",
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/Resource"
+   }
+  },
+  "EcommerceApiL2apiadminOPTIONS52BADE62": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'GET,POST,PUT,DELETE,OPTIONS'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiadminE15C1968"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/OPTIONS/Resource"
+   }
+  },
+  "EcommerceApiL2apiadminloginCB69DD59": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "EcommerceApiL2apiadminE15C1968"
+    },
+    "PathPart": "login",
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/login/Resource"
+   }
+  },
+  "EcommerceApiL2apiadminloginOPTIONSAC0AFB50": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'GET,POST,PUT,DELETE,OPTIONS'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiadminloginCB69DD59"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/login/OPTIONS/Resource"
+   }
+  },
+  "EcommerceApiL2apiadminloginPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiadminlogin1739B6CB": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "AuthFunctionL239420C88",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/",
+       {
+        "Ref": "EcommerceApiL2DeploymentStageprod3F9E500F"
+       },
+       "/POST/api/admin/login"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/login/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.admin.login"
+   }
+  },
+  "EcommerceApiL2apiadminloginPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiadminlogin3A86DCB0": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "AuthFunctionL239420C88",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/test-invoke-stage/POST/api/admin/login"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/login/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.admin.login"
+   }
+  },
+  "EcommerceApiL2apiadminloginPOSTF38DC37F": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "AuthFunctionL239420C88",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiadminloginCB69DD59"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/login/POST/Resource"
+   }
+  },
+  "EcommerceApiL2apiadminregisterE0C19520": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "EcommerceApiL2apiadminE15C1968"
+    },
+    "PathPart": "register",
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/register/Resource"
+   }
+  },
+  "EcommerceApiL2apiadminregisterOPTIONS36D002AD": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'GET,POST,PUT,DELETE,OPTIONS'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiadminregisterE0C19520"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/register/OPTIONS/Resource"
+   }
+  },
+  "EcommerceApiL2apiadminregisterPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiadminregister88199FD9": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "AuthFunctionL239420C88",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/",
+       {
+        "Ref": "EcommerceApiL2DeploymentStageprod3F9E500F"
+       },
+       "/POST/api/admin/register"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/register/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.admin.register"
+   }
+  },
+  "EcommerceApiL2apiadminregisterPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiadminregister698BA2BE": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "AuthFunctionL239420C88",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/test-invoke-stage/POST/api/admin/register"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/register/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.admin.register"
+   }
+  },
+  "EcommerceApiL2apiadminregisterPOST8C8A50C0": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "AuthFunctionL239420C88",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiadminregisterE0C19520"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/register/POST/Resource"
+   }
+  },
+  "EcommerceApiL2apiorders5D8E2DA5": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "EcommerceApiL2apiEB04FFB3"
+    },
+    "PathPart": "orders",
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/Resource"
+   }
+  },
+  "EcommerceApiL2apiordersOPTIONSBFE4F520": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'GET,POST,PUT,DELETE,OPTIONS'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiorders5D8E2DA5"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/OPTIONS/Resource"
+   }
+  },
+  "EcommerceApiL2apiordersGETApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiordersBC9DBC32": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "OrdersFunctionL210F4E487",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/",
+       {
+        "Ref": "EcommerceApiL2DeploymentStageprod3F9E500F"
+       },
+       "/GET/api/orders"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.orders"
+   }
+  },
+  "EcommerceApiL2apiordersGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiordersA8E4D4B2": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "OrdersFunctionL210F4E487",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/test-invoke-stage/GET/api/orders"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.orders"
+   }
+  },
+  "EcommerceApiL2apiordersGET08A15331": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "OrdersFunctionL210F4E487",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiorders5D8E2DA5"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/GET/Resource"
+   }
+  },
+  "EcommerceApiL2apiordersPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiorders2746952A": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "OrdersFunctionL210F4E487",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/",
+       {
+        "Ref": "EcommerceApiL2DeploymentStageprod3F9E500F"
+       },
+       "/POST/api/orders"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.orders"
+   }
+  },
+  "EcommerceApiL2apiordersPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiorders20338B06": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "OrdersFunctionL210F4E487",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/test-invoke-stage/POST/api/orders"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.orders"
+   }
+  },
+  "EcommerceApiL2apiordersPOST698DCB64": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "OrdersFunctionL210F4E487",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apiorders5D8E2DA5"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/POST/Resource"
+   }
+  },
+  "EcommerceApiL2apipayments94B449CE": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "EcommerceApiL2apiEB04FFB3"
+    },
+    "PathPart": "payments",
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/Resource"
+   }
+  },
+  "EcommerceApiL2apipaymentsOPTIONS2B01564E": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'GET,POST,PUT,DELETE,OPTIONS'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apipayments94B449CE"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/OPTIONS/Resource"
+   }
+  },
+  "EcommerceApiL2apipaymentsmomo4B00CD0A": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "EcommerceApiL2apipayments94B449CE"
+    },
+    "PathPart": "momo",
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/Resource"
+   }
+  },
+  "EcommerceApiL2apipaymentsmomoOPTIONSEDA7BD03": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'GET,POST,PUT,DELETE,OPTIONS'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apipaymentsmomo4B00CD0A"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/OPTIONS/Resource"
+   }
+  },
+  "EcommerceApiL2apipaymentsmomoPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapipaymentsmomoE6493386": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "MomoFunctionL265DC54AD",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/",
+       {
+        "Ref": "EcommerceApiL2DeploymentStageprod3F9E500F"
+       },
+       "/POST/api/payments/momo"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.payments.momo"
+   }
+  },
+  "EcommerceApiL2apipaymentsmomoPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapipaymentsmomo2D3E1526": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "MomoFunctionL265DC54AD",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/test-invoke-stage/POST/api/payments/momo"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.payments.momo"
+   }
+  },
+  "EcommerceApiL2apipaymentsmomoPOST0DC7F68D": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "POST",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "MomoFunctionL265DC54AD",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apipaymentsmomo4B00CD0A"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/POST/Resource"
+   }
+  },
+  "EcommerceApiL2apipaymentsmomoreference98E1CED4": {
+   "Type": "AWS::ApiGateway::Resource",
+   "Properties": {
+    "ParentId": {
+     "Ref": "EcommerceApiL2apipaymentsmomo4B00CD0A"
+    },
+    "PathPart": "{reference}",
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/{reference}/Resource"
+   }
+  },
+  "EcommerceApiL2apipaymentsmomoreferenceOPTIONS5AD6681F": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "ApiKeyRequired": false,
+    "AuthorizationType": "NONE",
+    "HttpMethod": "OPTIONS",
+    "Integration": {
+     "IntegrationResponses": [
+      {
+       "ResponseParameters": {
+        "method.response.header.Access-Control-Allow-Headers": "'Content-Type'",
+        "method.response.header.Access-Control-Allow-Origin": "'*'",
+        "method.response.header.Access-Control-Allow-Methods": "'GET,POST,PUT,DELETE,OPTIONS'"
+       },
+       "StatusCode": "204"
+      }
+     ],
+     "RequestTemplates": {
+      "application/json": "{ statusCode: 200 }"
+     },
+     "Type": "MOCK"
+    },
+    "MethodResponses": [
+     {
+      "ResponseParameters": {
+       "method.response.header.Access-Control-Allow-Headers": true,
+       "method.response.header.Access-Control-Allow-Origin": true,
+       "method.response.header.Access-Control-Allow-Methods": true
+      },
+      "StatusCode": "204"
+     }
+    ],
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apipaymentsmomoreference98E1CED4"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/{reference}/OPTIONS/Resource"
+   }
+  },
+  "EcommerceApiL2apipaymentsmomoreferenceGETApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapipaymentsmomoreference49577BBE": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "MomoFunctionL265DC54AD",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/",
+       {
+        "Ref": "EcommerceApiL2DeploymentStageprod3F9E500F"
+       },
+       "/GET/api/payments/momo/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/{reference}/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.payments.momo.{reference}"
+   }
+  },
+  "EcommerceApiL2apipaymentsmomoreferenceGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapipaymentsmomoreferenceCD8CAC48": {
+   "Type": "AWS::Lambda::Permission",
+   "Properties": {
+    "Action": "lambda:InvokeFunction",
+    "FunctionName": {
+     "Fn::GetAtt": [
+      "MomoFunctionL265DC54AD",
+      "Arn"
+     ]
+    },
+    "Principal": "apigateway.amazonaws.com",
+    "SourceArn": {
+     "Fn::Join": [
+      "",
+      [
+       "arn:",
+       {
+        "Ref": "AWS::Partition"
+       },
+       ":execute-api:us-east-1:793593623274:",
+       {
+        "Ref": "EcommerceApiL225C34F81"
+       },
+       "/test-invoke-stage/GET/api/payments/momo/*"
+      ]
+     ]
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/{reference}/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.payments.momo.{reference}"
+   }
+  },
+  "EcommerceApiL2apipaymentsmomoreferenceGET8170132F": {
+   "Type": "AWS::ApiGateway::Method",
+   "Properties": {
+    "AuthorizationType": "NONE",
+    "HttpMethod": "GET",
+    "Integration": {
+     "IntegrationHttpMethod": "POST",
+     "Type": "AWS_PROXY",
+     "Uri": {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":apigateway:us-east-1:lambda:path/2015-03-31/functions/",
+        {
+         "Fn::GetAtt": [
+          "MomoFunctionL265DC54AD",
+          "Arn"
+         ]
+        },
+        "/invocations"
+       ]
+      ]
+     }
+    },
+    "ResourceId": {
+     "Ref": "EcommerceApiL2apipaymentsmomoreference98E1CED4"
+    },
+    "RestApiId": {
+     "Ref": "EcommerceApiL225C34F81"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/{reference}/GET/Resource"
+   }
+  },
+  "FrontendBucketL29CFDAF11": {
+   "Type": "AWS::S3::Bucket",
+   "Properties": {
+    "PublicAccessBlockConfiguration": {
+     "BlockPublicAcls": true,
+     "IgnorePublicAcls": true
+    },
+    "Tags": [
+     {
+      "Key": "aws-cdk:cr-owned:a4636ed3",
+      "Value": "true"
+     }
+    ],
+    "WebsiteConfiguration": {
+     "ErrorDocument": "index.html",
+     "IndexDocument": "index.html"
+    }
+   },
+   "UpdateReplacePolicy": "Retain",
+   "DeletionPolicy": "Retain",
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/FrontendBucketL2/Resource"
+   }
+  },
+  "FrontendBucketL2Policy2D4F1DC7": {
+   "Type": "AWS::S3::BucketPolicy",
+   "Properties": {
+    "Bucket": {
+     "Ref": "FrontendBucketL29CFDAF11"
+    },
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": "s3:GetObject",
+       "Effect": "Allow",
+       "Principal": {
+        "AWS": "*"
+       },
+       "Resource": {
+        "Fn::Join": [
+         "",
+         [
+          {
+           "Fn::GetAtt": [
+            "FrontendBucketL29CFDAF11",
+            "Arn"
+           ]
+          },
+          "/*"
+         ]
+        ]
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/FrontendBucketL2/Policy/Resource"
+   }
+  },
+  "FrontendDeploymentL2AwsCliLayerFFB105C6": {
+   "Type": "AWS::Lambda::LayerVersion",
+   "Properties": {
+    "Content": {
+     "S3Bucket": "cdk-hnb659fds-assets-793593623274-us-east-1",
+     "S3Key": "98f62bef9320f8c0a0a7be21d7c746f069131f196f51ffe3008a6bb730b368ec.zip"
+    },
+    "Description": "/opt/awscli/aws"
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/FrontendDeploymentL2/AwsCliLayer/Resource",
+    "aws:asset:path": "asset.98f62bef9320f8c0a0a7be21d7c746f069131f196f51ffe3008a6bb730b368ec.zip",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Content"
+   }
+  },
+  "FrontendDeploymentL2CustomResource0D1AB62B": {
+   "Type": "Custom::CDKBucketDeployment",
+   "Properties": {
+    "ServiceToken": {
+     "Fn::GetAtt": [
+      "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536",
+      "Arn"
+     ]
+    },
+    "SourceBucketNames": [
+     "cdk-hnb659fds-assets-793593623274-us-east-1"
+    ],
+    "SourceObjectKeys": [
+     "f6337638716a783719b1a3f00d90345831595ba97a320dbca98376f78181c0ab.zip"
+    ],
+    "DestinationBucketName": {
+     "Ref": "FrontendBucketL29CFDAF11"
+    },
+    "WaitForDistributionInvalidation": true,
+    "Prune": true,
+    "OutputObjectKeys": true
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/FrontendDeploymentL2/CustomResource/Default"
+   }
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "lambda.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "ManagedPolicyArns": [
+     {
+      "Fn::Join": [
+       "",
+       [
+        "arn:",
+        {
+         "Ref": "AWS::Partition"
+        },
+        ":iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
+       ]
+      ]
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource"
+   }
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF": {
+   "Type": "AWS::IAM::Policy",
+   "Properties": {
+    "PolicyDocument": {
+     "Statement": [
+      {
+       "Action": [
+        "s3:GetObject*",
+        "s3:GetBucket*",
+        "s3:List*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":s3:::cdk-hnb659fds-assets-793593623274-us-east-1"
+          ]
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           "arn:",
+           {
+            "Ref": "AWS::Partition"
+           },
+           ":s3:::cdk-hnb659fds-assets-793593623274-us-east-1/*"
+          ]
+         ]
+        }
+       ]
+      },
+      {
+       "Action": [
+        "s3:GetObject*",
+        "s3:GetBucket*",
+        "s3:List*",
+        "s3:DeleteObject*",
+        "s3:PutObject",
+        "s3:PutObjectLegalHold",
+        "s3:PutObjectRetention",
+        "s3:PutObjectTagging",
+        "s3:PutObjectVersionTagging",
+        "s3:Abort*"
+       ],
+       "Effect": "Allow",
+       "Resource": [
+        {
+         "Fn::GetAtt": [
+          "FrontendBucketL29CFDAF11",
+          "Arn"
+         ]
+        },
+        {
+         "Fn::Join": [
+          "",
+          [
+           {
+            "Fn::GetAtt": [
+             "FrontendBucketL29CFDAF11",
+             "Arn"
+            ]
+           },
+           "/*"
+          ]
+         ]
+        }
+       ]
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "PolicyName": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+    "Roles": [
+     {
+      "Ref": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource"
+   }
+  },
+  "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536": {
+   "Type": "AWS::Lambda::Function",
+   "Properties": {
+    "Code": {
+     "S3Bucket": "cdk-hnb659fds-assets-793593623274-us-east-1",
+     "S3Key": "97e9ebf0b174a5c8f7faa505739022b7f509edddffcab9211dcd08b759944c4f.zip"
+    },
+    "Environment": {
+     "Variables": {
+      "AWS_CA_BUNDLE": "/etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem"
+     }
+    },
+    "Handler": "index.handler",
+    "Layers": [
+     {
+      "Ref": "FrontendDeploymentL2AwsCliLayerFFB105C6"
+     }
+    ],
+    "Role": {
+     "Fn::GetAtt": [
+      "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265",
+      "Arn"
+     ]
+    },
+    "Runtime": "python3.13",
+    "Timeout": 900
+   },
+   "DependsOn": [
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF",
+    "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource",
+    "aws:asset:path": "asset.97e9ebf0b174a5c8f7faa505739022b7f509edddffcab9211dcd08b759944c4f",
+    "aws:asset:is-bundled": false,
+    "aws:asset:property": "Code"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/22RTU/DMAyGfwv3LIyBJnHsijiBmDrEtXJTr2TLR1U7VFXV/46Slm0HTn5e2/JrJxu52W7l+g56Wqn6vDK6kuOBQZ0F9FSO9eDA+rqS+dF9QmVQGLBVDXJ8DU6x9k7kR3fLe+ysJlrUGwzYfWGX9EG7xiD7S/8kNFg5Ft5gbE5x741WQ5qUaBL0WI5AhEwyi0HU2Bo/WHQsd0GdkV8uidgtxzm7A0IxYxy30ByuLrd6EtDqBhh7GORYIHHW6rTZFTOlfHAsrp4xe6MODE06Z4YCyYdOYdrmHfnb17G40F91MUk8Tel66MAiYyfS0XGYdk2sfARuAy8fUZr4wiX0pIyWWU+50enRRR6Ivf3XQDhfozzR/c/mST48y/XdibRedcGxtiiLOf4CozCVoBwCAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "NorthstarMarketCdkStack/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "AdminPassword": {
+   "Type": "String",
+   "Description": "Demo admin password. Supply a strong value at deploy time.",
+   "NoEcho": true
+  },
+  "MomoSubscriptionKey": {
+   "Type": "String",
+   "NoEcho": true
+  },
+  "MomoApiUser": {
+   "Type": "String",
+   "NoEcho": true
+  },
+  "MomoApiKey": {
+   "Type": "String",
+   "NoEcho": true
+  },
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Outputs": {
+  "EcommerceApiL2Endpoint63213A05": {
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "EcommerceApiL225C34F81"
+      },
+      ".execute-api.us-east-1.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "EcommerceApiL2DeploymentStageprod3F9E500F"
+      },
+      "/"
+     ]
+    ]
+   }
+  },
+  "ApiUrl": {
+   "Description": "API Gateway URL for FrontEnd/index.html",
+   "Value": {
+    "Fn::Join": [
+     "",
+     [
+      "https://",
+      {
+       "Ref": "EcommerceApiL225C34F81"
+      },
+      ".execute-api.us-east-1.",
+      {
+       "Ref": "AWS::URLSuffix"
+      },
+      "/",
+      {
+       "Ref": "EcommerceApiL2DeploymentStageprod3F9E500F"
+      },
+      "/api"
+     ]
+    ]
+   }
+  },
+  "FrontendWebsiteUrl": {
+   "Value": {
+    "Fn::GetAtt": [
+     "FrontendBucketL29CFDAF11",
+     "WebsiteURL"
+    ]
+   }
+  },
+  "FrontendBucketName": {
+   "Value": {
+    "Ref": "FrontendBucketL29CFDAF11"
+   }
+  },
+  "DynamoTableName": {
+   "Value": {
+    "Ref": "EcommerceTableL1"
+   }
+  },
+  "AdminTableName": {
+   "Value": {
+    "Ref": "AdminTableL1"
+   }
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}
