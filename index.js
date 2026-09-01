@@ -3,7 +3,8 @@ const Product = require("./Product");
 const Customer = require("./Customer");
 const Admin = require("./Admin")
 const Payment = require("./Payment");
-const ECommerceSystem = require("./ECommerceSystem");
+const ECommerceSystem = require("./EcommerceSystem");
+const Checkout = require("./Checkout");
 // readLine Configuration
 const rl = readline.createInterface({
     input: process.stdin,
@@ -180,9 +181,12 @@ function addProductToCart() {
 
             }
 
-            if (qty > product.stock) {
+            const cartItem = customer.shoppingCart.items.find(item => item.product.productId === product.productId);
+            const currentInCart = cartItem ? cartItem.quantity : 0;
 
-                console.log(`\n Only ${product.stock} item(s) available.`);
+            if (qty + currentInCart > product.stock) {
+
+                console.log(`\n Only ${product.stock - currentInCart} additional item(s) available.`);
 
                 return customerMenu();
 
@@ -210,16 +214,14 @@ function removeProductFromCart(){
     rl.question("\n Enter Product Id to remove: ", id =>{
         const productId = Number(id);
         const exists = customer.shoppingCart.items.some(
-            item =>{
-                item.product.productId ===productId
-            }
-        )
+            item => item.product.productId === productId
+        );
         if(!exists){
             console.log("\n This product is not in your cart.");
             return customerMenu();
         }
         customer.shoppingCart.removeProduct(productId);
-        console.log("\n product removed from your cart successfully ");
+        console.log("\n Product removed from your cart successfully ");
         customerMenu();
     })
 
@@ -232,7 +234,7 @@ function viewOrderHistory(){
     console.log("========== Order History ==========");
     const orders = customer.viewOrders();
     if(orders.length === 0){
-        console.log("You have not place any orders yet");
+        console.log("You have not placed any orders yet");
         return;
     }
     orders.forEach((order, index) => {
@@ -261,7 +263,7 @@ function checkout() {
 
     rl.question("\nEnter Customer Name: ", (name) => {
         if(name.trim() ===""){
-            console.log("\n customer name cannot be empty");
+            console.log("\n Customer name cannot be empty");
             return customerMenu();
         }
         const total = customer.shoppingCart.getTotal();
@@ -279,44 +281,39 @@ function checkout() {
                 console.log("=================================");
                 console.log("Payment Failed");
                 console.log("=================================");
-                console.log(`customer Name: ${name}`)
+                console.log(`Customer Name: ${name}`)
                 console.log(`Required: $${total}`)
                 console.log(`Amount Entered: $${amount}`);
                 console.log("Error:  Incorrect payment amount")
-                console.log("please try again.")
+                console.log("Please try again.")
                 console.log("=================================");
                 return customerMenu();
              }
-             //Create order (construct simple order object)
-             const order = {
-                 orderId: Date.now(),
-                 customer,
-                 items: [...customer.shoppingCart.items],
-                 status: "Processing",
-                 calculateTotal: () => total
-             };
-             
-             //Create Payment
 
+             // Perform checkout using Checkout class
+             const order = Checkout.checkout(customer);
+             order.completeOrder();
+
+             // Create Payment
              const payment = new Payment(Date.now(), order, "Cash");
              payment.processPayment();
 
-             //Add Order to System
+             // Add Order to System
              system.addOrder(order);
 
-             //Display reciept
+             // Display receipt
              console.log("\n");
              console.log("=================================");
-             console.log("Pament Reciept")
+             console.log("Payment Receipt")
              console.log("=================================");
              console.log(`Customer Name: ${name}`);
              console.log(`Order Id: ${order.orderId}`);
              console.log(`Amount Paid: $${amount}`);
              console.log(`Payment Method: Cash`)
              console.log(`Payment Status: ${payment.status}`);
-             console.log(`Order Satus: ${order.status}`);
+             console.log(`Order Status: ${order.status}`);
              console.log("=================================");
-             console.log("Thank you for your ourchase!");
+             console.log("Thank you for your purchase!");
              console.log("=================================");
              customerMenu();
 
@@ -535,14 +532,14 @@ function viewAllOrders(){
     console.log("\n")
     console.log("========== All Orders =========")
     if(system.orders.length === 0){
-        console.log("No orders have been place yet");
+        console.log("No orders have been placed yet");
         return;
     }
     system.orders.forEach((order, index) =>{
         console.log("\n----------------------------")
         console.log(`Order Number: ${index + 1}`);
         console.log(`Order Id: ${order.orderId}`)
-        console.log(`Customer: ${order.customer.name}`);
+        console.log(`Customer: ${order.customer?.name || 'Unknown'}`);
         console.log(`Status: ${order.status}`);
         console.log(`Total: $${order.calculateTotal()}`);
         console.log("\n----------------------------")

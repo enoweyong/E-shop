@@ -4,16 +4,20 @@ class Order {
     constructor(orderId, customer) {
         this.orderId = orderId;
         this.customer = customer;
-        this.Items = [];
+        this.items = [];
         this.status = 'pending';
     }
 
+    get Items() {
+        return this.items;
+    }
+
     addItem(product, quantity) {
-        this.Items.push(new OrderItem(product, quantity));
+        this.items.push(new OrderItem(product, quantity));
     }
 
     calculateTotal() {
-        return this.Items.reduce((total, item) => total + item.getTotal(), 0);
+        return this.items.reduce((total, item) => total + item.getTotal(), 0);
     }
 
     completeOrder() {
@@ -28,7 +32,7 @@ class Order {
         console.log(`Order ID: ${this.orderId}`);
         console.log(`Customer: ${this.customer?.name ?? 'unknown customer'}`);
         console.log(`Status: ${this.status}`);
-        this.Items.forEach(item => {
+        this.items.forEach(item => {
             console.log(`${item.product?.name ?? 'unknown product'} x ${item.quantity} = $${item.getTotal()}`);
         });
         console.log(`Total: $${this.calculateTotal()}`);
