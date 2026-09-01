@@ -10,11 +10,14 @@ const {
 } = require("@aws-sdk/lib-dynamodb");
 const { DynamoDBClient } = require("@aws-sdk/client-dynamodb");
 const { CognitoIdentityProvider } = require("@aws-sdk/client-cognito-identity-provider");
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 const crypto = require("crypto");
 
 const client = DynamoDBDocumentClient.from(new DynamoDBClient({}));
 const cognito = new CognitoIdentityProvider({ region: process.env.AWS_REGION || "us-east-1" });
+const s3 = new S3Client({ region: process.env.AWS_REGION || "us-east-1" });
 const TABLE_NAME = process.env.TABLE_NAME;
+const IMAGES_BUCKET = process.env.IMAGES_BUCKET;
 const ADMIN_TABLE_NAME = process.env.ADMIN_TABLE_NAME || TABLE_NAME;
 const COGNITO_USER_POOL_ID = process.env.COGNITO_USER_POOL_ID;
 const COGNITO_CLIENT_ID = process.env.COGNITO_CLIENT_ID;
@@ -39,6 +42,30 @@ const productKey = productId => ({ entityType: "PRODUCT", entityId: String(produ
 const orderKey = orderId => ({ entityType: "ORDER", entityId: String(orderId) });
 const adminKey = name => ({ entityType: "ADMIN", entityId: String(name).trim().toLowerCase() });
 const passwordHash = password => crypto.createHash("sha256").update(String(password)).digest("hex");
+
+async function saveProductImageToS3(imageUrl, productId) {
+  if (!imageUrl || !imageUrl.startsWith("data:") || !IMAGES_BUCKET) return imageUrl || "";
+  try {
+    const matches = imageUrl.match(/^data:(image\/[a-zA-Z0-9\+\-]+);base64,(.+)$/);
+    if (!matches) return imageUrl;
+    const contentType = matches[1];
+    const ext = contentType.split("/")[1] || "jpeg";
+    const buffer = Buffer.from(matches[2], "base64");
+    const key = `products/${productId}-${Date.now()}.${ext}`;
+
+    await s3.send(new PutObjectCommand({
+      Bucket: IMAGES_BUCKET,
+      Key: key,
+      Body: buffer,
+      ContentType: contentType
+    }));
+
+    return `https://${IMAGES_BUCKET}.s3.${process.env.AWS_REGION || "us-east-1"}.amazonaws.com/${key}`;
+  } catch (error) {
+    console.error("Error uploading product image to S3:", error);
+    return imageUrl;
+  }
+}
 
 const getAuthenticatedUser = async (event) => {
   const authHeader = event?.headers?.Authorization || event?.headers?.authorization || "";
@@ -89,9 +116,10 @@ exports.createProduct = async event => {
   if (!input || !input.productId || !input.name || input.price === undefined || input.stock === undefined || !input.category) {
     return response(400, { message: "All required fields must be provided" });
   }
+  const s3ImageUrl = await saveProductImageToS3(input.imageUrl, input.productId);
   const product = {
     ...productKey(input.productId), productId: Number(input.productId), name: String(input.name),
-    description: String(input.description || ""), price: Number(input.price), stock: Number(input.stock), category: String(input.category), imageUrl: String(input.imageUrl || ""), ownerName: user.username
+    description: String(input.description || ""), price: Number(input.price), stock: Number(input.stock), category: String(input.category), imageUrl: s3ImageUrl, ownerName: user.username
   };
   if (!Number.isFinite(product.price) || product.price < 0 || !Number.isInteger(product.stock) || product.stock < 0) {
     return response(400, { message: "Price and stock must be valid non-negative values" });
@@ -115,6 +143,9 @@ exports.updateProduct = async event => {
   if (!existing.Item) return response(404, { message: "Product not found" });
   if (existing.Item.ownerName && existing.Item.ownerName !== user.username) return response(403, { message: "You can only manage products you uploaded" });
   const names = {}, values = {}, updates = [];
+  if (input.imageUrl !== undefined) {
+    input.imageUrl = await saveProductImageToS3(input.imageUrl, id);
+  }
   for (const field of ["name", "description", "price", "stock", "category", "imageUrl"]) {
     if (input[field] !== undefined) {
       names[`#${field}`] = field; values[`:${field}`] = field === "price" ? Number(input[field]) : field === "stock" ? Number(input[field]) : String(input[field]);
