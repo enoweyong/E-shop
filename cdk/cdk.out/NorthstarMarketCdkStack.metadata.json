@@ -8,22 +8,6 @@
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceTableL2": [
-    {
-      "type": "aws:cdk:hasPhysicalName",
-      "data": {
-        "Ref": "EcommerceTableL2A5EA5F41"
-      }
-    }
-  ],
-  "/NorthstarMarketCdkStack/AdminTableL2": [
-    {
-      "type": "aws:cdk:hasPhysicalName",
-      "data": {
-        "Ref": "AdminTableL2A29E5531"
-      }
-    }
-  ],
   "/NorthstarMarketCdkStack/AdminPassword": [
     {
       "type": "aws:cdk:logicalId",
@@ -32,7 +16,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:57:23)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:23:27)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
@@ -46,7 +30,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:66:41)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:31:33)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
@@ -60,7 +44,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:67:22)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:42:25)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
@@ -74,20 +58,10 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:68:21)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:49:24)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C": [
-    {
-      "type": "aws:cdk:is-custom-resource-handler-singleton",
-      "data": true
-    },
-    {
-      "type": "aws:cdk:is-custom-resource-handler-runtime-family",
-      "data": 2
     }
   ],
   "/NorthstarMarketCdkStack/ApiUrl": [
@@ -98,7 +72,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:126:5)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1456:5)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
@@ -112,7 +86,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:127:5)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1461:5)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
@@ -126,7 +100,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:128:5)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1466:5)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
@@ -140,7 +114,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:129:5)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1471:5)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
@@ -154,7 +128,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:130:5)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1476:5)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
@@ -168,7 +142,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:131:5)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1481:5)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
@@ -182,7 +156,21 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:132:5)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1486:5)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/Region": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "Region"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1491:5)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
@@ -214,31 +202,31 @@
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceTableL2/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceTable/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceTableL2A5EA5F41"
+      "data": "EcommerceTableE16C9E02"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Table2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:15:19)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:62:28)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/AdminTableL2/Resource": [
+  "/NorthstarMarketCdkStack/AdminTable/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "AdminTableL2A29E5531"
+      "data": "AdminTable76B0C542"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Table2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:24:24)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:85:24)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
@@ -253,7 +241,22 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new UserPool2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:32:22)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:104:27)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/GoogleProvider/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "GoogleProvider566D8493"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new UserPoolIdentityProviderGoogle2 in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:155:28)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
@@ -268,147 +271,129 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new UserPoolClient2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:44:28)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:169:33)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/CatalogFunctionL2/Resource": [
+  "/NorthstarMarketCdkStack/FrontendBucket/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "CatalogFunctionL2E79F397D"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...new Function2 in aws-cdk-lib...",
-        "makeFunction (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:71:43)",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:80:29)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/AuthFunctionL2/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "AuthFunctionL239420C88"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...new Function2 in aws-cdk-lib...",
-        "makeFunction (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:71:43)",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:81:26)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/OrdersFunctionL2/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "OrdersFunctionL210F4E487"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...new Function2 in aws-cdk-lib...",
-        "makeFunction (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:71:43)",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:82:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/MomoFunctionL2/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "MomoFunctionL265DC54AD"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...new Function2 in aws-cdk-lib...",
-        "makeFunction (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:71:43)",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:83:26)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL225C34F81"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...new RestApi2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:97:17)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Account": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2AccountC5425AAC"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...new RestApi2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:97:17)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Endpoint": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2Endpoint63213A05"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...new RestApi2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:97:17)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/FrontendBucketL2/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "FrontendBucketL29CFDAF11"
+      "data": "FrontendBucketEFE2E19C"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Bucket2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:123:21)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:225:28)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/Resource": [
+  "/NorthstarMarketCdkStack/AuthFunction/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C81C01536"
+      "data": "AuthFunctionA1CD5E0F"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "...new BucketDeployment2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:124:5)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "...new Function2 in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:276:26)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/OrdersFunction/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "OrdersFunctionC129706A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:609:28)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/MomoFunction/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "MomoFunctionCD372E19"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:735:26)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/ProductsFunction/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "ProductsFunctionFE1C163A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new Function2 in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:859:30)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApi0765794B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1201:17)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Account": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiAccountABABC107"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1201:17)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Endpoint": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiEndpoint58061A82"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...new RestApi2 in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1201:17)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
       ]
     }
   ],
@@ -425,162 +410,158 @@
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/CatalogFunctionL2/ServiceRole/Resource": [
+  "/NorthstarMarketCdkStack/AdminUserPool/AdminUserPoolDomain/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "CatalogFunctionL2ServiceRole7D4D4495"
+      "data": "AdminUserPoolAdminUserPoolDomain1DAB777B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addDomain in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:137:41)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/FrontendBucket/Policy/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "FrontendBucketPolicy1DFF75D9"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...aws-cdk-lib...",
+        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/AuthFunction/ServiceRole/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "AuthFunctionServiceRole87A7A68C"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Function2 in aws-cdk-lib...",
-        "makeFunction (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:71:43)",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:80:29)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:276:26)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/AuthFunctionL2/ServiceRole/Resource": [
+  "/NorthstarMarketCdkStack/OrdersFunction/ServiceRole/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "AuthFunctionL2ServiceRole1237B05A"
+      "data": "OrdersFunctionServiceRoleA7C5E86F"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Function2 in aws-cdk-lib...",
-        "makeFunction (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:71:43)",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:81:26)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:609:28)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/OrdersFunctionL2/ServiceRole/Resource": [
+  "/NorthstarMarketCdkStack/MomoFunction/ServiceRole/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "OrdersFunctionL2ServiceRole145E8BB9"
+      "data": "MomoFunctionServiceRoleBC7CCB0D"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Function2 in aws-cdk-lib...",
-        "makeFunction (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:71:43)",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:82:28)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:735:26)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/MomoFunctionL2/ServiceRole/Resource": [
+  "/NorthstarMarketCdkStack/ProductsFunction/ServiceRole/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "MomoFunctionL2ServiceRole2B5CC7D1"
+      "data": "ProductsFunctionServiceRole8A7C6128"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Function2 in aws-cdk-lib...",
-        "makeFunction (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:71:43)",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:83:26)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:859:30)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/CloudWatchRole/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/CloudWatchRole/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2CloudWatchRoleC6C9162F"
+      "data": "EcommerceApiCloudWatchRole5A39D867"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:97:17)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1201:17)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Deployment/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Deployment/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2Deployment7B4DF47Ee3a5354eeb0fed6784984d53b5f3d75b"
+      "data": "EcommerceApiDeployment86790CE5f2d703f89ca05517446c06aa089fa696"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:97:17)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1201:17)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/DeploymentStage.prod/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/DeploymentStage.prod/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2DeploymentStageprod3F9E500F"
+      "data": "EcommerceApiDeploymentStageprod2E10F6B0"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:97:17)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1201:17)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/FrontendBucketL2/Policy/Resource": [
+  "/NorthstarMarketCdkStack/AuthFunction/ServiceRole/DefaultPolicy/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "FrontendBucketL2Policy2D4F1DC7"
+      "data": "AuthFunctionServiceRoleDefaultPolicy4198AD5B"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "...aws-cdk-lib...",
-        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/FrontendDeploymentL2/AwsCliLayer/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "FrontendDeploymentL2AwsCliLayerFFB105C6"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...new BucketDeployment2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:124:5)",
+        "...WrappedClass.grant in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:583:19)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/FrontendDeploymentL2/CustomResource/Default": [
+  "/NorthstarMarketCdkStack/OrdersFunction/ServiceRole/DefaultPolicy/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "FrontendDeploymentL2CustomResource0D1AB62B"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...new BucketDeployment2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:124:5)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRole89A01265"
+      "data": "OrdersFunctionServiceRoleDefaultPolicyE0D62EE3"
     },
     {
       "type": "aws:cdk:creationStack",
@@ -590,10 +571,10 @@
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/CatalogFunctionL2/ServiceRole/DefaultPolicy/Resource": [
+  "/NorthstarMarketCdkStack/ProductsFunction/ServiceRole/DefaultPolicy/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "CatalogFunctionL2ServiceRoleDefaultPolicy8BA9FBFF"
+      "data": "ProductsFunctionServiceRoleDefaultPolicy556B46E3"
     },
     {
       "type": "aws:cdk:creationStack",
@@ -603,925 +584,1050 @@
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/AuthFunctionL2/ServiceRole/DefaultPolicy/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/OPTIONS/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "AuthFunctionL2ServiceRoleDefaultPolicyC14EE58B"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...aws-cdk-lib...",
-        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/OrdersFunctionL2/ServiceRole/DefaultPolicy/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "OrdersFunctionL2ServiceRoleDefaultPolicy0EDF2F53"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...aws-cdk-lib...",
-        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/MomoFunctionL2/ServiceRole/DefaultPolicy/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "MomoFunctionL2ServiceRoleDefaultPolicyE502722F"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...aws-cdk-lib...",
-        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/OPTIONS/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2OPTIONS03DA6AD4"
+      "data": "EcommerceApiOPTIONSB9AA6511"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:97:17)"
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1201:17)"
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiEB04FFB3"
+      "data": "EcommerceApiapi81D4D653"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...RootResource.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:105:31)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1248:34)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/Custom::CDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756C/ServiceRole/DefaultPolicy/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/OPTIONS/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "CustomCDKBucketDeployment8693BB64968944B69AAFB0CC9EB8756CServiceRoleDefaultPolicy88902FDF"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...aws-cdk-lib...",
-        "(no user code in 10 frames, use --stack-trace-limit to capture more)"
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/OPTIONS/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiOPTIONSD8CF7108"
+      "data": "EcommerceApiapiOPTIONSB51D1A09"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...RootResource.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:105:31)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1248:34)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproducts74C2F11C"
+      "data": "EcommerceApiapiadminAC15658F"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:105:50)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1256:39)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/products/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminE15C1968"
+      "data": "EcommerceApiapiproducts74D591CC"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:110:47)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1329:42)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/orders/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiorders5D8E2DA5"
+      "data": "EcommerceApiapiordersE5B028C7"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:115:48)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1386:40)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/payments/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apipayments94B449CE"
+      "data": "EcommerceApiapipaymentsFE605896"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:118:46)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1409:19)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/OPTIONS/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/OPTIONS/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsOPTIONSFC050928"
+      "data": "EcommerceApiapiadminOPTIONSE38B2D07"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:105:50)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1256:39)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/login/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsidB1912DB8"
+      "data": "EcommerceApiapiadminlogin1FDC1257"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:106:30)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1262:41)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.products": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/register/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsGETApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiproductsC46C08AA"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:108:14)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.products": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiproducts21525BFD"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:108:14)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/GET/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsGETE4884027"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:108:14)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.products": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiproducts2150D48A"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:108:61)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.products": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiproducts5BCF8E23"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:108:61)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/POST/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsPOST936E6248"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:108:61)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/OPTIONS/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminOPTIONS52BADE62"
+      "data": "EcommerceApiapiadminregister96AFFA69"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:110:47)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1275:44)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/config/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminconfig15D47C9A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1288:42)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/forgot-password/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminforgotpassword3675C116"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1302:21)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/reset-password/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminresetpassword20C903B3"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1316:21)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminproductsADFEE146"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1343:21)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/products/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiproductsOPTIONS364D8EA1"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1329:42)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/config/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/products/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiAB4665AD.GET..api.products": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminconfig9D29317B"
+      "data": "EcommerceApiapiproductsGETApiPermissionNorthstarMarketCdkStackEcommerceApiAB4665ADGETapiproductsB48E354C"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:112:11)",
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1331:22)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/login/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/products/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiAB4665AD.GET..api.products": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminloginCB69DD59"
+      "data": "EcommerceApiapiproductsGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiAB4665ADGETapiproducts6646C4E1"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:113:11)",
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1331:22)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/register/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/products/GET/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminregisterE0C19520"
+      "data": "EcommerceApiapiproductsGET86A0D720"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:114:11)",
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1331:22)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/OPTIONS/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/orders/OPTIONS/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiordersOPTIONSBFE4F520"
+      "data": "EcommerceApiapiordersOPTIONSCD1CE1A8"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:115:48)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1386:40)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.orders": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/orders/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiAB4665AD.GET..api.orders": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiordersGETApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiordersBC9DBC32"
+      "data": "EcommerceApiapiordersGETApiPermissionNorthstarMarketCdkStackEcommerceApiAB4665ADGETapiordersB2275478"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:117:12)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1388:20)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.orders": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/orders/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiAB4665AD.GET..api.orders": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiordersGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiordersA8E4D4B2"
+      "data": "EcommerceApiapiordersGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiAB4665ADGETapiorders9FBEAF0D"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:117:12)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1388:20)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/GET/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/orders/GET/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiordersGET08A15331"
+      "data": "EcommerceApiapiordersGET8951D997"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:117:12)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1388:20)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.orders": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/orders/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiAB4665AD.POST..api.orders": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiordersPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiorders2746952A"
+      "data": "EcommerceApiapiordersPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiAB4665ADPOSTapiordersEB990569"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:117:55)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1395:20)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.orders": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/orders/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiAB4665AD.POST..api.orders": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiordersPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiorders20338B06"
+      "data": "EcommerceApiapiordersPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiAB4665ADPOSTapiorders85C051CF"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:117:55)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1395:20)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/orders/POST/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/orders/POST/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiordersPOST698DCB64"
+      "data": "EcommerceApiapiordersPOST82A27BB5"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:117:55)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1395:20)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/OPTIONS/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/payments/OPTIONS/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apipaymentsOPTIONS2B01564E"
+      "data": "EcommerceApiapipaymentsOPTIONS94131CB9"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:118:46)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1409:19)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/payments/momo/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apipaymentsmomo4B00CD0A"
+      "data": "EcommerceApiapipaymentsmomoCF394367"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:118:70)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1416:24)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/OPTIONS/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/login/OPTIONS/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsidOPTIONSE539817E"
+      "data": "EcommerceApiapiadminloginOPTIONSB3C284EA"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:106:30)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1262:41)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.products.{id}": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/login/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiAB4665AD.POST..api.admin.login": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsidGETApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiproductsidFA8F8C6E"
+      "data": "EcommerceApiapiadminloginPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiAB4665ADPOSTapiadminlogin692BA21A"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:109:13)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1264:19)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.products.{id}": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/login/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiAB4665AD.POST..api.admin.login": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsidGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiproductsid35023EC2"
+      "data": "EcommerceApiapiadminloginPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiAB4665ADPOSTapiadminloginD4980E9C"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:109:13)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1264:19)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/GET/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/login/POST/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsidGET0AD1562A"
+      "data": "EcommerceApiapiadminloginPOST69061EC4"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:109:13)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1264:19)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/PUT/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.PUT..api.products.{id}": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/register/OPTIONS/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsidPUTApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FPUTapiproductsidCE9B97A8"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:109:59)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/PUT/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.PUT..api.products.{id}": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsidPUTApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FPUTapiproductsid8E99E5C1"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:109:59)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/PUT/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsidPUTDE7AF84B"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:109:59)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/DELETE/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.DELETE..api.products.{id}": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsidDELETEApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FDELETEapiproductsidCE51B136"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:109:105)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/DELETE/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.DELETE..api.products.{id}": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsidDELETEApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FDELETEapiproductsidDA3819C9"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:109:105)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/products/{id}/DELETE/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiproductsidDELETEAAB312B8"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:109:105)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/config/OPTIONS/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminconfigOPTIONSF0808B05"
+      "data": "EcommerceApiapiadminregisterOPTIONS093FE7B8"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:112:11)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1275:44)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/config/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.admin.config": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/register/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiAB4665AD.POST..api.admin.register": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminconfigGETApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiadminconfig0D6D2B66"
+      "data": "EcommerceApiapiadminregisterPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiAB4665ADPOSTapiadminregister7BCDE294"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:112:33)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1277:22)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/config/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.admin.config": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/register/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiAB4665AD.POST..api.admin.register": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminconfigGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapiadminconfigA75105EB"
+      "data": "EcommerceApiapiadminregisterPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiAB4665ADPOSTapiadminregisterEA141D27"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:112:33)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1277:22)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/config/GET/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/register/POST/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminconfigGETE52E00C9"
+      "data": "EcommerceApiapiadminregisterPOST1AB14C6F"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:112:33)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1277:22)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/login/OPTIONS/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/config/OPTIONS/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminloginOPTIONSAC0AFB50"
+      "data": "EcommerceApiapiadminconfigOPTIONS3F082ACE"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:113:11)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1288:42)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/login/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.admin.login": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/config/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiAB4665AD.GET..api.admin.config": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminloginPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiadminlogin1739B6CB"
+      "data": "EcommerceApiapiadminconfigGETApiPermissionNorthstarMarketCdkStackEcommerceApiAB4665ADGETapiadminconfig2E13F44A"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:113:32)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1290:20)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/login/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.admin.login": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/config/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiAB4665AD.GET..api.admin.config": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminloginPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiadminlogin3A86DCB0"
+      "data": "EcommerceApiapiadminconfigGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiAB4665ADGETapiadminconfigBF9B2DCB"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:113:32)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1290:20)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/login/POST/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/config/GET/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminloginPOSTF38DC37F"
+      "data": "EcommerceApiapiadminconfigGET85198AAE"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:113:32)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1290:20)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/register/OPTIONS/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/forgot-password/OPTIONS/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminregisterOPTIONS36D002AD"
+      "data": "EcommerceApiapiadminforgotpasswordOPTIONS2A87F315"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:114:11)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1302:21)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/register/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.admin.register": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/forgot-password/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiAB4665AD.POST..api.admin.forgot-password": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminregisterPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiadminregister88199FD9"
+      "data": "EcommerceApiapiadminforgotpasswordPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiAB4665ADPOSTapiadminforgotpassword4A0C1029"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:114:35)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1304:28)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/register/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.admin.register": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/forgot-password/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiAB4665AD.POST..api.admin.forgot-password": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminregisterPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapiadminregister698BA2BE"
+      "data": "EcommerceApiapiadminforgotpasswordPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiAB4665ADPOSTapiadminforgotpasswordAFC01131"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:114:35)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1304:28)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/admin/register/POST/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/forgot-password/POST/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apiadminregisterPOST8C8A50C0"
+      "data": "EcommerceApiapiadminforgotpasswordPOST1877FD59"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:114:35)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1304:28)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/OPTIONS/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/reset-password/OPTIONS/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apipaymentsmomoOPTIONSEDA7BD03"
+      "data": "EcommerceApiapiadminresetpasswordOPTIONS49409528"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:118:70)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1316:21)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.payments.momo": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/reset-password/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiAB4665AD.POST..api.admin.reset-password": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apipaymentsmomoPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapipaymentsmomoE6493386"
+      "data": "EcommerceApiapiadminresetpasswordPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiAB4665ADPOSTapiadminresetpassword35C4D8CE"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:120:10)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1318:27)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.POST..api.payments.momo": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/reset-password/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiAB4665AD.POST..api.admin.reset-password": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apipaymentsmomoPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FPOSTapipaymentsmomo2D3E1526"
+      "data": "EcommerceApiapiadminresetpasswordPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiAB4665ADPOSTapiadminresetpassword51BA4D6C"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:120:10)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1318:27)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/POST/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/reset-password/POST/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apipaymentsmomoPOST0DC7F68D"
+      "data": "EcommerceApiapiadminresetpasswordPOST0ED8EEF7"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:120:10)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1318:27)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/{reference}/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/OPTIONS/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apipaymentsmomoreference98E1CED4"
+      "data": "EcommerceApiapiadminproductsOPTIONSFA0C7FDB"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:121:10)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
-        "...node internals..."
-      ]
-    }
-  ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/{reference}/OPTIONS/Resource": [
-    {
-      "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apipaymentsmomoreferenceOPTIONS5AD6681F"
-    },
-    {
-      "type": "aws:cdk:creationStack",
-      "data": [
-        "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:121:10)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1343:21)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/{reference}/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.payments.momo.{reference}": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiAB4665AD.GET..api.admin.products": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apipaymentsmomoreferenceGETApiPermissionNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapipaymentsmomoreference49577BBE"
+      "data": "EcommerceApiapiadminproductsGETApiPermissionNorthstarMarketCdkStackEcommerceApiAB4665ADGETapiadminproductsC488C18E"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:121:37)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1345:27)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/{reference}/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiL26AB5A71F.GET..api.payments.momo.{reference}": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiAB4665AD.GET..api.admin.products": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apipaymentsmomoreferenceGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiL26AB5A71FGETapipaymentsmomoreferenceCD8CAC48"
+      "data": "EcommerceApiapiadminproductsGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiAB4665ADGETapiadminproducts59CEA291"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:121:37)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1345:27)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]
     }
   ],
-  "/NorthstarMarketCdkStack/EcommerceApiL2/Default/api/payments/momo/{reference}/GET/Resource": [
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/GET/Resource": [
     {
       "type": "aws:cdk:logicalId",
-      "data": "EcommerceApiL2apipaymentsmomoreferenceGET8170132F"
+      "data": "EcommerceApiapiadminproductsGET1AB1B0B2"
     },
     {
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:121:37)",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1345:27)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiAB4665AD.POST..api.admin.products": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminproductsPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiAB4665ADPOSTapiadminproductsE6CCC575"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1352:27)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiAB4665AD.POST..api.admin.products": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminproductsPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiAB4665ADPOSTapiadminproducts8D68B604"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1352:27)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/POST/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminproductsPOSTF64E6103"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1352:27)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/{id}/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminproductsid9BE9F421"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1364:29)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/payments/momo/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapipaymentsmomoOPTIONSA10410D4"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1416:24)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/payments/momo/POST/ApiPermission.NorthstarMarketCdkStackEcommerceApiAB4665AD.POST..api.payments.momo": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapipaymentsmomoPOSTApiPermissionNorthstarMarketCdkStackEcommerceApiAB4665ADPOSTapipaymentsmomoE91C915A"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1418:18)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/payments/momo/POST/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiAB4665AD.POST..api.payments.momo": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapipaymentsmomoPOSTApiPermissionTestNorthstarMarketCdkStackEcommerceApiAB4665ADPOSTapipaymentsmomoB1BEA39C"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1418:18)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/payments/momo/POST/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapipaymentsmomoPOST881A1337"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1418:18)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/payments/momo/{reference}/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapipaymentsmomoreference403A028D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1430:20)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/{id}/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminproductsidOPTIONS2E26DEA5"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1364:29)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/{id}/PUT/ApiPermission.NorthstarMarketCdkStackEcommerceApiAB4665AD.PUT..api.admin.products.{id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminproductsidPUTApiPermissionNorthstarMarketCdkStackEcommerceApiAB4665ADPUTapiadminproductsidED36438E"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1366:28)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/{id}/PUT/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiAB4665AD.PUT..api.admin.products.{id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminproductsidPUTApiPermissionTestNorthstarMarketCdkStackEcommerceApiAB4665ADPUTapiadminproductsidC3A85A14"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1366:28)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/{id}/PUT/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminproductsidPUT59A609A8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1366:28)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/{id}/DELETE/ApiPermission.NorthstarMarketCdkStackEcommerceApiAB4665AD.DELETE..api.admin.products.{id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminproductsidDELETEApiPermissionNorthstarMarketCdkStackEcommerceApiAB4665ADDELETEapiadminproductsidA2FBF53F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1373:28)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/{id}/DELETE/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiAB4665AD.DELETE..api.admin.products.{id}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminproductsidDELETEApiPermissionTestNorthstarMarketCdkStackEcommerceApiAB4665ADDELETEapiadminproductsid724D2C2B"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1373:28)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/admin/products/{id}/DELETE/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapiadminproductsidDELETE843EE0F8"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1373:28)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/payments/momo/{reference}/OPTIONS/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapipaymentsmomoreferenceOPTIONS93650D5D"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addResource in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1430:20)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/payments/momo/{reference}/GET/ApiPermission.NorthstarMarketCdkStackEcommerceApiAB4665AD.GET..api.payments.momo.{reference}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapipaymentsmomoreferenceGETApiPermissionNorthstarMarketCdkStackEcommerceApiAB4665ADGETapipaymentsmomoreference9CA3F098"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1432:27)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/payments/momo/{reference}/GET/ApiPermission.Test.NorthstarMarketCdkStackEcommerceApiAB4665AD.GET..api.payments.momo.{reference}": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapipaymentsmomoreferenceGETApiPermissionTestNorthstarMarketCdkStackEcommerceApiAB4665ADGETapipaymentsmomoreferenceD76BB25F"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1432:27)",
+        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "...node internals..."
+      ]
+    }
+  ],
+  "/NorthstarMarketCdkStack/EcommerceApi/Default/api/payments/momo/{reference}/GET/Resource": [
+    {
+      "type": "aws:cdk:logicalId",
+      "data": "EcommerceApiapipaymentsmomoreferenceGET33B90081"
+    },
+    {
+      "type": "aws:cdk:creationStack",
+      "data": [
+        "...WrappedClass.addMethod in aws-cdk-lib...",
+        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1432:27)",
         "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
         "...node internals..."
       ]

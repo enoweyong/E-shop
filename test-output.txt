@@ -1,0 +1,16 @@
+Running unit and integration tests...
+✓ Product test passed
+✓ Customer & User test passed
+✓ ShoppingCart & CartItem test passed
+payment of $2000 completed using Card
+payment of $2000 completed using Cash
+✓ Checkout & Order & Payment & System test passed
+
+Product added successfully.
+
+Product updated successfully.
+✓ Admin & ProductCatalog test passed
+Laptop High end laptop $1000 stock: 11
+✓ Category test passed
+
+ALL TESTS PASSED SUCCESSFULLY!
