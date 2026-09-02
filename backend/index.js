@@ -360,11 +360,13 @@ app.post("/api/admin/register", (req, res) => {
         } = req.body;
 
         const adminName = String(name || username || "").trim();
-        const adminEmail = String(email || "").trim().toLowerCase();
+        let adminEmail = String(email || "").trim().toLowerCase();
+        if (!adminEmail && adminName) {
+            adminEmail = `${adminName.toLowerCase()}@example.com`;
+        }
 
         if (
             !adminName ||
-            !adminEmail ||
             !password ||
             String(password).length < 4
         ) {
@@ -374,7 +376,7 @@ app.post("/api/admin/register", (req, res) => {
                 success: false,
 
                 message:
-                    "Name, valid email, and a password of at least 4 characters are required"
+                    "Name and password of at least 4 characters are required"
 
             });
 
