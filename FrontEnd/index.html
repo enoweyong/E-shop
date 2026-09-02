@@ -1027,9 +1027,9 @@
 
                 </div>
 
-                <div class="form-group" id="adminEmailGroup">
+                <div class="form-group hidden" id="adminEmailGroup">
                     <label for="adminEmail">Email</label>
-                    <input type="email" id="adminEmail" placeholder="admin@example.com" required>
+                    <input type="email" id="adminEmail" placeholder="admin@example.com">
                 </div>
 
 
@@ -2324,6 +2324,8 @@ productObserver.observe(document.getElementById("catalogLoader"));
 
             hideSections();
 
+            showAdminAuthMode("signin");
+
             document
                 .getElementById(
                     "adminLoginSection"
@@ -2347,9 +2349,13 @@ productObserver.observe(document.getElementById("catalogLoader"));
         function showAdminAuthMode(mode) {
             adminAuthMode = mode;
             const registering = mode === "register";
-            /* Email field is always visible (required for both sign-in and registration). */
-            document.getElementById("adminEmailGroup").classList.remove("hidden");
-            document.getElementById("adminEmail").required = true;
+            if (registering) {
+                document.getElementById("adminEmailGroup").classList.remove("hidden");
+                document.getElementById("adminEmail").required = true;
+            } else {
+                document.getElementById("adminEmailGroup").classList.add("hidden");
+                document.getElementById("adminEmail").required = false;
+            }
             document.getElementById("adminAuthTitle").textContent = registering ? "Create Admin Account" : "Admin Sign In";
             document.getElementById("adminSubmitText").textContent = registering ? "Create account" : "Sign in";
             document.getElementById("signInTab").classList.toggle("active", !registering);
@@ -2425,7 +2431,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
                         const endpoint = adminAuthMode === "register" ? "register" : "login";
                         const body = {
                             name: username,
-                            email: email,
+                            ...(email ? { email: email } : {}),
                             password: password
                         };
 

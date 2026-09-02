@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const crypto = require("crypto");
 
 const Product = require("./Product");
 const Customer = require("./Customer");
@@ -229,14 +230,44 @@ initialProducts.forEach(product => {
 });
 
 // ======================================================
-// ADMIN
+// ADMIN STORE & PASSWORD HASHING
 // ======================================================
 
-const admin = new Admin(
+const SCRYPT_KEYLEN = 64;
+
+const passwordHash = (password) => {
+    const salt = crypto.randomBytes(16).toString("hex");
+    const hash = crypto.scryptSync(String(password), salt, SCRYPT_KEYLEN).toString("hex");
+    return `scrypt:${salt}:${hash}`;
+};
+
+const verifyPassword = (password, stored) => {
+    if (typeof stored !== "string") return false;
+    if (stored === password) return true;
+    const [scheme, salt, hash] = stored.split(":");
+    if (scheme !== "scrypt" || !salt || !hash) {
+        return stored === crypto.createHash("sha256").update(String(password)).digest("hex");
+    }
+    const candidate = crypto.scryptSync(String(password), salt, SCRYPT_KEYLEN);
+    const expected = Buffer.from(hash, "hex");
+    return candidate.length === expected.length && crypto.timingSafeEqual(candidate, expected);
+};
+
+const defaultAdmin = new Admin(
     1,
     "Administrator",
     "admin@gmail.com"
 );
+defaultAdmin.passwordHash = passwordHash("1234");
+
+const eyongAdmin = new Admin(
+    2,
+    "eyong",
+    "eyong@gmail.com"
+);
+eyongAdmin.passwordHash = passwordHash("1234");
+
+system.admins = [defaultAdmin, eyongAdmin];
 
 // ======================================================
 // CUSTOMER
@@ -314,55 +345,185 @@ app.get("/api/products/:id", (req, res) => {
 });
 
 // ======================================================
-// ADMIN LOGIN
+// ADMIN REGISTER
 // ======================================================
 
-app.post("/api/admin/login", (req, res) => {
+app.post("/api/admin/register", (req, res) => {
 
-    const {
-        username,
-        password
-    } = req.body;
+    try {
 
-    /*
-    For this OOP project we are using:
-    
-    username: admin
-    password: 1234
-    */
+        const {
+            name,
+            username,
+            email,
+            password
+        } = req.body;
 
-    if (
-        username === "eyong" &&
-        password === "1234"
-    ) {
+        const adminName = String(name || username || "").trim();
+        const adminEmail = String(email || "").trim().toLowerCase();
 
-        return res.json({
+        if (
+            !adminName ||
+            !adminEmail ||
+            !password ||
+            String(password).length < 4
+        ) {
+
+            return res.status(400).json({
+
+                success: false,
+
+                message:
+                    "Name, valid email, and a password of at least 4 characters are required"
+
+            });
+
+        }
+
+        const existing = system.admins.find(a =>
+            a.name.toLowerCase() === adminName.toLowerCase() ||
+            (a.email && a.email.toLowerCase() === adminEmail)
+        );
+
+        if (existing) {
+
+            return res.status(409).json({
+
+                success: false,
+
+                message:
+                    "An admin with that name or email already exists"
+
+            });
+
+        }
+
+        const newAdmin = new Admin(
+            Date.now(),
+            adminName,
+            adminEmail
+        );
+        newAdmin.passwordHash = passwordHash(password);
+
+        system.admins.push(newAdmin);
+
+        res.status(201).json({
 
             success: true,
 
-            message: "Admin login successful",
+            message:
+                "Admin account created",
 
             admin: {
 
-                id: admin.userId,
+                id: newAdmin.userId,
 
-                name: admin.name,
+                name: newAdmin.name,
 
-                email: admin.email
+                email: newAdmin.email
 
             }
 
         });
 
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+
+            success: false,
+
+            message:
+                "Unable to create admin account"
+
+        });
+
     }
 
-    res.status(401).json({
+});
 
-        success: false,
+// ======================================================
+// ADMIN LOGIN
+// ======================================================
 
-        message: "Invalid username or password"
+app.post("/api/admin/login", (req, res) => {
 
-    });
+    try {
+
+        const {
+            name,
+            username,
+            email,
+            password
+        } = req.body;
+
+        const identifier = String(name || username || email || "").trim().toLowerCase();
+
+        if (!identifier || !password) {
+
+            return res.status(400).json({
+
+                success: false,
+
+                message:
+                    "Username and password are required"
+
+            });
+
+        }
+
+        const adminUser = system.admins.find(a =>
+            a.name.toLowerCase() === identifier ||
+            (a.email && a.email.toLowerCase() === identifier)
+        );
+
+        if (!adminUser || !verifyPassword(password, adminUser.passwordHash)) {
+
+            return res.status(401).json({
+
+                success: false,
+
+                message:
+                    "Admin name or password is incorrect"
+
+            });
+
+        }
+
+        return res.json({
+
+            success: true,
+
+            message:
+                "Admin login successful",
+
+            admin: {
+
+                id: adminUser.userId,
+
+                name: adminUser.name,
+
+                email: adminUser.email
+
+            }
+
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+
+            success: false,
+
+            message:
+                "Login failed"
+
+        });
+
+    }
 
 });
 

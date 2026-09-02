@@ -203,20 +203,69 @@ exports.deleteProduct = async event => {
 
 exports.login = async event => {
   const input = bodyOf(event) || {};
-  if (!input.name || !input.password) return response(400, { success: false, message: "Name and password are required" });
-  const result = await client.send(new GetCommand({ TableName: ADMIN_TABLE_NAME, Key: adminKey(input.name) }));
-  if (!result.Item || !verifyPassword(input.password, result.Item.passwordHash)) return response(401, { success: false, message: "Admin name or password is incorrect" });
-  return response(200, { success: true, message: "Admin login successful", admin: { name: result.Item.name, email: result.Item.email } });
+  const name = String(input.name || input.username || "").trim();
+  const password = String(input.password || "");
+  if (!name || !password) return response(400, { success: false, message: "Name and password are required" });
+  const result = await client.send(new GetCommand({ TableName: ADMIN_TABLE_NAME, Key: adminKey(name) }));
+  if (!result.Item || !verifyPassword(password, result.Item.passwordHash)) {
+    return response(401, { success: false, message: "Admin name or password is incorrect" });
+  }
+
+  let tokens = null;
+  try {
+    const authResult = await cognito.initiateAuth({
+      ClientId: COGNITO_CLIENT_ID || "default-client-id",
+      AuthFlow: "USER_PASSWORD_AUTH",
+      AuthParameters: {
+        USERNAME: name.toLowerCase(),
+        PASSWORD: password
+      }
+    });
+    if (authResult?.AuthenticationResult) {
+      tokens = {
+        accessToken: authResult.AuthenticationResult.AccessToken,
+        idToken: authResult.AuthenticationResult.IdToken,
+        refreshToken: authResult.AuthenticationResult.RefreshToken
+      };
+    }
+  } catch (e) {
+    console.warn("Cognito initiateAuth skipped or failed:", e.message);
+  }
+
+  return response(200, {
+    success: true,
+    message: "Admin login successful",
+    admin: { name: result.Item.name, email: result.Item.email },
+    tokens
+  });
 };
 
 exports.registerAdmin = async event => {
   const input = bodyOf(event) || {};
-  const name = String(input.name || "").trim();
+  const name = String(input.name || input.username || "").trim();
   const email = String(input.email || "").trim().toLowerCase();
-  if (!name || !email || !input.password || !/^\S+@\S+\.\S+$/.test(email) || String(input.password).length < 4) return response(400, { success: false, message: "Name, valid email, and a password of at least 4 characters are required" });
-  const admin = { ...adminKey(name), name, email, passwordHash: passwordHash(input.password), role: "admin", createdAt: new Date().toISOString() };
+  const password = String(input.password || "");
+  if (!name || !email || !password || !/^\S+@\S+\.\S+$/.test(email) || password.length < 4) {
+    return response(400, { success: false, message: "Name, valid email, and a password of at least 4 characters are required" });
+  }
+  const admin = { ...adminKey(name), name, email, passwordHash: passwordHash(password), role: "admin", createdAt: new Date().toISOString() };
   try {
     await client.send(new PutCommand({ TableName: ADMIN_TABLE_NAME, Item: admin, ConditionExpression: "attribute_not_exists(entityType)" }));
+
+    try {
+      await cognito.signUp({
+        ClientId: COGNITO_CLIENT_ID || "default-client-id",
+        Username: name.toLowerCase(),
+        Password: password,
+        UserAttributes: [
+          { Name: "email", Value: email },
+          { Name: "name", Value: name }
+        ]
+      });
+    } catch (e) {
+      console.warn("Cognito signUp skipped or failed:", e.message);
+    }
+
     return response(201, { success: true, message: "Admin account created", admin: { name, email } });
   } catch (error) {
     if (error.name === "ConditionalCheckFailedException") return response(409, { success: false, message: "An admin with that name already exists" });
@@ -225,62 +274,11 @@ exports.registerAdmin = async event => {
 };
 
 exports.cognitoSignUp = async event => {
-  const input = bodyOf(event) || {};
-  const username = String(input.name || "").trim().toLowerCase();
-  const email = String(input.email || "").trim().toLowerCase();
-  const password = String(input.password || "");
-  if (!username || !email || !password || !/^\S+@\S+\.\S+$/.test(email) || password.length < 8) {
-    return response(400, { success: false, message: "Username, valid email, and password (8+ chars, with uppercase, lowercase, numbers) are required" });
-  }
-  try {
-    await cognito.signUp({
-      ClientId: COGNITO_CLIENT_ID,
-      Username: username,
-      Password: password,
-      UserAttributes: [
-        { Name: "email", Value: email },
-        { Name: "name", Value: input.displayName || username }
-      ]
-    });
-    return response(201, { success: true, message: "Admin account created successfully. Please verify your email.", admin: { username, email } });
-  } catch (error) {
-    console.error("SignUp error:", error.message);
-    if (error.name === "UsernameExistsException") return response(409, { success: false, message: "Username already exists" });
-    return response(400, { success: false, message: error.message || "Unable to create admin account" });
-  }
+  return exports.registerAdmin(event);
 };
 
 exports.cognitoSignIn = async event => {
-  const input = bodyOf(event) || {};
-  const username = String(input.name || "").trim().toLowerCase();
-  const password = String(input.password || "");
-  if (!username || !password) return response(400, { success: false, message: "Username and password are required" });
-  try {
-    const result = await cognito.initiateAuth({
-      ClientId: COGNITO_CLIENT_ID,
-      AuthFlow: "USER_PASSWORD_AUTH",
-      AuthParameters: {
-        USERNAME: username,
-        PASSWORD: password
-      }
-    });
-    if (!result.AuthenticationResult) return response(401, { success: false, message: "Invalid username or password" });
-    const user = await cognito.getUser({ AccessToken: result.AuthenticationResult.AccessToken });
-    const email = user.UserAttributes?.find(attr => attr.Name === "email")?.Value;
-    return response(200, {
-      success: true,
-      message: "Admin login successful",
-      admin: { username, email },
-      tokens: {
-        accessToken: result.AuthenticationResult.AccessToken,
-        idToken: result.AuthenticationResult.IdToken,
-        refreshToken: result.AuthenticationResult.RefreshToken
-      }
-    });
-  } catch (error) {
-    console.error("SignIn error:", error.message);
-    return response(401, { success: false, message: "Invalid username or password" });
-  }
+  return exports.login(event);
 };
 
 exports.getCognitoConfig = async event => {
@@ -294,8 +292,8 @@ exports.getCognitoConfig = async event => {
 exports.authRouter = async event => {
   if (event.httpMethod === "OPTIONS") return response(200, {});
   if (event.httpMethod === "GET" && (event.path?.endsWith("/config") || event.resource?.endsWith("/config"))) return exports.getCognitoConfig(event);
-  if (event.httpMethod === "POST" && (event.path?.endsWith("/register") || event.resource?.endsWith("/register"))) return exports.cognitoSignUp(event);
-  if (event.httpMethod === "POST" && (event.path?.endsWith("/login") || event.resource?.endsWith("/login"))) return exports.cognitoSignIn(event);
+  if (event.httpMethod === "POST" && (event.path?.endsWith("/register") || event.resource?.endsWith("/register"))) return exports.registerAdmin(event);
+  if (event.httpMethod === "POST" && (event.path?.endsWith("/login") || event.resource?.endsWith("/login"))) return exports.login(event);
   return response(404, { message: "Endpoint not found" });
 };
 
