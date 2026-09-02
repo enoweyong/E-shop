@@ -259,6 +259,8 @@ class EcommerceStack extends Stack {
       MOMO_API_USER: momoApiUser.valueAsString,
       MOMO_API_KEY: momoApiKey.valueAsString,
 
+      ADMIN_PASSWORD_PARAM: adminPassword.valueAsString,
+
       AWS_NODEJS_CONNECTION_REUSE_ENABLED: '1',
     };
 
@@ -1502,7 +1504,11 @@ exports.handler = async (event) => {
      *
      * Use the Cognito registration endpoint after deployment.
      */
-    void adminPassword;
+    this.templateOptions.metadata = {
+      'CloudFormation-Validate::W2001':
+        "Parameter 'AdminPassword' is reserved for initial admin password configuration.",
+      AdminPasswordRef: adminPassword.valueAsString,
+    };
   }
 }
 

@@ -1,4 +1,10 @@
 {
+ "Metadata": {
+  "CloudFormation-Validate::W2001": "Parameter 'AdminPassword' is reserved for initial admin password configuration.",
+  "AdminPasswordRef": {
+   "Ref": "AdminPassword"
+  }
+ },
  "Parameters": {
   "AdminPassword": {
    "Type": "String",
@@ -417,6 +423,9 @@
       "MOMO_API_KEY": {
        "Ref": "MomoApiKey"
       },
+      "ADMIN_PASSWORD_PARAM": {
+       "Ref": "AdminPassword"
+      },
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
@@ -571,6 +580,9 @@
       "MOMO_API_KEY": {
        "Ref": "MomoApiKey"
       },
+      "ADMIN_PASSWORD_PARAM": {
+       "Ref": "AdminPassword"
+      },
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
     },
@@ -667,6 +679,9 @@
       },
       "MOMO_API_KEY": {
        "Ref": "MomoApiKey"
+      },
+      "ADMIN_PASSWORD_PARAM": {
+       "Ref": "AdminPassword"
       },
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
@@ -820,6 +835,9 @@
       },
       "MOMO_API_KEY": {
        "Ref": "MomoApiKey"
+      },
+      "ADMIN_PASSWORD_PARAM": {
+       "Ref": "AdminPassword"
       },
       "AWS_NODEJS_CONNECTION_REUSE_ENABLED": "1"
      }
@@ -3395,7 +3413,7 @@
   "CDKMetadata": {
    "Type": "AWS::CDK::Metadata",
    "Properties": {
-    "Analytics": "v2:deflate64:H4sIAAAAAAAA/3WPT0/DMAzFP8vuWRgDTeK4PwJxQFQdnJGbmOKtiask3VRF/e5oTbuVAyf//N6L7SzlcrWSixmc/Vzp47yiQsZ9AHUU22+bgQODAZ2As/+KurVgWBcyfkBR4SXRQycUl5YCy/jp0WXM1cW78gg7NkB2ag3K2L5qtIFCmzk+kUb3wlymPf8lrk+3FaEN02hSOuEfZNw06oi9O1AqGVek2puc+k5UYAoNMj43VgXi/uQpZ+gMeU9sO0FgZMw5ndnX29RxHtRUQsAztDLm6MO6pj59w7VS3NggdlhX3JrhK5NuH6DsVyTI0XPjFG7Ao3jD8MP6Yg40usOSnrvuj/zehLoJnbCsUR783Wn5KO+f5GJ28ERz19hABmWe6i/on/vUJgIAAA=="
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/3WPTU/DMAyGfwv3LECRdt+HQBwQVQdn5CWmeGviKnE3VVH/O1o/tnLg5Mfv+8Z2Mp0tl/rhDs5xYexxUdFep52AOarNt88hgEPBoOAcv5JtPTi2e50+YF/hJdFDpwyXnoR1+owYcubq4l15gi07ID+3RmVqXy16IWnzwCeyGF6Yy2HPf4nr001F6GUeHZROxSed1o05Yu+ONJScKzLtTR76TlXg9hZ0em68EeL+5DnnGBzFSOw7ReB0Kng4s6+3qdM8qKkEwTO0OhUYZVVTn77hyhhuvKgt1hW3bvzKrNsJlP2KAQqM3ASDa4io3lB+2F7MkSZ3XNJz1/2R3xupG+mUZ4v6EO9PWaazTD/eHSLRIjReyKEuhvoLKoV0wCYCAAA="
    },
    "Metadata": {
     "aws:cdk:path": "NorthstarMarketCdkStack/CDKMetadata/Default"

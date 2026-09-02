@@ -3,7 +3,7 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -16,8 +16,8 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:23:27)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:23:27)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -30,8 +30,8 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:31:33)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:31:33)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -44,8 +44,8 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:42:25)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:42:25)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -58,8 +58,8 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:49:24)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:49:24)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -72,8 +72,8 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1456:5)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1458:5)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -86,8 +86,8 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1461:5)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1463:5)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -100,8 +100,8 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1466:5)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1468:5)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -114,8 +114,8 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1471:5)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1473:5)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -128,8 +128,8 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1476:5)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1478:5)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -142,8 +142,8 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1481:5)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1483:5)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -156,8 +156,8 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1486:5)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1488:5)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -170,8 +170,8 @@
     {
       "type": "aws:cdk:creationStack",
       "data": [
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1491:5)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1493:5)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -211,8 +211,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Table2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:62:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:62:28)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -226,8 +226,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Table2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:85:24)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:85:24)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -241,8 +241,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new UserPool2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:104:27)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:104:27)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -256,8 +256,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new UserPoolIdentityProviderGoogle2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:155:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:155:28)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -271,8 +271,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new UserPoolClient2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:169:33)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:169:33)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -286,8 +286,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Bucket2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:225:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:225:28)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -301,8 +301,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Function2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:276:26)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:278:26)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -316,8 +316,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Function2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:609:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:611:28)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -331,8 +331,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Function2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:735:26)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:737:26)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -346,8 +346,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Function2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:859:30)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:861:30)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -361,8 +361,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1201:17)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1203:17)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -376,8 +376,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1201:17)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1203:17)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -391,8 +391,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1201:17)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1203:17)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -419,8 +419,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addDomain in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:137:41)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:137:41)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -447,8 +447,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Function2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:276:26)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:278:26)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -462,8 +462,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Function2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:609:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:611:28)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -477,8 +477,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Function2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:735:26)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:737:26)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -492,8 +492,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new Function2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:859:30)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:861:30)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -507,8 +507,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1201:17)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1203:17)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -522,8 +522,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1201:17)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1203:17)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -537,8 +537,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1201:17)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1203:17)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -552,8 +552,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.grant in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:583:19)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:585:19)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -593,7 +593,7 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...new RestApi2 in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1201:17)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1203:17)"
       ]
     }
   ],
@@ -606,8 +606,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...RootResource.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1248:34)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1250:34)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -621,8 +621,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...RootResource.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1248:34)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1250:34)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)"
       ]
     }
   ],
@@ -635,8 +635,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1256:39)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1258:39)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -650,8 +650,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1329:42)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1331:42)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -665,8 +665,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1386:40)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1388:40)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -680,8 +680,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1409:19)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1411:19)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -695,8 +695,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1256:39)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1258:39)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)"
       ]
     }
   ],
@@ -709,8 +709,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1262:41)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1264:41)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -724,8 +724,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1275:44)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1277:44)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -739,8 +739,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1288:42)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1290:42)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -754,8 +754,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1302:21)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1304:21)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -769,8 +769,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1316:21)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1318:21)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -784,8 +784,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1343:21)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1345:21)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -799,8 +799,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1329:42)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1331:42)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)"
       ]
     }
   ],
@@ -813,8 +813,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1331:22)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1333:22)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -828,8 +828,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1331:22)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1333:22)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -843,8 +843,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1331:22)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1333:22)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -858,8 +858,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1386:40)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1388:40)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)"
       ]
     }
   ],
@@ -872,8 +872,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1388:20)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1390:20)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -887,8 +887,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1388:20)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1390:20)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -902,8 +902,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1388:20)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1390:20)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -917,8 +917,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1395:20)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1397:20)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -932,8 +932,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1395:20)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1397:20)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -947,8 +947,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1395:20)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1397:20)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -962,8 +962,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1409:19)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1411:19)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)"
       ]
     }
   ],
@@ -976,8 +976,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1416:24)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1418:24)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -991,8 +991,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1262:41)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1264:41)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)"
       ]
     }
   ],
@@ -1005,8 +1005,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1264:19)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1266:19)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1020,8 +1020,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1264:19)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1266:19)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1035,8 +1035,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1264:19)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1266:19)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1050,8 +1050,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1275:44)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1277:44)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)"
       ]
     }
   ],
@@ -1064,8 +1064,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1277:22)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1279:22)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1079,8 +1079,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1277:22)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1279:22)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1094,8 +1094,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1277:22)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1279:22)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1109,8 +1109,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1288:42)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1290:42)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)"
       ]
     }
   ],
@@ -1123,8 +1123,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1290:20)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1292:20)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1138,8 +1138,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1290:20)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1292:20)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1153,8 +1153,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1290:20)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1292:20)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1168,8 +1168,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1302:21)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1304:21)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)"
       ]
     }
   ],
@@ -1182,8 +1182,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1304:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1306:28)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1197,8 +1197,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1304:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1306:28)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1212,8 +1212,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1304:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1306:28)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1227,8 +1227,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1316:21)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1318:21)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)"
       ]
     }
   ],
@@ -1241,8 +1241,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1318:27)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1320:27)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1256,8 +1256,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1318:27)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1320:27)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1271,8 +1271,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1318:27)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1320:27)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1286,8 +1286,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1343:21)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1345:21)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)"
       ]
     }
   ],
@@ -1300,8 +1300,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1345:27)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1347:27)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1315,8 +1315,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1345:27)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1347:27)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1330,8 +1330,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1345:27)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1347:27)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1345,8 +1345,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1352:27)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1354:27)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1360,8 +1360,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1352:27)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1354:27)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1375,8 +1375,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1352:27)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1354:27)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1390,8 +1390,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1364:29)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1366:29)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1405,8 +1405,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1416:24)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1418:24)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)"
       ]
     }
   ],
@@ -1419,8 +1419,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1418:18)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1420:18)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1434,8 +1434,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1418:18)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1420:18)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1449,8 +1449,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1418:18)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1420:18)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1464,8 +1464,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1430:20)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1432:20)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1479,8 +1479,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1364:29)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1366:29)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)"
       ]
     }
   ],
@@ -1493,8 +1493,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1366:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1368:28)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1508,8 +1508,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1366:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1368:28)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1523,8 +1523,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1366:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1368:28)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1538,8 +1538,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1373:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1375:28)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1553,8 +1553,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1373:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1375:28)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1568,8 +1568,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1373:28)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1375:28)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1583,8 +1583,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addResource in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1430:20)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)"
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1432:20)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)"
       ]
     }
   ],
@@ -1597,8 +1597,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1432:27)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1434:27)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1612,8 +1612,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1432:27)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1434:27)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }
@@ -1627,8 +1627,8 @@
       "type": "aws:cdk:creationStack",
       "data": [
         "...WrappedClass.addMethod in aws-cdk-lib...",
-        "new EcommerceStack (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\lib\\ecommerce-stack.js:1432:27)",
-        "<anonymous> (C:\\Users\\enowj\\OneDrive\\Desktop\\AWS Cloud and AI\\Javascript\\Day3\\Ecommerce Platform\\cdk\\bin\\app.js:6:1)",
+        "new EcommerceStack (/app/cdk/lib/ecommerce-stack.js:1434:27)",
+        "<anonymous> (/app/cdk/bin/app.js:6:1)",
         "...node internals..."
       ]
     }

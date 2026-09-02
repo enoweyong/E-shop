@@ -1,16 +1,16 @@
 {
   "version": "54.0.0",
   "files": {
-    "c8b95accf2bbdb3322613a70a5bcfef36e5437782e483d37105b9995c0fbe830": {
+    "52c24e3f4af3e4ebdab5af6cd7e7d82faf05b6cd757663c5aef6b4786930084c": {
       "displayName": "NorthstarMarketCdkStack Template",
       "source": {
         "path": "NorthstarMarketCdkStack.template.json",
         "packaging": "file"
       },
       "destinations": {
-        "793593623274-us-east-1-8798dc86": {
+        "793593623274-us-east-1-8b772b9d": {
           "bucketName": "cdk-hnb659fds-assets-793593623274-us-east-1",
-          "objectKey": "c8b95accf2bbdb3322613a70a5bcfef36e5437782e483d37105b9995c0fbe830.json",
+          "objectKey": "52c24e3f4af3e4ebdab5af6cd7e7d82faf05b6cd757663c5aef6b4786930084c.json",
           "region": "us-east-1",
           "assumeRoleArn": "arn:${AWS::Partition}:iam::793593623274:role/cdk-hnb659fds-file-publishing-role-793593623274-us-east-1"
         }
