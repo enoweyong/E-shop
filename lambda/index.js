@@ -243,10 +243,13 @@ exports.login = async event => {
 exports.registerAdmin = async event => {
   const input = bodyOf(event) || {};
   const name = String(input.name || input.username || "").trim();
-  const email = String(input.email || "").trim().toLowerCase();
+  let email = String(input.email || "").trim().toLowerCase();
+  if (!email && name) {
+    email = `${name.toLowerCase()}@example.com`;
+  }
   const password = String(input.password || "");
-  if (!name || !email || !password || !/^\S+@\S+\.\S+$/.test(email) || password.length < 4) {
-    return response(400, { success: false, message: "Name, valid email, and a password of at least 4 characters are required" });
+  if (!name || !password || password.length < 4) {
+    return response(400, { success: false, message: "Name and password of at least 4 characters are required" });
   }
   const admin = { ...adminKey(name), name, email, passwordHash: passwordHash(password), role: "admin", createdAt: new Date().toISOString() };
   try {
