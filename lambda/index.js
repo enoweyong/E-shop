@@ -207,11 +207,27 @@ exports.deleteProduct = async event => {
 
 exports.login = async event => {
   const input = bodyOf(event) || {};
-  const name = String(input.name || input.username || "").trim();
+  const identifier = String(input.name || input.username || input.email || "").trim();
   const password = String(input.password || "");
-  if (!name || !password) return response(400, { success: false, message: "Name and password are required" });
-  const result = await client.send(new GetCommand({ TableName: ADMIN_TABLE_NAME, Key: adminKey(name) }));
-  if (!result.Item || !verifyPassword(password, result.Item.passwordHash)) {
+  if (!identifier || !password) return response(400, { success: false, message: "Name and password are required" });
+
+  let adminItem = null;
+  const directResult = await client.send(new GetCommand({ TableName: ADMIN_TABLE_NAME, Key: adminKey(identifier) }));
+  if (directResult.Item) {
+    adminItem = directResult.Item;
+  } else {
+    const scanResult = await client.send(new ScanCommand({
+      TableName: ADMIN_TABLE_NAME,
+      FilterExpression: "entityType = :type AND (LOWER(#name) = :ident OR LOWER(#email) = :ident)",
+      ExpressionAttributeNames: { "#name": "name", "#email": "email" },
+      ExpressionAttributeValues: { ":type": "ADMIN", ":ident": identifier.toLowerCase() }
+    }));
+    if (scanResult.Items && scanResult.Items.length > 0) {
+      adminItem = scanResult.Items[0];
+    }
+  }
+
+  if (!adminItem || !verifyPassword(password, adminItem.passwordHash)) {
     return response(401, { success: false, message: "Admin name or password is incorrect" });
   }
 
@@ -221,7 +237,7 @@ exports.login = async event => {
       ClientId: COGNITO_CLIENT_ID || "default-client-id",
       AuthFlow: "USER_PASSWORD_AUTH",
       AuthParameters: {
-        USERNAME: name.toLowerCase(),
+        USERNAME: adminItem.name.toLowerCase(),
         PASSWORD: password
       }
     });
@@ -238,16 +254,16 @@ exports.login = async event => {
 
   if (!tokens) {
     tokens = {
-      accessToken: `admin-token-${result.Item.name.toLowerCase()}`,
-      idToken: `admin-id-token-${result.Item.name.toLowerCase()}`,
-      refreshToken: `admin-refresh-token-${result.Item.name.toLowerCase()}`
+      accessToken: `admin-token-${adminItem.name.toLowerCase()}`,
+      idToken: `admin-id-token-${adminItem.name.toLowerCase()}`,
+      refreshToken: `admin-refresh-token-${adminItem.name.toLowerCase()}`
     };
   }
 
   return response(200, {
     success: true,
     message: "Admin login successful",
-    admin: { name: result.Item.name, email: result.Item.email },
+    admin: { name: adminItem.name, email: adminItem.email },
     tokens
   });
 };
@@ -287,7 +303,13 @@ exports.registerAdmin = async event => {
       }
     }
 
-    return response(201, { success: true, message: "Admin account created", admin: { name, email } });
+    const tokens = {
+      accessToken: `admin-token-${name.toLowerCase()}`,
+      idToken: `admin-id-token-${name.toLowerCase()}`,
+      refreshToken: `admin-refresh-token-${name.toLowerCase()}`
+    };
+
+    return response(201, { success: true, message: "Admin account created", admin: { name, email }, tokens });
   } catch (error) {
     if (error.name === "ConditionalCheckFailedException") return response(409, { success: false, message: "An admin with that name already exists" });
     console.error(error); return response(500, { success: false, message: "Unable to create admin account" });

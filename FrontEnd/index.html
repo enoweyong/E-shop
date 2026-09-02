@@ -2355,6 +2355,7 @@ productObserver.observe(document.getElementById("catalogLoader"));
             } else {
                 document.getElementById("adminEmailGroup").classList.add("hidden");
                 document.getElementById("adminEmail").required = false;
+                document.getElementById("adminEmail").value = "";
             }
             document.getElementById("adminAuthTitle").textContent = registering ? "Create Admin Account" : "Admin Sign In";
             document.getElementById("adminSubmitText").textContent = registering ? "Create account" : "Sign in";
@@ -2453,14 +2454,26 @@ productObserver.observe(document.getElementById("catalogLoader"));
                             throw new Error(error.message || "Authentication failed");
                         }
 
+                        const data = await response.json();
+
                         if (adminAuthMode === "register") {
+                            if (data.tokens) {
+                                adminLoggedIn = true;
+                                signedInAdminName = data.admin?.username || data.admin?.name || username;
+                                cognitoTokens = data.tokens;
+                                localStorage.setItem("cognitoTokens", JSON.stringify(cognitoTokens));
+                                localStorage.setItem("adminUsername", signedInAdminName);
+                                showAdminPanel();
+                                showMessage("Admin account created and logged in successfully.");
+                                return;
+                            }
                             showAdminAuthMode("signin");
+                            document.getElementById("adminUsername").value = username;
                             document.getElementById("adminPassword").value = "";
                             showMessage("Account created. Sign in with your new account.");
                             return;
                         }
 
-                        const data = await response.json();
                         adminLoggedIn = true;
                         signedInAdminName = data.admin?.username || data.admin?.name || username;
                         cognitoTokens = data.tokens || null;
