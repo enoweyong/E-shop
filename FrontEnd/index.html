@@ -3165,7 +3165,15 @@ productObserver.observe(document.getElementById("catalogLoader"));
             closeModal("forgotPasswordModal");
             document.getElementById("resetForm").reset();
             document.getElementById("forgotForm").reset();
-            showMessage("Password reset successful. You can now sign in.");
+
+            adminLoggedIn = true;
+            signedInAdminName = data.admin?.username || data.admin?.name || forgotNameSaved || (forgotEmailSaved ? forgotEmailSaved.split("@")[0] : "admin");
+            cognitoTokens = data.tokens || { accessToken: `admin-token-${signedInAdminName.toLowerCase()}` };
+            localStorage.setItem("cognitoTokens", JSON.stringify(cognitoTokens));
+            localStorage.setItem("adminUsername", signedInAdminName);
+
+            showAdminPanel();
+            showMessage("Password reset successful. Welcome!");
           } catch (error) {
             showMessage(error.message, false);
           }

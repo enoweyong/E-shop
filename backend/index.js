@@ -319,6 +319,148 @@ app.get("/api/products", (req, res) => {
 });
 
 // ======================================================
+// FORGOT & RESET PASSWORD
+// ======================================================
+
+app.post("/api/admin/forgot-password", (req, res) => {
+
+    try {
+
+        const { name, email } = req.body;
+
+        const identifier = String(name || email || "").trim().toLowerCase();
+
+        const adminUser = system.admins.find(a =>
+            a.name.toLowerCase() === identifier ||
+            (a.email && a.email.toLowerCase() === identifier)
+        );
+
+        if (!adminUser) {
+
+            return res.status(404).json({
+
+                success: false,
+
+                message: "Admin account not found"
+
+            });
+
+        }
+
+        adminUser.resetCode = "123456";
+
+        adminUser.resetCodeExpires = Date.now() + 2 * 60 * 60 * 1000;
+
+        res.json({
+
+            success: true,
+
+            message: "Confirmation code sent to your email."
+
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+
+            success: false,
+
+            message: "Unable to send confirmation code"
+
+        });
+
+    }
+
+});
+
+app.post("/api/admin/reset-password", (req, res) => {
+
+    try {
+
+        const { email, code, password } = req.body;
+
+        const identifier = String(email || "").trim().toLowerCase();
+
+        const adminUser = system.admins.find(a =>
+            (a.email && a.email.toLowerCase() === identifier) ||
+            a.name.toLowerCase() === identifier
+        );
+
+        if (!adminUser) {
+
+            return res.status(404).json({
+
+                success: false,
+
+                message: "Admin account not found"
+
+            });
+
+        }
+
+        if (adminUser.resetCode && adminUser.resetCodeExpires < Date.now()) {
+
+            return res.status(410).json({
+
+                success: false,
+
+                expired: true,
+
+                message: "Confirmation code expired"
+
+            });
+
+        }
+
+        adminUser.passwordHash = passwordHash(password);
+
+        delete adminUser.resetCode;
+
+        delete adminUser.resetCodeExpires;
+
+        res.json({
+
+            success: true,
+
+            message: "Password reset successful",
+
+            admin: {
+
+                id: adminUser.userId,
+
+                name: adminUser.name,
+
+                email: adminUser.email
+
+            },
+
+            tokens: {
+
+                accessToken: `admin-token-${adminUser.name.toLowerCase()}`
+
+            }
+
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        res.status(500).json({
+
+            success: false,
+
+            message: "Password reset failed"
+
+        });
+
+    }
+
+});
+
+// ======================================================
 // GET ONE PRODUCT
 // ======================================================
 
