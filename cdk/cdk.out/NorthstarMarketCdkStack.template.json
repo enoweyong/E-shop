@@ -151,7 +151,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-793593623274-us-east-1",
-     "S3Key": "ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902.zip"
+     "S3Key": "28cdaec9203339aa2e1b84782194fa0f7615121c2770dedde3d5a1d5198cd90f.zip"
     },
     "Environment": {
      "Variables": {
@@ -186,7 +186,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "NorthstarMarketCdkStack/CatalogFunctionL2/Resource",
-    "aws:asset:path": "asset.ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902",
+    "aws:asset:path": "asset.28cdaec9203339aa2e1b84782194fa0f7615121c2770dedde3d5a1d5198cd90f",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -297,7 +297,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-793593623274-us-east-1",
-     "S3Key": "ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902.zip"
+     "S3Key": "28cdaec9203339aa2e1b84782194fa0f7615121c2770dedde3d5a1d5198cd90f.zip"
     },
     "Environment": {
      "Variables": {
@@ -332,7 +332,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "NorthstarMarketCdkStack/AuthFunctionL2/Resource",
-    "aws:asset:path": "asset.ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902",
+    "aws:asset:path": "asset.28cdaec9203339aa2e1b84782194fa0f7615121c2770dedde3d5a1d5198cd90f",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -421,7 +421,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-793593623274-us-east-1",
-     "S3Key": "ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902.zip"
+     "S3Key": "28cdaec9203339aa2e1b84782194fa0f7615121c2770dedde3d5a1d5198cd90f.zip"
     },
     "Environment": {
      "Variables": {
@@ -456,7 +456,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "NorthstarMarketCdkStack/OrdersFunctionL2/Resource",
-    "aws:asset:path": "asset.ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902",
+    "aws:asset:path": "asset.28cdaec9203339aa2e1b84782194fa0f7615121c2770dedde3d5a1d5198cd90f",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -500,7 +500,7 @@
    "Properties": {
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-793593623274-us-east-1",
-     "S3Key": "ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902.zip"
+     "S3Key": "28cdaec9203339aa2e1b84782194fa0f7615121c2770dedde3d5a1d5198cd90f.zip"
     },
     "Environment": {
      "Variables": {
@@ -544,7 +544,7 @@
    ],
    "Metadata": {
     "aws:cdk:path": "NorthstarMarketCdkStack/MomoFunctionL2/Resource",
-    "aws:asset:path": "asset.ef7e5c6eaade36553cc608184294a71257053165874ca126e6219674ec6aa902",
+    "aws:asset:path": "asset.28cdaec9203339aa2e1b84782194fa0f7615121c2770dedde3d5a1d5198cd90f",
     "aws:asset:is-bundled": false,
     "aws:asset:property": "Code"
    }
@@ -2574,7 +2574,7 @@
      "cdk-hnb659fds-assets-793593623274-us-east-1"
     ],
     "SourceObjectKeys": [
-     "f6337638716a783719b1a3f00d90345831595ba97a320dbca98376f78181c0ab.zip"
+     "93960daa4d2757e6c3eefba0cc99e854f7151e79191bf2e2cc060c1721d9e438.zip"
     ],
     "DestinationBucketName": {
      "Ref": "FrontendBucketL29CFDAF11"

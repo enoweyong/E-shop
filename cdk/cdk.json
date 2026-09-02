@@ -2,6 +2,11 @@
   "app": "node bin/app.js",
   "context": {
     "adminEmail": "admin@example.com",
-    "frontendOrigin": "*"
+    "frontendOrigin": "*",
+    "AdminPassword": "YourPassword123!",
+    "MomoSubscriptionKey": "your_key",
+    "MomoApiUser": "0000000-0000-0000-0000-000000000000",
+    "MomoApiKey": "your_api_key"
+    
   }
 }
