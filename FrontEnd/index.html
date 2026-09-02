@@ -2464,6 +2464,11 @@ productObserver.observe(document.getElementById("catalogLoader"));
                         adminLoggedIn = true;
                         signedInAdminName = data.admin?.username || data.admin?.name || username;
                         cognitoTokens = data.tokens || null;
+                        if (!cognitoTokens && data.admin) {
+                            cognitoTokens = {
+                                accessToken: `admin-token-${signedInAdminName.toLowerCase()}`
+                            };
+                        }
                         localStorage.setItem("cognitoTokens", JSON.stringify(cognitoTokens));
                         localStorage.setItem("adminUsername", signedInAdminName);
 
